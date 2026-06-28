@@ -156,6 +156,21 @@ nav{position:sticky;top:0;z-index:200;background:rgba(253,250,244,.93);backdrop-
 .bc-footer{padding:.8rem 1.2rem;background:var(--snow);border-top:1px solid var(--border);font-size:12px;color:#666;display:flex;gap:1rem;flex-wrap:wrap}
 .bc-footer strong{color:var(--moss)}
 
+/* ── COVERAGE STRIP en briefing cards ── */
+.bc-coverage{padding:.6rem 1.2rem;background:linear-gradient(to bottom,#f8faf7,#f2f5ef);border-bottom:1px solid var(--border);font-size:12px;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;line-height:1.5}
+.bc-cov-label{font-family:var(--font-mono);font-size:10px;color:var(--sage);text-transform:uppercase;letter-spacing:.12em;font-weight:600;white-space:nowrap}
+.bc-cov-seg{display:inline-flex;align-items:center;gap:.3rem;white-space:nowrap}
+.bc-cov-mini{font-size:11px;color:#777}
+.bc-cov-arrow{color:#bbb;font-weight:300}
+.bc-cov-tag{font-family:var(--font-mono);font-size:10px;padding:1px 6px;border-radius:3px;font-weight:600;white-space:nowrap}
+.bc-cov-4g{background:#E8F5EE;color:#1D5C3A}
+.bc-cov-3g{background:#FEF6E0;color:#8A5C00}
+.bc-cov-2g{background:#FFE8D0;color:#7A3500}
+.bc-cov-no{background:#FEECEC;color:#6B1A1A}
+.bc-cov-note{font-size:11px;color:#777;flex-basis:100%;margin-top:.15rem;font-style:italic}
+.bc-cov-note strong{color:var(--ember);font-style:normal;font-weight:600}
+@media(max-width:640px){.bc-cov-seg{flex-basis:100%}.bc-cov-arrow{display:none}}
+
 /* ── BACKPACK INFOGRAPHICS ── */
 .bp-wrap{display:grid;grid-template-columns:200px 1fr;gap:2rem;align-items:start}
 @media(max-width:640px){.bp-wrap{grid-template-columns:1fr}}
@@ -248,6 +263,34 @@ nav{position:sticky;top:0;z-index:200;background:rgba(253,250,244,.93);backdrop-
   .bc-body{grid-template-columns:1fr!important}
 }
 @media(max-width:640px){.section{padding:3rem 1rem}}
+
+/* ── WEATHER CARDS ── */
+.wx-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:transform .15s}
+.wx-card:hover{transform:translateY(-2px)}
+.wx-card.wx-storm{border-color:#E24B4A;box-shadow:0 3px 24px rgba(192,68,27,.18)}
+.wx-card.wx-good{border-color:#6BAF85}
+.wx-head{padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.wx-day{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.75)}
+.wx-name{font-size:13px;font-weight:600;color:#fff;margin-top:.1rem;line-height:1.2}
+.wx-alt{font-size:10px;color:rgba(255,255,255,.6);font-family:var(--font-mono)}
+.wx-icon-big{font-size:2.2rem;line-height:1}
+.wx-body{padding:.75rem 1rem}
+.wx-temps{display:flex;gap:.4rem;align-items:center;margin-bottom:.6rem}
+.wx-max{font-size:1.5rem;font-weight:700;font-family:var(--font-head);color:var(--ember)}
+.wx-min{font-size:1.1rem;font-weight:600;font-family:var(--font-head);color:var(--sky)}
+.wx-sep{color:#ccc;font-size:1rem}
+.wx-desc{font-size:12px;color:#666;margin-bottom:.7rem}
+.wx-metrics{display:grid;grid-template-columns:1fr 1fr;gap:.35rem}
+.wx-metric{background:var(--snow);border:1px solid var(--border);border-radius:6px;padding:.35rem .55rem;font-size:11px}
+.wx-metric-val{font-weight:600;color:var(--ink);font-family:var(--font-mono)}
+.wx-metric-lbl{color:#999;font-size:10px}
+.wx-alert{margin-top:.6rem;padding:.45rem .65rem;border-radius:0 6px 6px 0;font-size:11.5px;font-weight:500}
+.wx-alert-storm{background:#FEECEC;border-left:3px solid var(--ember);color:#6B1A1A}
+.wx-alert-rain{background:#E3EDFB;border-left:3px solid var(--sky);color:#0D3266}
+.wx-alert-snow{background:#EEF0FB;border-left:3px solid #6B63D0;color:#2C2880}
+.wx-alert-good{background:#E8F5EE;border-left:3px solid var(--sage);color:#1D5C3A}
+.wx-na{grid-column:1/-1;background:var(--snow);border:1px dashed #ccc;border-radius:var(--r);padding:2rem;text-align:center;font-size:13px;color:#aaa}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -294,11 +337,13 @@ nav{position:sticky;top:0;z-index:200;background:rgba(253,250,244,.93);backdrop-
   <a href="#itinerario" class="nav-link"><span data-lang="es">Itinerario</span><span data-lang="pt">Itinerário</span></a>
   <a href="#mapa-sec" class="nav-link">Mapa</a>
   <a href="#etapas" class="nav-link"><span data-lang="es">Etapas</span><span data-lang="pt">Etapas</span></a>
+  <a href="#tiempo" class="nav-link">⛅ <span data-lang="es">Tiempo</span><span data-lang="pt">Tempo</span></a>
   <a href="#briefing" class="nav-link">Briefing</a>
   <a href="#mochilas" class="nav-link"><span data-lang="es">Mochilas</span><span data-lang="pt">Mochilas</span></a>
   <a href="#botiquin" class="nav-link"><span data-lang="es">Botiquín</span><span data-lang="pt">Kit Saúde</span></a>
   <a href="#ampollas" class="nav-link"><span data-lang="es">Ampollas</span><span data-lang="pt">Bolhas</span></a>
   <a href="#rayos" class="nav-link"><span data-lang="es">Rayos</span><span data-lang="pt">Trovoada</span></a>
+  <a href="#cobertura" class="nav-link"><span data-lang="es">Cobertura</span><span data-lang="pt">Cobertura</span></a>
   <a href="#salud" class="nav-link"><span data-lang="es">Salud</span><span data-lang="pt">Saúde</span></a>
   <a href="#ropa" class="nav-link"><span data-lang="es">Ropa</span><span data-lang="pt">Roupa</span></a>
   <a href="#checklist" class="nav-link">Checklist</a>
@@ -311,8 +356,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(253,250,244,.93);backdrop-
   <p class="sec-label"><span data-lang="es">Desde Funchal hasta los Pirineos y vuelta</span><span data-lang="pt">De Funchal aos Pirenéus e regresso</span></p>
   <h2 class="sec-title"><span data-lang="es">Itinerario completo del viaje</span><span data-lang="pt">Itinerário completo da viagem</span></h2>
   <div class="timeline" id="tl">
-    <div class="tl-item"><div class="tl-dot dot-t">✈</div><div class="tl-card"><div class="tl-head"><div><div class="tl-date">Qui 2 Jul · TAP</div><div class="tl-name">Funchal → Barcelona</div><div class="tl-sub">FNC 19:25 → BCN 01:30+1 · <span data-lang="es">Escala Lisboa</span><span data-lang="pt">Escala Lisboa</span></div></div><span class="badge bt">TAP</span></div><div class="tl-alert al-b">✈ TAP Air Portugal · <span data-lang="es">Vuelo de ida</span><span data-lang="pt">Voo de ida</span></div></div></div>
-    <div class="tl-item"><div class="tl-dot dot-t">🏙</div><div class="tl-card"><div class="tl-head"><div><div class="tl-date"><span data-lang="es">Vie</span><span data-lang="pt">Sex</span> 3 Jul</div><div class="tl-name">Barcelona</div><div class="tl-sub"><span data-lang="es">Día libre · Última compra · Desplazamiento a Bielsa (3h)</span><span data-lang="pt">Dia livre · Última compra · Viagem para Bielsa (3h)</span></div></div><span class="badge bt"><span data-lang="es">Logística</span><span data-lang="pt">Logística</span></span></div><div class="tl-alert al-y">🛒 <span data-lang="es">Parar en Eroski de Aínsa — última oportunidad de compra</span><span data-lang="pt">Parar no Eroski de Aínsa — última oportunidade de compras</span></div></div></div>
+    <div class="tl-item"><div class="tl-dot dot-t">✈</div><div class="tl-card"><div class="tl-head"><div><div class="tl-date"><span data-lang="es">Vie</span><span data-lang="pt">Sex</span> 3 Jul · TAP</div><div class="tl-name">Funchal → Barcelona</div><div class="tl-sub">FNC 19:25 → BCN 01:30+1 · <span data-lang="es">Escala Lisboa · Llegada sábado madrugada</span><span data-lang="pt">Escala Lisboa · Chegada sábado de madrugada</span></div></div><span class="badge bt">TAP</span></div><div class="tl-alert al-b">✈ TAP Air Portugal · <span data-lang="es">Mayker recoge en BCN — duermen en casa en Barcelona</span><span data-lang="pt">Mayker recolhe em BCN — dormem em casa em Barcelona</span></div></div></div>
+    <div class="tl-item"><div class="tl-dot dot-t">🚗</div><div class="tl-card"><div class="tl-head"><div><div class="tl-date"><span data-lang="es">Sáb</span><span data-lang="pt">Sáb</span> 4 Jul · 10:00h</div><div class="tl-name"><span data-lang="es">Barcelona → Bielsa</span><span data-lang="pt">Barcelona → Bielsa</span></div><div class="tl-sub"><span data-lang="es">Salida 10:00h · Parada Eroski Aínsa · Llegada Bielsa ~13:30h · Briefing 18:00h</span><span data-lang="pt">Saída 10:00h · Paragem Eroski Aínsa · Chegada Bielsa ~13:30h · Briefing 18:00h</span></div></div><span class="badge bt"><span data-lang="es">Logística</span><span data-lang="pt">Logística</span></span></div><div class="tl-alert al-y">🛒 <span data-lang="es">Parar en Eroski de Aínsa (~12:30h) — última oportunidad de compra antes de la travesía</span><span data-lang="pt">Parar no Eroski de Aínsa (~12:30h) — última oportunidade de compras antes da travessia</span></div></div></div>
     <div class="tl-item"><div class="tl-dot dot-b">📋</div><div class="tl-card"><div class="tl-head"><div><div class="tl-date"><span data-lang="es">Sáb</span><span data-lang="pt">Sáb</span> 4 Jul · Briefing</div><div class="tl-name">Bielsa · Briefing Las Feixas 18:00h</div><div class="tl-sub">Avda de Pineta 17 · 22350 Bielsa (Huesca)</div></div><span class="badge bb"><span data-lang="es">Obligatorio</span><span data-lang="pt">Obrigatório</span></span></div><div class="tl-alert al-r">⚠️ <span data-lang="es">ESTAR A LAS 18:00h — recogen mapa, camiseta, cartilla y GPS Garmin InReach</span><span data-lang="pt">ESTAR ÀS 18:00h — entregam mapa, camisola, caderneta e GPS Garmin InReach</span></div></div></div>
     <div class="tl-item"><div class="tl-dot dot-h">1</div><div class="tl-card"><div class="tl-head"><div><div class="tl-date"><span data-lang="es">Dom</span><span data-lang="pt">Dom</span> 5 Jul · <span data-lang="es">Etapa</span><span data-lang="pt">Etapa</span> 1</div><div class="tl-name">Bielsa → Laminana</div><div class="tl-sub"><span data-lang="es">Subida fuerte inicial. Piernas frescas — gestionar entusiasmo.</span><span data-lang="pt">Subida forte inicial. Pernas frescas — gerir o entusiasmo.</span></div></div><span class="badge bh"><span data-lang="es">Dura</span><span data-lang="pt">Difícil</span></span></div><div class="tl-stats"><span class="ts"><strong>13.3</strong> km</span><span class="ts">+<strong>1381</strong>m</span><span class="ts">−<strong>1297</strong>m</span><span class="ts">↑<strong>2081</strong>m</span><span class="ts">⏱ <strong>5–6h</strong></span><span class="ts">💧 <strong>3L</strong></span></div><div class="tl-alert al-y">🧥 <span data-lang="es">Plumas en mochila de marcha — el collado a 2081m se enfría en julio</span><span data-lang="pt">Casaco de penas na mochila de marcha — o colo a 2081m arrefece em julho</span></div></div></div>
     <div class="tl-item"><div class="tl-dot dot-e">2</div><div class="tl-card"><div class="tl-head"><div><div class="tl-date"><span data-lang="es">Lun</span><span data-lang="pt">Seg</span> 6 Jul · <span data-lang="es">Etapa</span><span data-lang="pt">Etapa</span> 2</div><div class="tl-name">Laminana → Bestué</div><div class="tl-sub"><span data-lang="es">La etapa más suave. Día clave para revisar los pies.</span><span data-lang="pt">A etapa mais suave. Dia chave para verificar os pés.</span></div></div><span class="badge be"><span data-lang="es">La más suave</span><span data-lang="pt">A mais suave</span></span></div><div class="tl-stats"><span class="ts"><strong>13.6</strong> km</span><span class="ts">+<strong>978</strong>m</span><span class="ts">−<strong>839</strong>m</span><span class="ts">↑<strong>1692</strong>m</span><span class="ts">⏱ <strong>4–5h</strong></span><span class="ts">💧 <strong>2.5L</strong></span></div><div class="tl-alert al-y">🦶 <span data-lang="es">Revisar pies al llegar — ampollas tratadas HOY no duelen mañana</span><span data-lang="pt">Verificar os pés ao chegar — bolhas tratadas HOJE não doem amanhã</span></div></div></div>
@@ -380,6 +425,47 @@ nav{position:sticky;top:0;z-index:200;background:rgba(253,250,244,.93);backdrop-
 </div>
 </section>
 
+<!-- ── TIEMPO / PREVISIÓN ── -->
+<section class="section" id="tiempo">
+<div class="container">
+  <p class="sec-label">⛅ <span data-lang="es">Actualizado en tiempo real · Open-Meteo</span><span data-lang="pt">Atualizado em tempo real · Open-Meteo</span></p>
+  <h2 class="sec-title"><span data-lang="es">Previsión meteorológica por etapa</span><span data-lang="pt">Previsão meteorológica por etapa</span></h2>
+  <p style="font-size:13px;color:#777;margin-bottom:1.2rem;max-width:640px"><span data-lang="es">Datos reales de cada refugio para las fechas exactas del trek. La tormenta ⛈ en collados es la alerta más crítica — ver protocolo rayos.</span><span data-lang="pt">Dados reais de cada refúgio para as datas exatas do trek. A trovoada ⛈ em cumeadas é o alerta mais crítico — ver protocolo raios.</span></p>
+
+  <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem;flex-wrap:wrap">
+    <button id="wx-refresh" onclick="loadWeather()" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--moss);color:#fff;border:none;padding:.55rem 1.1rem;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-body);transition:background .15s">
+      🔄 <span data-lang="es">Actualizar previsión</span><span data-lang="pt">Atualizar previsão</span>
+    </button>
+    <span id="wx-updated" style="font-size:11px;color:#aaa;font-family:var(--font-mono)"></span>
+  </div>
+
+  <!-- STORM WARNING BANNER -->
+  <div id="wx-storm-banner" style="display:none;background:#FEECEC;border:1px solid #E24B4A;border-left:4px solid var(--ember);border-radius:var(--r);padding:.9rem 1.1rem;margin-bottom:1.2rem;font-size:13px;color:#6B1A1A">
+    ⛈ <strong><span data-lang="es">Alerta tormenta detectada</span><span data-lang="pt">Alerta trovoada detetada</span></strong> — <span id="wx-storm-days"></span>. <span data-lang="es">Revisar protocolo de rayos y horarios de paso por collados.</span><span data-lang="pt">Rever protocolo de raios e horários de passagem pelos cumes.</span>
+  </div>
+
+  <!-- WEATHER CARDS GRID -->
+  <div id="wx-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.9rem"></div>
+
+  <!-- LOADING STATE -->
+  <div id="wx-loading" style="text-align:center;padding:3rem;color:#999;font-size:13px;font-family:var(--font-mono)">
+    <div style="font-size:28px;margin-bottom:.8rem;animation:spin 1.2s linear infinite;display:inline-block">⟳</div><br>
+    <span data-lang="es">Cargando previsión para las 7 etapas...</span><span data-lang="pt">A carregar previsão para as 7 etapas...</span>
+  </div>
+
+  <!-- LEGEND -->
+  <div style="display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.2rem;padding:.8rem 1rem;background:var(--snow);border-radius:8px;border:1px solid var(--border)">
+    <span style="font-size:11px;color:#999;font-family:var(--font-mono);font-weight:600;flex-basis:100%;margin-bottom:.2rem"><span data-lang="es">LEYENDA</span><span data-lang="pt">LEGENDA</span></span>
+    <span style="font-size:12px;color:#666">☀️ <span data-lang="es">Despejado</span><span data-lang="pt">Limpo</span></span>
+    <span style="font-size:12px;color:#666">⛅ <span data-lang="es">Parcialmente nublado</span><span data-lang="pt">Parcialmente nublado</span></span>
+    <span style="font-size:12px;color:#666">🌧 <span data-lang="es">Lluvia</span><span data-lang="pt">Chuva</span></span>
+    <span style="font-size:12px;color:#666">❄️ <span data-lang="es">Nieve</span><span data-lang="pt">Neve</span></span>
+    <span style="font-size:12px;color:var(--ember)"><strong>⛈ <span data-lang="es">Tormenta — protocolo rayos</span><span data-lang="pt">Trovoada — protocolo raios</span></strong></span>
+    <span style="font-size:11px;color:#aaa;flex-basis:100%;margin-top:.2rem"><span data-lang="es">Fuente: Open-Meteo · Coordenadas reales de cada refugio · Se actualiza al abrir la página</span><span data-lang="pt">Fonte: Open-Meteo · Coordenadas reais de cada refúgio · Atualiza ao abrir a página</span></div>
+  </div>
+</div>
+</section>
+
 <!-- ── BRIEFING DIARIO ── -->
 <section class="section section-alt" id="briefing">
 <div class="container">
@@ -405,12 +491,20 @@ nav{position:sticky;top:0;z-index:200;background:rgba(253,250,244,.93);backdrop-
       <div><div class="bc-day"><span data-lang="es">Noche de llegada · Sábado 4 Jul</span><span data-lang="pt">Noite de chegada · Sábado 4 Jul</span></div><div class="bc-title"><span data-lang="es">Briefing Las Feixas — 18:00h</span><span data-lang="pt">Briefing Las Feixas — 18:00h</span></div><div class="bc-sub">Avda de Pineta 17 · Bielsa</div></div>
       <div class="bc-diff"><span data-lang="es">Preparación</span><span data-lang="pt">Preparação</span></div>
     </div>
+    <div class="bc-coverage">
+      <span class="bc-cov-label">📡 <span data-lang="es">Señal</span><span data-lang="pt">Sinal</span></span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini">Bielsa</span> <span class="bc-cov-tag bc-cov-4g">4G ✓</span></span>
+      <span class="bc-cov-note"><span data-lang="es">Última oportunidad de avisar a familia antes de salir mañana — todos los operadores funcionan</span><span data-lang="pt">Última oportunidade de avisar a família antes de sair amanhã — todas as operadoras funcionam</span></span>
+    </div>
     <div class="bc-body">
       <div class="bc-col">
-        <div class="bc-col-title">📋 <span data-lang="es">Esta noche</span><span data-lang="pt">Esta noite</span></div>
-        <div class="bc-item"><div class="bc-bullet"></div><span data-lang="es">Asistir al briefing a las 18:00h en punto — sin excusas</span><span data-lang="pt">Assistir ao briefing às 18:00h em ponto — sem desculpas</span></div>
-        <div class="bc-item"><div class="bc-bullet"></div><span data-lang="es">Recoger: mapa oficial, camiseta técnica, cartilla sellado, GPS Garmin InReach</span><span data-lang="pt">Recolher: mapa oficial, camisola técnica, caderneta, GPS Garmin InReach</span></div>
-        <div class="bc-item"><div class="bc-bullet"></div><span data-lang="es">Comprar todo lo que falta en el supermercado de Bielsa</span><span data-lang="pt">Comprar tudo o que falta no supermercado de Bielsa</span></div>
+        <div class="bc-col-title">📋 <span data-lang="es">Día de llegada y viaje</span><span data-lang="pt">Dia de chegada e viagem</span></div>
+        <div class="bc-item"><div class="bc-bullet"></div><span data-lang="es">Vuelo aterriza 01:30 madrugada — Mayker recoge en BCN y duermen en casa en Barcelona</span><span data-lang="pt">Voo aterra 01:30 madrugada — Mayker recolhe em BCN e dormem em casa em Barcelona</span></div>
+        <div class="bc-item"><div class="bc-bullet"></div><span data-lang="es">Descanso en casa — dormir bien antes del viaje</span><span data-lang="pt">Descanso em casa — dormir bem antes da viagem</span></div>
+        <div class="bc-item"><div class="bc-bullet"></div><span data-lang="es">Salida de Barcelona a las 10:00h — carretera a Bielsa (3h)</span><span data-lang="pt">Saída de Barcelona às 10:00h — estrada para Bielsa (3h)</span></div>
+        <div class="bc-item"><div class="bc-bullet"></div><span data-lang="es">Parada Eroski Aínsa ~12:30h — última compra: queso gavas, fuet, fruta, electrolitos</span><span data-lang="pt">Paragem Eroski Aínsa ~12:30h — última compra: queijo gavas, chouriço, fruta, eletrólitos</span></div>
+        <div class="bc-item"><div class="bc-bullet"></div><span data-lang="es">Llegada Bielsa ~13:30h — tiempo para instalarse antes del briefing</span><span data-lang="pt">Chegada Bielsa ~13:30h — tempo para se instalar antes do briefing</span></div>
+        <div class="bc-item"><div class="bc-bullet"></div><span data-lang="es">Briefing Las Feixas 18:00h en punto — recoger GPS Garmin InReach</span><span data-lang="pt">Briefing Las Feixas 18:00h em ponto — recolher GPS Garmin InReach</span></div>
         <div class="bc-item"><div class="bc-bullet"></div><span data-lang="es">Cargar el Garmin InReach al 100% esta noche</span><span data-lang="pt">Carregar o Garmin InReach a 100% esta noite</span></div>
       </div>
       <div class="bc-col">
@@ -449,6 +543,15 @@ nav{position:sticky;top:0;z-index:200;background:rgba(253,250,244,.93);backdrop-
       <div class="bc-stat"><div class="bc-sv">2081m</div><div class="bc-sl"><span data-lang="es">Alt. máx</span><span data-lang="pt">Alt. máx</span></div></div>
       <div class="bc-stat"><div class="bc-sv">5–6h</div><div class="bc-sl"><span data-lang="es">Tiempo</span><span data-lang="pt">Tempo</span></div></div>
       <div class="bc-stat"><div class="bc-sv" style="color:#2666A8">3L</div><div class="bc-sl"><span data-lang="es">Agua mín</span><span data-lang="pt">Água mín</span></div></div>
+    </div>
+    <div class="bc-coverage">
+      <span class="bc-cov-label">📡 <span data-lang="es">Señal</span><span data-lang="pt">Sinal</span></span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Salida</span><span data-lang="pt">Saída</span></span> <span class="bc-cov-tag bc-cov-4g">Bielsa 4G ✓</span></span>
+      <span class="bc-cov-arrow">→</span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Ruta</span><span data-lang="pt">Rota</span></span> <span class="bc-cov-tag bc-cov-no"><span data-lang="es">sin señal</span><span data-lang="pt">sem sinal</span></span></span>
+      <span class="bc-cov-arrow">→</span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Llegada</span><span data-lang="pt">Chegada</span></span> <span class="bc-cov-tag bc-cov-3g">Laminana 3G</span></span>
+      <span class="bc-cov-note"><span data-lang="es">Movistar es el operador con mejor señal en Laminana — avisar a familia al llegar</span><span data-lang="pt">Movistar é a operadora com melhor sinal em Laminana — avisar a família ao chegar</span></span>
     </div>
     <div class="bc-body">
       <div class="bc-col">
@@ -493,6 +596,15 @@ nav{position:sticky;top:0;z-index:200;background:rgba(253,250,244,.93);backdrop-
       <div class="bc-stat"><div class="bc-sv">1692m</div><div class="bc-sl"><span data-lang="es">Alt. máx</span><span data-lang="pt">Alt. máx</span></div></div>
       <div class="bc-stat"><div class="bc-sv">4–5h</div><div class="bc-sl"><span data-lang="es">Tiempo</span><span data-lang="pt">Tempo</span></div></div>
       <div class="bc-stat"><div class="bc-sv" style="color:#2666A8">2.5L</div><div class="bc-sl"><span data-lang="es">Agua</span><span data-lang="pt">Água</span></div></div>
+    </div>
+    <div class="bc-coverage">
+      <span class="bc-cov-label">📡 <span data-lang="es">Señal</span><span data-lang="pt">Sinal</span></span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Salida</span><span data-lang="pt">Saída</span></span> <span class="bc-cov-tag bc-cov-3g">Laminana 3G</span></span>
+      <span class="bc-cov-arrow">→</span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Ruta</span><span data-lang="pt">Rota</span></span> <span class="bc-cov-tag bc-cov-no"><span data-lang="es">sin señal</span><span data-lang="pt">sem sinal</span></span></span>
+      <span class="bc-cov-arrow">→</span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Llegada</span><span data-lang="pt">Chegada</span></span> <span class="bc-cov-tag bc-cov-3g">Bestué 3G</span></span>
+      <span class="bc-cov-note"><span data-lang="es">Aldea pequeña — solo mensajes y llamadas básicas, sin datos pesados</span><span data-lang="pt">Aldeia pequena — apenas mensagens e chamadas básicas, sem dados pesados</span></span>
     </div>
     <div class="bc-body">
       <div class="bc-col">
@@ -539,6 +651,15 @@ nav{position:sticky;top:0;z-index:200;background:rgba(253,250,244,.93);backdrop-
       <div class="bc-stat"><div class="bc-sv">8–9h</div><div class="bc-sl"><span data-lang="es">Tiempo</span><span data-lang="pt">Tempo</span></div></div>
       <div class="bc-stat"><div class="bc-sv" style="color:#2666A8">3.5L</div><div class="bc-sl"><span data-lang="es">Agua</span><span data-lang="pt">Água</span></div></div>
     </div>
+    <div class="bc-coverage">
+      <span class="bc-cov-label">📡 <span data-lang="es">Señal</span><span data-lang="pt">Sinal</span></span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Salida</span><span data-lang="pt">Saída</span></span> <span class="bc-cov-tag bc-cov-3g">Bestué 3G</span></span>
+      <span class="bc-cov-arrow">→</span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Ruta</span><span data-lang="pt">Rota</span></span> <span class="bc-cov-tag bc-cov-no">8–9h <span data-lang="es">sin señal</span><span data-lang="pt">sem sinal</span></span></span>
+      <span class="bc-cov-arrow">→</span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Llegada</span><span data-lang="pt">Chegada</span></span> <span class="bc-cov-tag bc-cov-2g">Pineta 2G</span></span>
+      <span class="bc-cov-note"><strong>⚠️</strong> <span data-lang="es">Etapa más larga · avisar a la familia que habrá 8–9h de silencio · en Pineta solo SMS y llamadas básicas</span><span data-lang="pt">Etapa mais longa · avisar a família de 8–9h de silêncio · em Pineta apenas SMS e chamadas básicas</span></span>
+    </div>
     <div class="bc-body">
       <div class="bc-col">
         <div class="bc-col-title">⚡ <span data-lang="es">Recuperación esta noche</span><span data-lang="pt">Recuperação esta noite</span></div>
@@ -582,6 +703,15 @@ nav{position:sticky;top:0;z-index:200;background:rgba(253,250,244,.93);backdrop-
       <div class="bc-stat"><div class="bc-sv">7–8h</div><div class="bc-sl"><span data-lang="es">Tiempo</span><span data-lang="pt">Tempo</span></div></div>
       <div class="bc-stat"><div class="bc-sv" style="color:#2666A8">3L</div><div class="bc-sl"><span data-lang="es">Agua</span><span data-lang="pt">Água</span></div></div>
     </div>
+    <div class="bc-coverage">
+      <span class="bc-cov-label">📡 <span data-lang="es">Señal</span><span data-lang="pt">Sinal</span></span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Salida</span><span data-lang="pt">Saída</span></span> <span class="bc-cov-tag bc-cov-2g">Pineta 2G</span></span>
+      <span class="bc-cov-arrow">→</span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Ruta</span><span data-lang="pt">Rota</span></span> <span class="bc-cov-tag bc-cov-no"><span data-lang="es">sin señal</span><span data-lang="pt">sem sinal</span></span></span>
+      <span class="bc-cov-arrow">→</span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Llegada</span><span data-lang="pt">Chegada</span></span> <span class="bc-cov-tag bc-cov-no">Maillet 🇫🇷</span></span>
+      <span class="bc-cov-note"><strong>⚠️</strong> <span data-lang="es">Inicia ventana de 24h+ de silencio · avisar a familia ANTES de salir de Pineta · Garmin InReach es el único contacto</span><span data-lang="pt">Inicia janela de 24h+ de silêncio · avisar a família ANTES de sair de Pineta · Garmin InReach é o único contacto</span></span>
+    </div>
     <div class="bc-body">
       <div class="bc-col">
         <div class="bc-col-title">🧊 <span data-lang="es">Alerta día 5 — Cota máxima 2602m</span><span data-lang="pt">Alerta dia 5 — Cota máxima 2602m</span></div>
@@ -623,6 +753,15 @@ nav{position:sticky;top:0;z-index:200;background:rgba(253,250,244,.93);backdrop-
       <div class="bc-stat"><div class="bc-sv">2602m</div><div class="bc-sl"><span data-lang="es">Alt. MÁX</span><span data-lang="pt">Alt. MÁX</span></div></div>
       <div class="bc-stat"><div class="bc-sv">6–7h</div><div class="bc-sl"><span data-lang="es">Tiempo</span><span data-lang="pt">Tempo</span></div></div>
       <div class="bc-stat"><div class="bc-sv" style="color:#2666A8">3L</div><div class="bc-sl"><span data-lang="es">Agua</span><span data-lang="pt">Água</span></div></div>
+    </div>
+    <div class="bc-coverage">
+      <span class="bc-cov-label">📡 <span data-lang="es">Señal</span><span data-lang="pt">Sinal</span></span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Salida</span><span data-lang="pt">Saída</span></span> <span class="bc-cov-tag bc-cov-no">Maillet 🇫🇷</span></span>
+      <span class="bc-cov-arrow">→</span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Ruta</span><span data-lang="pt">Rota</span></span> <span class="bc-cov-tag bc-cov-no"><span data-lang="es">sin señal</span><span data-lang="pt">sem sinal</span></span></span>
+      <span class="bc-cov-arrow">→</span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Llegada</span><span data-lang="pt">Chegada</span></span> <span class="bc-cov-tag bc-cov-4g">Piau Engaly 4G ✓</span></span>
+      <span class="bc-cov-note"><span data-lang="es">Vuelve la cobertura — estación de esquí con 4G Orange/SFR · mejor señal del lado francés · mensajes a familia</span><span data-lang="pt">Volta a cobertura — estância de esqui com 4G Orange/SFR · melhor sinal do lado francês · mensagens à família</span></span>
     </div>
     <div class="bc-body">
       <div class="bc-col">
@@ -666,6 +805,15 @@ nav{position:sticky;top:0;z-index:200;background:rgba(253,250,244,.93);backdrop-
       <div class="bc-stat"><div class="bc-sv">5–6h</div><div class="bc-sl"><span data-lang="es">Tiempo</span><span data-lang="pt">Tempo</span></div></div>
       <div class="bc-stat"><div class="bc-sv" style="color:#2666A8">2.5L</div><div class="bc-sl"><span data-lang="es">Agua</span><span data-lang="pt">Água</span></div></div>
     </div>
+    <div class="bc-coverage">
+      <span class="bc-cov-label">📡 <span data-lang="es">Señal</span><span data-lang="pt">Sinal</span></span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Salida</span><span data-lang="pt">Saída</span></span> <span class="bc-cov-tag bc-cov-4g">Piau 4G ✓</span></span>
+      <span class="bc-cov-arrow">→</span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Ruta</span><span data-lang="pt">Rota</span></span> <span class="bc-cov-tag bc-cov-no"><span data-lang="es">sin señal — zona remota</span><span data-lang="pt">sem sinal — zona remota</span></span></span>
+      <span class="bc-cov-arrow">→</span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Llegada</span><span data-lang="pt">Chegada</span></span> <span class="bc-cov-tag bc-cov-no">Rioumajou 🇫🇷</span></span>
+      <span class="bc-cov-note"><strong>⚠️</strong> <span data-lang="es">Ventana de 24h+ de silencio · avisar a familia ANTES de salir de Piau · valle más virgen y aislado de la travesía</span><span data-lang="pt">Janela de 24h+ de silêncio · avisar a família ANTES de sair de Piau · vale mais virgem e isolado da travessia</span></span>
+    </div>
     <div class="bc-body">
       <div class="bc-col">
         <div class="bc-col-title">🦵 <span data-lang="es">Preparar el gran final — día 7</span><span data-lang="pt">Preparar o grande final — dia 7</span></div>
@@ -708,6 +856,15 @@ nav{position:sticky;top:0;z-index:200;background:rgba(253,250,244,.93);backdrop-
       <div class="bc-stat"><div class="bc-sv">2662m</div><div class="bc-sl"><span data-lang="es">Alt. máx</span><span data-lang="pt">Alt. máx</span></div></div>
       <div class="bc-stat"><div class="bc-sv">6–7h</div><div class="bc-sl"><span data-lang="es">Tiempo</span><span data-lang="pt">Tempo</span></div></div>
       <div class="bc-stat"><div class="bc-sv" style="color:#2666A8">3L</div><div class="bc-sl"><span data-lang="es">Agua</span><span data-lang="pt">Água</span></div></div>
+    </div>
+    <div class="bc-coverage">
+      <span class="bc-cov-label">📡 <span data-lang="es">Señal</span><span data-lang="pt">Sinal</span></span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Salida</span><span data-lang="pt">Saída</span></span> <span class="bc-cov-tag bc-cov-no">Rioumajou 🇫🇷</span></span>
+      <span class="bc-cov-arrow">→</span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Ruta</span><span data-lang="pt">Rota</span></span> <span class="bc-cov-tag bc-cov-no"><span data-lang="es">sin señal hasta descenso</span><span data-lang="pt">sem sinal até descida</span></span></span>
+      <span class="bc-cov-arrow">→</span>
+      <span class="bc-cov-seg"><span class="bc-cov-mini"><span data-lang="es">Llegada</span><span data-lang="pt">Chegada</span></span> <span class="bc-cov-tag bc-cov-4g">Bielsa 4G ✓ 🎉</span></span>
+      <span class="bc-cov-note"><span data-lang="es">Vuelta a la civilización · cobertura completa en cuanto se baja al valle · foto de grupo final</span><span data-lang="pt">Regresso à civilização · cobertura completa assim que se desce ao vale · foto de grupo final</span></span>
     </div>
     <div class="bc-body">
       <div class="bc-col">
@@ -1002,6 +1159,184 @@ nav{position:sticky;top:0;z-index:200;background:rgba(253,250,244,.93);backdrop-
 </div>
 </section>
 
+
+<!-- ── COBERTURA MÓVIL ── -->
+<section class="section" id="cobertura">
+<div class="container">
+  <p class="sec-label"><span data-lang="es">Realidad de la señal en alta montaña</span><span data-lang="pt">Realidade do sinal em alta montanha</span></p>
+  <h2 class="sec-title">📡 <span data-lang="es">Cobertura móvil en la ruta</span><span data-lang="pt">Cobertura móvel na rota</span></h2>
+  <p style="font-size:13px;color:#777;margin-bottom:1.5rem;max-width:660px"><span data-lang="es">Verdad incómoda: durante 7 días de travesía, vais a tener señal real solo en 4 zonas. El resto del tiempo, el Garmin InReach es la única comunicación.</span><span data-lang="pt">Verdade desconfortável: durante 7 dias de travessia, terão sinal real apenas em 4 zonas. O resto do tempo, o Garmin InReach é a única comunicação.</span></p>
+
+  <!-- VISUAL STRIP -->
+  <div style="background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.4rem 1.2rem;margin-bottom:1.5rem;box-shadow:var(--shadow);overflow-x:auto">
+    <div style="font-size:11px;font-family:var(--font-mono);letter-spacing:.12em;color:var(--sage);text-transform:uppercase;margin-bottom:1rem"><span data-lang="es">Mapa de cobertura por refugio</span><span data-lang="pt">Mapa de cobertura por refúgio</span></div>
+    <svg viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:680px;height:auto">
+      <!-- Connecting line -->
+      <line x1="55" y1="100" x2="845" y2="100" stroke="#C8DFCF" stroke-width="2" stroke-dasharray="5,4"/>
+      <!-- Bielsa start -->
+      <g><circle cx="55" cy="100" r="14" fill="#2D7D55" stroke="#fff" stroke-width="2"/><text x="55" y="105" text-anchor="middle" fill="#fff" font-size="10" font-family="monospace" font-weight="700">4G</text><text x="55" y="135" text-anchor="middle" fill="#2C3830" font-size="11" font-family="monospace" font-weight="600">Bielsa</text><text x="55" y="148" text-anchor="middle" fill="#777" font-size="9" font-family="monospace">1170m</text><text x="55" y="75" text-anchor="middle" fill="#2D7D55" font-size="9" font-family="monospace">▮▮▮▮</text></g>
+      <!-- Laminana D1 -->
+      <g><circle cx="168" cy="100" r="14" fill="#C59B2B" stroke="#fff" stroke-width="2"/><text x="168" y="105" text-anchor="middle" fill="#fff" font-size="10" font-family="monospace" font-weight="700">3G</text><text x="168" y="135" text-anchor="middle" fill="#2C3830" font-size="11" font-family="monospace" font-weight="600">Laminana</text><text x="168" y="148" text-anchor="middle" fill="#777" font-size="9" font-family="monospace">D1</text><text x="168" y="75" text-anchor="middle" fill="#C59B2B" font-size="9" font-family="monospace">▮▮▯▯</text></g>
+      <!-- Bestué D2 -->
+      <g><circle cx="281" cy="100" r="14" fill="#C59B2B" stroke="#fff" stroke-width="2"/><text x="281" y="105" text-anchor="middle" fill="#fff" font-size="10" font-family="monospace" font-weight="700">3G</text><text x="281" y="135" text-anchor="middle" fill="#2C3830" font-size="11" font-family="monospace" font-weight="600">Bestué</text><text x="281" y="148" text-anchor="middle" fill="#777" font-size="9" font-family="monospace">D2</text><text x="281" y="75" text-anchor="middle" fill="#C59B2B" font-size="9" font-family="monospace">▮▮▯▯</text></g>
+      <!-- Pineta D3 -->
+      <g><circle cx="394" cy="100" r="14" fill="#E08020" stroke="#fff" stroke-width="2"/><text x="394" y="105" text-anchor="middle" fill="#fff" font-size="9" font-family="monospace" font-weight="700">2G</text><text x="394" y="135" text-anchor="middle" fill="#2C3830" font-size="11" font-family="monospace" font-weight="600">Pineta</text><text x="394" y="148" text-anchor="middle" fill="#777" font-size="9" font-family="monospace">D3</text><text x="394" y="75" text-anchor="middle" fill="#E08020" font-size="9" font-family="monospace">▮▯▯▯</text></g>
+      <!-- Maillet FR D4 -->
+      <g><circle cx="507" cy="100" r="14" fill="#C0441B" stroke="#fff" stroke-width="2"/><text x="507" y="105" text-anchor="middle" fill="#fff" font-size="9" font-family="monospace" font-weight="700">✕</text><text x="507" y="135" text-anchor="middle" fill="#2C3830" font-size="11" font-family="monospace" font-weight="600">Maillet 🇫🇷</text><text x="507" y="148" text-anchor="middle" fill="#777" font-size="9" font-family="monospace">D4</text><text x="507" y="75" text-anchor="middle" fill="#C0441B" font-size="9" font-family="monospace">▯▯▯▯</text></g>
+      <!-- Piau Engaly D5 -->
+      <g><circle cx="620" cy="100" r="14" fill="#2D7D55" stroke="#fff" stroke-width="2"/><text x="620" y="105" text-anchor="middle" fill="#fff" font-size="10" font-family="monospace" font-weight="700">4G</text><text x="620" y="135" text-anchor="middle" fill="#2C3830" font-size="11" font-family="monospace" font-weight="600">Piau 🇫🇷</text><text x="620" y="148" text-anchor="middle" fill="#777" font-size="9" font-family="monospace">D5</text><text x="620" y="75" text-anchor="middle" fill="#2D7D55" font-size="9" font-family="monospace">▮▮▮▮</text></g>
+      <!-- Rioumajou D6 -->
+      <g><circle cx="733" cy="100" r="14" fill="#C0441B" stroke="#fff" stroke-width="2"/><text x="733" y="105" text-anchor="middle" fill="#fff" font-size="9" font-family="monospace" font-weight="700">✕</text><text x="733" y="135" text-anchor="middle" fill="#2C3830" font-size="11" font-family="monospace" font-weight="600">Rioumajou 🇫🇷</text><text x="733" y="148" text-anchor="middle" fill="#777" font-size="9" font-family="monospace">D6</text><text x="733" y="75" text-anchor="middle" fill="#C0441B" font-size="9" font-family="monospace">▯▯▯▯</text></g>
+      <!-- Bielsa end -->
+      <g><circle cx="845" cy="100" r="14" fill="#2D7D55" stroke="#fff" stroke-width="2"/><text x="845" y="105" text-anchor="middle" fill="#fff" font-size="10" font-family="monospace" font-weight="700">4G</text><text x="845" y="135" text-anchor="middle" fill="#2C3830" font-size="11" font-family="monospace" font-weight="600">Bielsa</text><text x="845" y="148" text-anchor="middle" fill="#777" font-size="9" font-family="monospace">D7</text><text x="845" y="75" text-anchor="middle" fill="#2D7D55" font-size="9" font-family="monospace">▮▮▮▮</text></g>
+      <!-- Title labels -->
+      <text x="55" y="30" text-anchor="middle" fill="#999" font-size="9" font-family="monospace">START</text>
+      <text x="845" y="30" text-anchor="middle" fill="#999" font-size="9" font-family="monospace">FIN</text>
+    </svg>
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:.8rem;font-size:11px;color:#666">
+      <span><span style="display:inline-block;width:10px;height:10px;background:#2D7D55;border-radius:50%;vertical-align:middle;margin-right:5px"></span>4G <span data-lang="es">buena</span><span data-lang="pt">boa</span></span>
+      <span><span style="display:inline-block;width:10px;height:10px;background:#C59B2B;border-radius:50%;vertical-align:middle;margin-right:5px"></span>3G <span data-lang="es">limitada</span><span data-lang="pt">limitada</span></span>
+      <span><span style="display:inline-block;width:10px;height:10px;background:#E08020;border-radius:50%;vertical-align:middle;margin-right:5px"></span>2G <span data-lang="es">solo emergencia</span><span data-lang="pt">só emergência</span></span>
+      <span><span style="display:inline-block;width:10px;height:10px;background:#C0441B;border-radius:50%;vertical-align:middle;margin-right:5px"></span><span data-lang="es">Sin señal</span><span data-lang="pt">Sem sinal</span></span>
+      <span style="margin-left:auto;color:#aaa"><span data-lang="es">⚠️ Collados (2400m+): cero señal en todos los operadores</span><span data-lang="pt">⚠️ Cumes (2400m+): zero sinal em todas as operadoras</span></span>
+    </div>
+  </div>
+
+  <!-- COVERAGE MAP -->
+  <div style="background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:0;margin-bottom:1.5rem;box-shadow:var(--shadow);overflow:hidden">
+    <div style="padding:1.1rem 1.2rem .8rem 1.2rem">
+      <div style="font-size:11px;font-family:var(--font-mono);letter-spacing:.12em;color:var(--sage);text-transform:uppercase;margin-bottom:.4rem"><span data-lang="es">Mapa de cobertura sobre la ruta</span><span data-lang="pt">Mapa de cobertura sobre a rota</span></div>
+      <div style="font-size:12px;color:#777;line-height:1.5"><span data-lang="es">Círculos verdes/amarillos = zonas con señal · Marcadores rojos ⚠️ = collados confirmados sin cobertura · Estimación basada en terreno y datos públicos de operadores</span><span data-lang="pt">Círculos verdes/amarelos = zonas com sinal · Marcadores vermelhos ⚠️ = cumes confirmados sem cobertura · Estimativa baseada em terreno e dados públicos das operadoras</span></div>
+    </div>
+    <div id="coverage-map" style="width:100%;height:480px"></div>
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;padding:.7rem 1.2rem;border-top:1px solid var(--border);font-size:11px;color:#666;background:var(--snow)">
+      <span><span style="display:inline-block;width:16px;height:16px;border-radius:50%;background:rgba(45,125,85,.35);border:2px solid #2D7D55;vertical-align:middle;margin-right:6px"></span>4G <span data-lang="es">cobertura completa</span><span data-lang="pt">cobertura completa</span></span>
+      <span><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:rgba(197,155,43,.3);border:2px solid #C59B2B;vertical-align:middle;margin-right:6px"></span>3G <span data-lang="es">limitada</span><span data-lang="pt">limitada</span></span>
+      <span><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:rgba(224,128,32,.3);border:2px solid #E08020;vertical-align:middle;margin-right:6px"></span>2G <span data-lang="es">emergencia</span><span data-lang="pt">emergência</span></span>
+      <span><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:rgba(192,68,27,.6);border:2px solid #6B1A1A;vertical-align:middle;margin-right:6px"></span><span data-lang="es">Sin señal — collado</span><span data-lang="pt">Sem sinal — cume</span></span>
+    </div>
+  </div>
+
+  <!-- ZONE CARDS -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:.8rem;margin-bottom:1.5rem">
+
+    <div class="bp-item" style="flex-direction:column;align-items:stretch;padding:.8rem 1rem;border-left:3px solid #2D7D55">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem">
+        <strong style="font-size:13px;color:var(--ink)">Bielsa <span style="font-size:10px;color:#999;font-family:monospace">· 1170m</span></strong>
+        <span style="background:#E8F5EE;color:#1D5C3A;font-family:monospace;font-size:10px;padding:2px 8px;border-radius:4px">4G ✓</span>
+      </div>
+      <div style="font-size:12px;color:#666"><span data-lang="es">Cobertura completa todos los operadores ES. Última oportunidad de avisar a familia.</span><span data-lang="pt">Cobertura completa todas as operadoras ES. Última oportunidade de avisar a família.</span></div>
+    </div>
+
+    <div class="bp-item" style="flex-direction:column;align-items:stretch;padding:.8rem 1rem;border-left:3px solid #C59B2B">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem">
+        <strong style="font-size:13px;color:var(--ink)">Laminana <span style="font-size:10px;color:#999;font-family:monospace">· D1</span></strong>
+        <span style="background:#FEF6E0;color:#8A5C00;font-family:monospace;font-size:10px;padding:2px 8px;border-radius:4px">3G</span>
+      </div>
+      <div style="font-size:12px;color:#666"><span data-lang="es">Limitada · Movistar mejor que el resto. WhatsApp suele funcionar, video llamadas no.</span><span data-lang="pt">Limitada · Movistar melhor que as restantes. WhatsApp costuma funcionar, chamadas vídeo não.</span></div>
+    </div>
+
+    <div class="bp-item" style="flex-direction:column;align-items:stretch;padding:.8rem 1rem;border-left:3px solid #C59B2B">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem">
+        <strong style="font-size:13px;color:var(--ink)">Bestué <span style="font-size:10px;color:#999;font-family:monospace">· D2</span></strong>
+        <span style="background:#FEF6E0;color:#8A5C00;font-family:monospace;font-size:10px;padding:2px 8px;border-radius:4px">3G</span>
+      </div>
+      <div style="font-size:12px;color:#666"><span data-lang="es">Aldea pequeña con cobertura básica. Mensajes sí, datos pesados no.</span><span data-lang="pt">Aldeia pequena com cobertura básica. Mensagens sim, dados pesados não.</span></div>
+    </div>
+
+    <div class="bp-item" style="flex-direction:column;align-items:stretch;padding:.8rem 1rem;border-left:3px solid #E08020">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem">
+        <strong style="font-size:13px;color:var(--ink)">Pineta <span style="font-size:10px;color:#999;font-family:monospace">· D3</span></strong>
+        <span style="background:#FFE8D0;color:#7A3500;font-family:monospace;font-size:10px;padding:2px 8px;border-radius:4px">2G</span>
+      </div>
+      <div style="font-size:12px;color:#666"><span data-lang="es">Valle profundo y aislado. Solo llamadas básicas y SMS. Sin datos prácticos.</span><span data-lang="pt">Vale profundo e isolado. Apenas chamadas básicas e SMS. Sem dados práticos.</span></div>
+    </div>
+
+    <div class="bp-item" style="flex-direction:column;align-items:stretch;padding:.8rem 1rem;border-left:3px solid #C0441B">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem">
+        <strong style="font-size:13px;color:var(--ink)">Maillet 🇫🇷 <span style="font-size:10px;color:#999;font-family:monospace">· D4</span></strong>
+        <span style="background:#FEECEC;color:#6B1A1A;font-family:monospace;font-size:10px;padding:2px 8px;border-radius:4px"><span data-lang="es">SIN SEÑAL</span><span data-lang="pt">SEM SINAL</span></span>
+      </div>
+      <div style="font-size:12px;color:#666"><span data-lang="es">Refugio remoto en circo francés. Sin red disponible. Garmin InReach único medio.</span><span data-lang="pt">Refúgio remoto em circo francês. Sem rede disponível. Garmin InReach único meio.</span></div>
+    </div>
+
+    <div class="bp-item" style="flex-direction:column;align-items:stretch;padding:.8rem 1rem;border-left:3px solid #2D7D55">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem">
+        <strong style="font-size:13px;color:var(--ink)">Piau Engaly 🇫🇷 <span style="font-size:10px;color:#999;font-family:monospace">· D5</span></strong>
+        <span style="background:#E8F5EE;color:#1D5C3A;font-family:monospace;font-size:10px;padding:2px 8px;border-radius:4px">4G ✓</span>
+      </div>
+      <div style="font-size:12px;color:#666"><span data-lang="es">Estación de esquí con hotelería. Orange/SFR 4G. La mejor cobertura del lado francés.</span><span data-lang="pt">Estância de esqui com hotelaria. Orange/SFR 4G. A melhor cobertura do lado francês.</span></div>
+    </div>
+
+    <div class="bp-item" style="flex-direction:column;align-items:stretch;padding:.8rem 1rem;border-left:3px solid #C0441B">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem">
+        <strong style="font-size:13px;color:var(--ink)">Rioumajou 🇫🇷 <span style="font-size:10px;color:#999;font-family:monospace">· D6</span></strong>
+        <span style="background:#FEECEC;color:#6B1A1A;font-family:monospace;font-size:10px;padding:2px 8px;border-radius:4px"><span data-lang="es">SIN SEÑAL</span><span data-lang="pt">SEM SINAL</span></span>
+      </div>
+      <div style="font-size:12px;color:#666"><span data-lang="es">Valle más virgen y aislado de la travesía. Sin cobertura ni siquiera en el Hospice.</span><span data-lang="pt">Vale mais virgem e isolado da travessia. Sem cobertura nem sequer no Hospice.</span></div>
+    </div>
+
+    <div class="bp-item" style="flex-direction:column;align-items:stretch;padding:.8rem 1rem;border-left:3px solid #2D7D55">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem">
+        <strong style="font-size:13px;color:var(--ink)">Bielsa <span style="font-size:10px;color:#999;font-family:monospace">· FIN</span></strong>
+        <span style="background:#E8F5EE;color:#1D5C3A;font-family:monospace;font-size:10px;padding:2px 8px;border-radius:4px">4G ✓</span>
+      </div>
+      <div style="font-size:12px;color:#666"><span data-lang="es">Vuelta a la civilización. Toda la cobertura recuperada. Foto de grupo final.</span><span data-lang="pt">Regresso à civilização. Toda a cobertura recuperada. Foto de grupo final.</span></div>
+    </div>
+
+  </div>
+
+  <!-- TWO COLUMNS: Carrier + Tools -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem">
+    <div style="background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)">
+      <div style="padding:.7rem 1rem;background:var(--sky);color:#fff;font-size:13px;font-weight:600">📱 <span data-lang="es">Qué operador llevar</span><span data-lang="pt">Que operadora levar</span></div>
+      <div style="padding:.9rem 1.1rem">
+        <div style="font-size:13px;margin-bottom:.7rem"><strong><span data-lang="es">Grupo portugués (MEO/NOS/Vodafone):</span><span data-lang="pt">Grupo português (MEO/NOS/Vodafone):</span></strong></div>
+        <div style="display:flex;gap:.5rem;margin-bottom:.5rem;font-size:12.5px"><div style="width:6px;height:6px;border-radius:50%;background:var(--sage);flex-shrink:0;margin-top:6px"></div><span data-lang="es">Roaming UE gratuito en España y Francia</span><span data-lang="pt">Roaming UE gratuito em Espanha e França</span></div>
+        <div style="display:flex;gap:.5rem;margin-bottom:.5rem;font-size:12.5px"><div style="width:6px;height:6px;border-radius:50%;background:var(--sage);flex-shrink:0;margin-top:6px"></div><span data-lang="es">Cobertura habitual: vuestra tarjeta funciona en valles y pueblos</span><span data-lang="pt">Cobertura habitual: o vosso cartão funciona em vales e aldeias</span></div>
+        <div style="display:flex;gap:.5rem;margin-bottom:.5rem;font-size:12.5px"><div style="width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px"></div><span data-lang="es">Recomendación opcional: eSIM Orange France para mejor cobertura en montaña francesa</span><span data-lang="pt">Recomendação opcional: eSIM Orange France para melhor cobertura em montanha francesa</span></div>
+        <div style="margin-top:.8rem;padding:.55rem .75rem;background:#E3EDFB;border-left:3px solid var(--sky);border-radius:0 5px 5px 0;font-size:11.5px;color:#0D3266"><span data-lang="es">💡 Orange tiene más antenas en zonas pirenaicas que el resto de operadores franceses.</span><span data-lang="pt">💡 Orange tem mais antenas em zonas pirenaicas do que as restantes operadoras francesas.</span></div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)">
+      <div style="padding:.7rem 1rem;background:var(--moss);color:#fff;font-size:13px;font-weight:600">🛠 <span data-lang="es">Mapas de cobertura — consultar antes</span><span data-lang="pt">Mapas de cobertura — consultar antes</span></div>
+      <div style="padding:.9rem 1.1rem">
+        <a href="https://www.nperf.com/es/map/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:.6rem;padding:.55rem .7rem;margin-bottom:.4rem;border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--ink);transition:background .15s" onmouseover="this.style.background='#F5F8F4'" onmouseout="this.style.background='transparent'">
+          <div style="font-size:18px">🌍</div>
+          <div style="flex:1"><div style="font-size:12.5px;font-weight:600">nPerf</div><div style="font-size:11px;color:#777"><span data-lang="es">Cobertura real medida por usuarios</span><span data-lang="pt">Cobertura real medida por utilizadores</span></div></div>
+          <div style="font-size:14px;color:#999">→</div>
+        </a>
+        <a href="https://monreseaumobile.arcep.fr/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:.6rem;padding:.55rem .7rem;margin-bottom:.4rem;border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--ink);transition:background .15s" onmouseover="this.style.background='#F5F8F4'" onmouseout="this.style.background='transparent'">
+          <div style="font-size:18px">🇫🇷</div>
+          <div style="flex:1"><div style="font-size:12.5px;font-weight:600">Mon Réseau Mobile (ARCEP)</div><div style="font-size:11px;color:#777"><span data-lang="es">Mapa oficial francés — lados Maillet/Piau/Rioumajou</span><span data-lang="pt">Mapa oficial francês — lados Maillet/Piau/Rioumajou</span></div></div>
+          <div style="font-size:14px;color:#999">→</div>
+        </a>
+        <a href="https://geoportal.minetur.gob.es/VCTEL/vcne.do" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:.6rem;padding:.55rem .7rem;border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--ink);transition:background .15s" onmouseover="this.style.background='#F5F8F4'" onmouseout="this.style.background='transparent'">
+          <div style="font-size:18px">🇪🇸</div>
+          <div style="flex:1"><div style="font-size:12.5px;font-weight:600">Cobertura Móvil (MINETUR)</div><div style="font-size:11px;color:#777"><span data-lang="es">Mapa oficial español — lado Bielsa/Pineta/Bestué</span><span data-lang="pt">Mapa oficial espanhol — lado Bielsa/Pineta/Bestué</span></div></div>
+          <div style="font-size:14px;color:#999">→</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CRITICAL PRACTICAL ADVICE -->
+  <div style="background:var(--ink);color:#fff;border-radius:var(--r);padding:1.2rem 1.5rem">
+    <div style="font-family:var(--font-head);font-size:1.2rem;font-weight:700;margin-bottom:.8rem;color:#fff">⚠️ <span data-lang="es">Lo crítico — preparar antes de salir</span><span data-lang="pt">O crítico — preparar antes de sair</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem">
+      <div style="background:rgba(255,255,255,.08);border-radius:7px;padding:.65rem .85rem;font-size:12.5px"><strong style="color:#6BAF85"><span data-lang="es">Descargar mapas offline</span><span data-lang="pt">Descarregar mapas offline</span></strong><br><span style="color:rgba(200,223,207,.85)"><span data-lang="es">Google Maps + Maps.me + IGN Rando para Francia</span><span data-lang="pt">Google Maps + Maps.me + IGN Rando para França</span></span></div>
+      <div style="background:rgba(255,255,255,.08);border-radius:7px;padding:.65rem .85rem;font-size:12.5px"><strong style="color:#6BAF85"><span data-lang="es">Pre-cargar tracks GPX</span><span data-lang="pt">Pré-carregar tracks GPX</span></strong><br><span style="color:rgba(200,223,207,.85)"><span data-lang="es">7 etapas en Wikiloc/Komoot offline</span><span data-lang="pt">7 etapas em Wikiloc/Komoot offline</span></span></div>
+      <div style="background:rgba(255,255,255,.08);border-radius:7px;padding:.65rem .85rem;font-size:12.5px"><strong style="color:#6BAF85"><span data-lang="es">Contactos a familia</span><span data-lang="pt">Contactos para família</span></strong><br><span style="color:rgba(200,223,207,.85)"><span data-lang="es">Avisar de horarios de silencio (D3, D4, D6)</span><span data-lang="pt">Avisar de horários de silêncio (D3, D4, D6)</span></span></div>
+      <div style="background:rgba(255,255,255,.08);border-radius:7px;padding:.65rem .85rem;font-size:12.5px"><strong style="color:#6BAF85"><span data-lang="es">Modo avión por defecto</span><span data-lang="pt">Modo avião por defeito</span></strong><br><span style="color:rgba(200,223,207,.85)"><span data-lang="es">Activar red solo donde haya señal — ahorra batería</span><span data-lang="pt">Ativar rede só onde há sinal — poupa bateria</span></span></div>
+      <div style="background:rgba(255,255,255,.08);border-radius:7px;padding:.65rem .85rem;font-size:12.5px"><strong style="color:#6BAF85">Garmin InReach 🛰</strong><br><span style="color:rgba(200,223,207,.85)"><span data-lang="es">La única comunicación real en collados y Rioumajou</span><span data-lang="pt">A única comunicação real em cumes e Rioumajou</span></span></div>
+      <div style="background:rgba(255,255,255,.08);border-radius:7px;padding:.65rem .85rem;font-size:12.5px"><strong style="color:#6BAF85"><span data-lang="es">Powerbank 10000mAh</span><span data-lang="pt">Powerbank 10000mAh</span></strong><br><span style="color:rgba(200,223,207,.85)"><span data-lang="es">Móvil + frontal + Garmin = 7 días sin enchufe completo</span><span data-lang="pt">Telemóvel + lanterna + Garmin = 7 dias sem tomada completa</span></span></div>
+    </div>
+  </div>
+
+</div>
+</section>
+
 <!-- ── SALUD ── -->
 <section class="section" id="salud">
 <div class="container">
@@ -1212,8 +1547,39 @@ document.querySelectorAll('.tl-item').forEach((el,i)=>{
 // ── MAP ──
 window.addEventListener('load',()=>{
   const map = L.map('the-map',{zoomControl:true}).setView([42.68,0.22],10);
-  L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',{
-    attribution:'OpenTopoMap',maxZoom:17,opacity:0.95
+
+  // ── BASE LAYERS (estilo Komoot) ──
+  const baseLayers = {
+    'CyclOSM (estilo Komoot)': L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png',{
+      attribution:'© <a href="https://www.cyclosm.org">CyclOSM</a> | © OpenStreetMap contributors',
+      maxZoom:18, opacity:0.97
+    }),
+    'OpenTopoMap (topográfico)': L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',{
+      attribution:'© OpenTopoMap (CC-BY-SA) | © OpenStreetMap contributors',
+      maxZoom:17, opacity:0.95
+    }),
+    'OpenStreetMap (clásico)': L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+      attribution:'© OpenStreetMap contributors',
+      maxZoom:19
+    }),
+    'Satélite (Esri)': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
+      attribution:'© Esri, Maxar, Earthstar Geographics',
+      maxZoom:19
+    })
+  };
+  // Capa por defecto: CyclOSM (look Komoot)
+  baseLayers['CyclOSM (estilo Komoot)'].addTo(map);
+
+  // ── OVERLAY OPCIONAL: WAYMARKED TRAILS (senderos GR/PR oficiales) ──
+  // No se carga por defecto para evitar mostrar rutas ajenas a la nuestra
+  const trailsOverlay = L.tileLayer('https://tile.waymarkedtrails.org/hiking/{z}/{x}/{y}.png',{
+    attribution:'© <a href="https://hiking.waymarkedtrails.org">Waymarked Trails</a>',
+    maxZoom:18, opacity:0.7
+  });
+
+  // Layer control (botón nativo de Leaflet)
+  L.control.layers(baseLayers, {'Senderos GR/PR oficiales (opcional)': trailsOverlay}, {
+    position:'topleft', collapsed:true
   }).addTo(map);
 
   const polylines = [];
@@ -1274,6 +1640,205 @@ window.addEventListener('load',()=>{
     const allBounds = L.latLngBounds(ROUTES.flatMap(r=>r.coords));
     map.fitBounds(allBounds.pad(0.05));
   };
-});
+
+  // ── COVERAGE MAP (dentro del load handler, usa Leaflet) ──
+  const covMap = L.map('coverage-map',{zoomControl:true,scrollWheelZoom:false}).setView([42.68,0.22],10);
+  L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png',{
+    attribution:'© CyclOSM | © OpenStreetMap contributors',
+    maxZoom:18, opacity:0.95
+  }).addTo(covMap);
+
+  ROUTES.forEach(r=>{
+    L.polyline(r.coords,{color:'#fff', weight:6, opacity:0.85}).addTo(covMap);
+    L.polyline(r.coords,{color:r.color, weight:4, opacity:0.95, smoothFactor:1.5}).addTo(covMap);
+  });
+
+  const COVERAGE = [
+    [42.6325, 0.2167, 'Bielsa',           '4G',  2500, 'Cobertura completa todos los operadores'],
+    [42.6641, 0.1694, 'Laminana (D1)',    '3G',  900,  'Movistar mejor · WhatsApp sí, vídeo no'],
+    [42.5533, 0.1736, 'Bestué (D2)',      '3G',  800,  'Aldea pequeña · mensajes sí, datos pesados no'],
+    [42.6322, 0.1083, 'Pineta (D3)',      '2G',  500,  'Valle profundo · solo llamadas básicas y SMS'],
+    [42.7853, 0.1522, 'Piau Engaly (D5)', '4G',  1800, 'Estación esquí · Orange/SFR 4G — mejor del lado FR'],
+  ];
+  const COV_COLORS = {
+    '4G': {fill:'#2D7D55', stroke:'#1D5C3A', fillOpacity:0.35},
+    '3G': {fill:'#C59B2B', stroke:'#8A5C00', fillOpacity:0.3},
+    '2G': {fill:'#E08020', stroke:'#7A3500', fillOpacity:0.3}
+  };
+  COVERAGE.forEach(([lat,lng,name,lvl,radius,desc])=>{
+    const c = COV_COLORS[lvl];
+    L.circle([lat,lng],{radius,color:c.stroke,fillColor:c.fill,fillOpacity:c.fillOpacity,weight:2})
+     .addTo(covMap).bindPopup(`<div style="font-family:DM Sans,sans-serif"><strong>${name}</strong> <span style="background:${c.fill};color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-family:monospace;margin-left:4px">${lvl}</span><br><span style="font-size:11px;color:#666">${desc}</span></div>`);
+  });
+
+  const NO_SIGNAL = [
+    [42.6680, 0.1900, 'Collado D1 · 2081m', 'Plumas y gorro en accesible'],
+    [42.5900, 0.1400, 'Collados D3 · 2442m', 'Salir 06:45 — tormentas 14h'],
+    [42.6950, 0.0980, 'Collado fronterizo D4 · 2476m', 'DNI accesible — entrada FR'],
+    [42.7550, 0.1300, 'Hourquette de Héas D5 · 2602m', 'Posible nieve · crampones'],
+    [42.7050, 0.3000, 'Valle Rioumajou D6 · sin señal', 'Garmin único medio'],
+    [42.6900, 0.2700, 'Forqueta El Cau D7 · 2662m', 'Punto más alto · pasar antes 12:30']
+  ];
+  const dangerIcon = L.divIcon({
+    html:'<div style="background:#C0441B;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);font-weight:700">✕</div>',
+    className:'',iconSize:[24,24],iconAnchor:[12,12]
+  });
+  NO_SIGNAL.forEach(([lat,lng,name,note])=>{
+    L.marker([lat,lng],{icon:dangerIcon}).addTo(covMap)
+     .bindPopup(`<div style="font-family:DM Sans,sans-serif"><strong style="color:#6B1A1A">⚠️ Sin señal</strong><br><span style="font-size:12px;font-weight:600">${name}</span><br><span style="font-size:11px;color:#666">${note}</span></div>`);
+  });
+
+  const covBounds = L.latLngBounds([...COVERAGE.map(c=>[c[0],c[1]]), ...NO_SIGNAL.map(n=>[n[0],n[1]])]);
+  covMap.fitBounds(covBounds.pad(0.1));
+  covMap.on('click',()=>covMap.scrollWheelZoom.enable());
+  covMap.on('mouseout',()=>covMap.scrollWheelZoom.disable());
+}); // ← cierre window.addEventListener('load') del mapa
+
+// ══════════════════════════════════════════════
+// ── WEATHER — Open-Meteo · CÓDIGO GLOBAL ──
+// ══════════════════════════════════════════════
+const WX_STAGES = [
+  {day:'Día 1',date:'2026-07-05',refuge:'Ref. Laminana',lat:42.6641,lng:0.1694,alt:1450,color:'#8B2C10'},
+  {day:'Día 2',date:'2026-07-06',refuge:'Bestué',lat:42.5533,lng:0.1736,alt:900,color:'#1D5C3A'},
+  {day:'Día 3',date:'2026-07-07',refuge:'Ref. Pineta',lat:42.6322,lng:0.1083,alt:1240,color:'#6B1A1A'},
+  {day:'Día 4',date:'2026-07-08',refuge:'Ref. Maillet 🇫🇷',lat:42.7300,lng:0.1044,alt:1816,color:'#7A2A0D'},
+  {day:'Día 5',date:'2026-07-09',refuge:'Piau Engaly 🇫🇷',lat:42.7853,lng:0.1522,alt:1850,color:'#7A2A0D'},
+  {day:'Día 6',date:'2026-07-10',refuge:'Rioumajou 🇫🇷',lat:42.7161,lng:0.3394,alt:1560,color:'#6B4C00'},
+  {day:'Día 7',date:'2026-07-11',refuge:'Bielsa (llegada)',lat:42.6325,lng:0.2167,alt:1170,color:'#1D5C3A'},
+];
+const WX_CODES = {
+  0:['☀️','Despejado'],1:['🌤','Poco nublado'],2:['⛅','Parcialmente nublado'],3:['☁️','Nublado'],
+  45:['🌫','Niebla'],48:['🌫','Niebla engelante'],
+  51:['🌦','Llovizna ligera'],53:['🌦','Llovizna'],55:['🌧','Llovizna intensa'],
+  61:['🌧','Lluvia ligera'],63:['🌧','Lluvia'],65:['🌧','Lluvia intensa'],
+  71:['❄️','Nieve ligera'],73:['❄️','Nieve'],75:['❄️','Nieve intensa'],77:['❄️','Granizo de nieve'],
+  80:['🌧','Chubascos'],81:['🌧','Chubascos'],82:['⛈','Chubascos fuertes'],
+  85:['❄️','Nieve con chubascos'],86:['❄️','Nieve intensa con chubascos'],
+  95:['⛈','⚡ TORMENTA'],96:['⛈','⚡ Tormenta + granizo'],99:['⛈','⚡ Tormenta + granizo'],
+};
+function wxIcon(c){return (WX_CODES[c]||['🌡','?'])[0]}
+function wxDesc(c){return (WX_CODES[c]||['?','Desconocido'])[1]}
+function wxIsStorm(c){return [82,95,96,99].includes(c)}
+function wxIsRain(c){return [51,53,55,61,63,65,80,81].includes(c)}
+function wxIsSnow(c){return [71,73,75,77,85,86].includes(c)}
+
+async function loadWeather(){
+  const grid=document.getElementById('wx-grid');
+  const loading=document.getElementById('wx-loading');
+  const updEl=document.getElementById('wx-updated');
+  const banner=document.getElementById('wx-storm-banner');
+  const bannerDays=document.getElementById('wx-storm-days');
+  if(!grid) return;
+  loading.style.display='block'; grid.innerHTML=''; banner.style.display='none';
+  const stormList=[], cards=WX_STAGES.map(()=>null);
+
+  await Promise.all(WX_STAGES.map(async(s,i)=>{
+    // Hourly + daily en una sola llamada
+    const url=`https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lng}`
+      +`&hourly=precipitation_probability,precipitation,weathercode,windspeed_10m`
+      +`&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max`
+      +`&timezone=Europe%2FMadrid&start_date=${s.date}&end_date=${s.date}`;
+    try{
+      const res=await fetch(url), d=await res.json();
+
+      // ── DAILY summary ──
+      const code   = d.daily.weathercode[0];
+      const tmax   = Math.round(d.daily.temperature_2m_max[0]);
+      const tmin   = Math.round(d.daily.temperature_2m_min[0]);
+      const rain   = (d.daily.precipitation_sum[0]||0).toFixed(1);
+      const wind   = Math.round((d.daily.windspeed_10m_max[0]||0)*3.6);
+
+      // ── HOURLY: analizar franja de marcha 06:00–17:00 ──
+      const hours  = d.hourly.time.map(t=>parseInt(t.slice(11,13)));
+      const trekIdx= hours.reduce((acc,h,idx)=> h>=6&&h<=17?[...acc,idx]:acc, []);
+
+      // Probabilidad máxima por hora en franja de marcha
+      const probByHour = trekIdx.map(idx=>({
+        h: hours[idx],
+        prob: d.hourly.precipitation_probability[idx]||0,
+        mm:   d.hourly.precipitation[idx]||0,
+        wcode:d.hourly.weathercode[idx]||0,
+        wkm:  Math.round((d.hourly.windspeed_10m[idx]||0)*3.6)
+      }));
+
+      // Horas con prob ≥ 40%
+      const rainHours = probByHour.filter(x=>x.prob>=40).sort((a,b)=>a.h-b.h);
+      const peakHour  = probByHour.reduce((best,x)=>x.prob>best.prob?x:best, {prob:0,h:null});
+
+      // Generar franja horaria de lluvia
+      let rainTimeHtml = '';
+      if(rainHours.length>0){
+        const first=rainHours[0].h, last=rainHours[rainHours.length-1].h;
+        const peak=peakHour;
+        const stormInTrek = rainHours.some(x=>wxIsStorm(x.wcode));
+        const color = stormInTrek?'var(--ember)':peak.prob>=70?'#C59B2B':'var(--sky)';
+        const icon  = stormInTrek?'⛈':peak.prob>=70?'🌧':'🌦';
+        rainTimeHtml=`<div style="margin-top:.6rem;padding:.5rem .7rem;background:${stormInTrek?'#FEECEC':peak.prob>=70?'#FEF6E0':'#E3EDFB'};border-left:3px solid ${color};border-radius:0 6px 6px 0;font-size:12px">
+          ${icon} <strong>${first<10?'0'+first:first}:00–${last+1<10?'0'+(last+1):(last+1)}:00h</strong>
+          <span style="color:#888"> · pico ${peak.h<10?'0'+peak.h:peak.h}:00h (${peak.prob}%${peak.mm>0?' · '+peak.mm.toFixed(1)+'mm':''})</span>
+        </div>`;
+      } else {
+        rainTimeHtml=`<div style="margin-top:.6rem;padding:.4rem .7rem;background:#E8F5EE;border-left:3px solid var(--sage);border-radius:0 6px 6px 0;font-size:12px">✅ Sin lluvia prevista en horario de marcha</div>`;
+      }
+
+      // ── Mini barra horaria visual (6h–17h) ──
+      const barCells = Array.from({length:12},(_, k)=>{
+        const h=6+k;
+        const hData=probByHour.find(x=>x.h===h)||{prob:0,wcode:0};
+        const p=hData.prob;
+        const isS=wxIsStorm(hData.wcode);
+        const bg=isS?'#C0441B':p>=70?'#C59B2B':p>=40?'#2666A8':p>=20?'#A8C8E8':'#E8F0EE';
+        return `<div title="${h}:00h · ${p}%" style="flex:1;height:20px;background:${bg};border-radius:2px;position:relative">
+          ${h%3===0?`<div style="position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);font-size:9px;color:#aaa;font-family:monospace;white-space:nowrap">${h}h</div>`:''}
+        </div>`;
+      }).join('');
+
+      const storm=wxIsStorm(code), snow=wxIsSnow(code);
+      if(storm||rainHours.some(x=>wxIsStorm(x.wcode))) stormList.push(s.day);
+
+      const windNote = wind>=60
+        ?`<div style="font-size:11px;color:var(--ember);margin-top:.3rem">⚠️ Viento fuerte — ${wind} km/h máx</div>`
+        :wind>=40?`<div style="font-size:11px;color:#888;margin-top:.3rem">💨 Viento moderado — ${wind} km/h</div>`:'';
+
+      cards[i]=`<div class="wx-card${(storm||rainHours.some(x=>wxIsStorm(x.wcode)))?' wx-storm':code<=2&&!rainHours.length?' wx-good':''}">
+        <div class="wx-head" style="background:${s.color}">
+          <div><div class="wx-day">${s.day} · ${s.date.slice(5).replace('-','/')}</div><div class="wx-name">${s.refuge}</div><div class="wx-alt">↑ ${s.alt}m</div></div>
+          <div class="wx-icon-big">${wxIcon(code)}</div>
+        </div>
+        <div class="wx-body">
+          <div class="wx-temps"><span class="wx-max">${tmax}°</span><span class="wx-sep">/</span><span class="wx-min">${tmin}°</span></div>
+          <div class="wx-desc">${wxDesc(code)}</div>
+          <div class="wx-metrics">
+            <div class="wx-metric"><div class="wx-metric-val">${rain} mm</div><div class="wx-metric-lbl">Precipitación</div></div>
+            <div class="wx-metric"><div class="wx-metric-val">${wind} km/h</div><div class="wx-metric-lbl">Viento máx</div></div>
+            <div class="wx-metric"><div class="wx-metric-val">${tmax}° / ${tmin}°</div><div class="wx-metric-lbl">Máx / Mín</div></div>
+            <div class="wx-metric"><div class="wx-metric-val">${s.alt}m</div><div class="wx-metric-lbl">Alt. refugio</div></div>
+          </div>
+          ${windNote}
+          <div style="margin-top:.7rem">
+            <div style="font-size:10px;font-family:monospace;color:var(--sage);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Lluvia en horario de marcha (6h–17h)</div>
+            <div style="display:flex;gap:2px;margin-bottom:16px">${barCells}</div>
+            <div style="display:flex;gap:6px;font-size:9px;color:#bbb;margin-top:2px">
+              <span style="display:inline-block;width:10px;height:6px;background:#C0441B;border-radius:1px"></span>⛈
+              <span style="display:inline-block;width:10px;height:6px;background:#C59B2B;border-radius:1px;margin-left:4px"></span>🌧≥70%
+              <span style="display:inline-block;width:10px;height:6px;background:#2666A8;border-radius:1px;margin-left:4px"></span>🌦≥40%
+              <span style="display:inline-block;width:10px;height:6px;background:#E8F0EE;border-radius:1px;margin-left:4px"></span>☀️
+            </div>
+          </div>
+          ${rainTimeHtml}
+        </div>
+      </div>`;
+    }catch(e){
+      cards[i]=`<div class="wx-card"><div class="wx-head" style="background:var(--stone)"><div><div class="wx-day">${s.day}</div><div class="wx-name">${s.refuge}</div></div><div class="wx-icon-big">🌡</div></div><div class="wx-body"><p style="color:#aaa;font-size:12px">Sin datos disponibles</p></div></div>`;
+    }
+  }));
+
+  loading.style.display='none';
+  grid.innerHTML=cards.filter(Boolean).join('');
+  if(stormList.length){banner.style.display='block'; bannerDays.textContent=stormList.join(', ');}
+  updEl.textContent=`Actualizado: ${new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})}`;
+}
+
+document.addEventListener('DOMContentLoaded', loadWeather);
 </script>
 </body></html>
