@@ -291,39 +291,51 @@
   }
 </style>
 </head>
-<body>
+<style>
+  .lang-switch{position:absolute;top:14px;right:14px;z-index:5;display:flex;background:rgba(0,0,0,.35);border-radius:999px;padding:3px;gap:2px;}
+  .lang-switch button{background:none;border:none;color:rgba(255,255,255,.75);font:inherit;font-size:.74rem;font-weight:700;padding:6px 10px;border-radius:999px;cursor:pointer;letter-spacing:.04em;}
+  .lang-switch button.on{background:var(--giallo);color:var(--rosso-deep);}
+  .rules-box{max-width:860px;margin:24px auto 0;padding:0 16px;}
+  .rules-inner{background:var(--nero);border-radius:16px;padding:22px 22px 18px;border:2px solid var(--giallo);}
+  .rules-inner h3{font-family:'Playfair Display',serif;color:var(--giallo);font-size:1.3rem;margin-bottom:4px;}
+  .rules-inner .rsub{color:rgba(255,255,255,.55);font-size:.78rem;margin-bottom:14px;}
+  .rules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+  .rules-grid h4{color:#FF8A8A;font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;margin-bottom:8px;}
+  .rules-grid ol{padding-left:20px;}
+  .rules-grid li{color:rgba(255,255,255,.85);font-size:.82rem;line-height:1.5;margin-bottom:6px;}
+  .compare-table thead th:nth-child(5){background:#006600;color:#FFD700;text-align:center;}
+  .fact-pt{background:#EEF8EE;border-left:4px solid #006600;}
+  .fact-pt .f-title{color:#006600;}
+  .bye-box{background:linear-gradient(135deg,#0f2a12,#1f4a24);border-radius:12px;padding:14px 16px;margin-bottom:16px;}
+  .bye-box .mo-title{font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;color:#90E890;font-weight:700;margin-bottom:8px;}
+  .bye-box .timing-row{color:rgba(255,255,255,.85);}
+  .bye-box .tr-label strong{color:#fff;}
+  .bye-box p{font-size:.8rem;color:rgba(255,255,255,.7);line-height:1.5;margin-top:6px;}
+  .who-p{background:#006600;color:#FFD700;}
+</style>
 
 <!-- Flaco · mascota (SVG reutilizable) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="flaco" viewBox="0 0 200 200">
-      <!-- orejas -->
       <path d="M52 62 C30 70 22 110 34 132 C44 120 52 100 62 84 Z" fill="#4A2E1A"/>
       <path d="M148 62 C170 70 178 110 166 132 C156 120 148 100 138 84 Z" fill="#4A2E1A"/>
-      <!-- cabeza -->
       <ellipse cx="100" cy="96" rx="50" ry="46" fill="#B9865A"/>
-      <!-- hocico -->
       <ellipse cx="100" cy="126" rx="38" ry="26" fill="#E8C9A0"/>
-      <!-- gorro de aviador -->
       <path d="M50 84 C50 40 150 40 150 84 C140 70 60 70 50 84 Z" fill="#6B3F1F"/>
       <path d="M56 80 C70 68 130 68 144 80" stroke="#3A2210" stroke-width="3" fill="none"/>
-      <!-- gafas de aviador -->
       <rect x="60" y="54" width="80" height="10" rx="5" fill="#3A2210"/>
       <circle cx="80" cy="58" r="13" fill="#9FD3E8" stroke="#C9A227" stroke-width="5"/>
       <circle cx="120" cy="58" r="13" fill="#9FD3E8" stroke="#C9A227" stroke-width="5"/>
       <path d="M73 52 l7 -3" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
       <path d="M113 52 l7 -3" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
-      <!-- ojos pícaros (medio cerrados) -->
       <path d="M72 92 q8 -7 16 0" stroke="#1a1a1a" stroke-width="4" fill="none" stroke-linecap="round"/>
       <path d="M112 92 q8 -7 16 0" stroke="#1a1a1a" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <!-- nariz -->
       <ellipse cx="100" cy="110" rx="13" ry="9" fill="#1a1a1a"/>
       <ellipse cx="96" cy="107" rx="4" ry="2" fill="#fff" opacity=".6"/>
-      <!-- sonrisa socarrona con dientes -->
       <path d="M74 126 Q100 152 126 126 Q100 136 74 126 Z" fill="#5a1010"/>
       <path d="M78 127 Q100 135 122 127 L120 132 Q100 139 80 132 Z" fill="#fff"/>
       <path d="M90 129 v5 M100 130 v6 M110 129 v5" stroke="#ddd" stroke-width="1.2"/>
-      <!-- bufanda Ferrari -->
       <path d="M58 142 Q100 162 142 142 L146 156 Q100 176 54 156 Z" fill="#C8102E"/>
       <path d="M128 152 L150 188 L136 190 L120 158 Z" fill="#C8102E"/>
       <path d="M140 182 l6 -2 M136 176 l6 -2" stroke="#FFCC00" stroke-width="2.5"/>
@@ -334,9 +346,13 @@
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <svg class="hero-dog" role="img" aria-label="Flaco, el perro aviador"><use href="#flaco"/></svg>
-  <h1>La Ruta de Flaco<em>Milán · Ferrari · Bernina — Despedida de soltero de Sergio</em></h1>
-  <p class="hero-sub">1–6 octubre 2026 · Milán → Maranello → Módena → St. Moritz</p>
+  <div class="lang-switch" role="group" aria-label="Idioma">
+    <button type="button" data-lang="es" class="on">🇪🇸 ES</button>
+    <button type="button" data-lang="pt">🇵🇹 PT</button>
+  </div>
+  <svg class="hero-dog" role="img" aria-label="Flaco"><use href="#flaco"/></svg>
+  <h1>La Ruta de Flaco<em>Milán · Ferrari · Bernina — Los últimos días de libertad de Sergio</em></h1>
+  <p class="hero-sub">1–6 octubre 2026 · Barcelona + Madeira → Milán</p>
   <p class="hero-laugh">sniff sniff… je-je-je-je 🐾</p>
   <div class="crumb-trail">
     <span class="crumb">·</span><span class="crumb active">🍕</span><span class="crumb">·</span>
@@ -345,9 +361,10 @@
   <div class="today-pill" id="todayPill" hidden></div>
 </header>
 
-<nav class="sticky-nav" aria-label="Secciones del viaje">
+<nav class="sticky-nav" aria-label="Secciones">
   <a href="#reservas">Reservas</a>
   <a href="#ruta">Ruta</a>
+  <a href="#maleta">Maleta</a>
   <a href="#contexto">Contexto</a>
   <a href="#mayker">Mi Milán</a>
   <a href="#despedida">La despedida</a>
@@ -357,43 +374,51 @@
 <!-- RESERVAS -->
 <section class="booking-section" id="reservas">
   <div class="booking-header">
-    <div class="tag">✅ Bases, vuelos y entradas</div>
-    <h2>Todos los detalles del viaje · Mayker & la manada de Sergio</h2>
+    <div class="tag">✅ Todo atado y bien atado</div>
+    <h2>Vuelos, camas y entradas · Mayker & la manada de Sergio</h2>
   </div>
   <div class="booking-grid">
 
     <div class="b-block">
-      <div class="b-label">✈️ Vuelos</div>
+      <div class="b-label">✈️ Vuelos de Mayker</div>
       <div class="flight-box">
-        <div class="fl">IDA · Jue 01 Oct <span class="who who-m">Mayker</span></div>
+        <div class="fl">Ida · Jue 01 Oct <span class="who who-m">Mayker</span></div>
         <div class="fh">18:15 → 20:00</div>
         <div class="fd">BCN → BGY (Bérgamo) · Ryanair FR3320</div>
       </div>
       <div class="flight-box">
-        <div class="fl">LLEGADA · Sáb 03 Oct <span class="who who-g">Grupo</span></div>
-        <div class="fh">10:45</div>
-        <div class="fd">Aterrizan en MXP (Malpensa)</div>
-      </div>
-      <div class="flight-box">
-        <div class="fl">VUELTA · Mar 06 Oct <span class="who who-m">Mayker</span></div>
+        <div class="fl">Vuelta · Mar 06 Oct <span class="who who-m">Mayker</span></div>
         <div class="fh">21:15 → 22:55</div>
         <div class="fd">BGY → BCN · ojo: Bérgamo, no Malpensa</div>
       </div>
+
+      <div class="b-label" style="margin-top:16px;">✈️ Vuelos del grupo · desde Madeira</div>
+      <div class="flight-box">
+        <div class="fl">Ida · Sáb 03 Oct <span class="who who-p">Madeira</span></div>
+        <div class="fh">06:00 → 10:45</div>
+        <div class="fd">FNC → MXP (Malpensa) · Ryanair FR6671</div>
+      </div>
+      <div class="flight-box">
+        <div class="fl">Vuelta · Mar 06 Oct <span class="who who-p">Madeira</span></div>
+        <div class="fh">21:55 → 00:55 (+1)</div>
+        <div class="fd">MXP → FNC · Ryanair FR6672</div>
+      </div>
+      <div class="warn-pill">🔒 Localizadores y nombres fuera de la web: cada uno los tiene en su email de Ryanair.</div>
     </div>
 
     <div class="b-block">
       <div class="b-label">🏨 Base 1 · Jue 01 → Sáb 03</div>
       <div class="hotel-name">Lux Hotel Durante</div>
       <div class="hotel-addr">Piazza Francesco Durante 30 · Milano<br>~500 m de Loreto (M1/M2)</div>
-      <a class="maps-btn-dark" href="https://www.google.com/maps/search/?api=1&query=Lux+Hotel+Durante+Piazza+Francesco+Durante+30+Milano" target="_blank" rel="noopener">📍 Ver en Google Maps</a>
+      <a class="maps-btn-dark" href="https://www.google.com/maps/search/?api=1&query=Lux+Hotel+Durante+Piazza+Francesco+Durante+30+Milano" target="_blank" rel="noopener">📍 Google Maps</a>
       <div class="tag-row"><span class="tag-pill">Solo Mayker</span><span class="tag-pill">Check-out hasta 11:00</span></div>
 
       <div class="b-label" style="margin-top:16px;">🏠 Base 2 · Sáb 03 → Mar 06</div>
       <div class="hotel-name">Nina's House Milano</div>
       <div class="hotel-addr">Via Pellegrino Rossi 28 · Milano<br>Apartamento para 5 personas</div>
-      <a class="maps-btn-dark" href="https://www.google.com/maps/search/?api=1&query=Via+Pellegrino+Rossi+28+Milano" target="_blank" rel="noopener">📍 Ver en Google Maps</a>
-      <div class="tag-row"><span class="tag-pill">Todo el grupo</span><span class="tag-pill">Check-in desde 15:00</span></div>
-      <div class="warn-pill">⚠️ Confirmar si se pueden dejar maletas antes de las 15:00 del sábado</div>
+      <a class="maps-btn-dark" href="https://www.google.com/maps/search/?api=1&query=Via+Pellegrino+Rossi+28+Milano" target="_blank" rel="noopener">📍 Google Maps</a>
+      <div class="tag-row"><span class="tag-pill">Toda la manada</span><span class="tag-pill">Check-in desde 15:00</span></div>
+      <div class="warn-pill">🧳 Si no dejan las maletas antes de las 15:00 → consigna en el centro (plan B en el sábado).</div>
     </div>
 
     <div class="b-block">
@@ -401,15 +426,15 @@
       <div class="ticket-box">
         <div class="tk-title">🔊 GATE · Schranz Movement — O.B.I.</div>
         <div class="tk-detail">Sáb 03 Oct · 23:00–05:00 · Gate Milano, Via Valtellina 21</div>
-        <a class="maps-btn-dark" href="https://www.google.com/maps/search/?api=1&query=Gate+Milano+Via+Valtellina+21" target="_blank" rel="noopener">📍 Maps</a>
+        <a class="maps-btn-dark" href="https://www.google.com/maps/search/?api=1&query=Gate+Milano+Via+Valtellina+21" target="_blank" rel="noopener">📍 Google Maps</a>
       </div>
       <div class="ticket-box">
         <div class="tk-title">🏎️ Ferrari Museums Pass</div>
-        <div class="tk-detail">Maranello + Módena · válido desde el Dom 04 · ambos museos en 48 h · 09:30–19:00 (última entrada 18:15)</div>
+        <div class="tk-detail">Maranello + Módena · válido desde el Dom 04 · los dos museos en 48 h · 09:30–19:00 (última entrada 18:15)</div>
       </div>
       <div class="ticket-box pending">
         <div class="tk-title">🚂 Bernina Express</div>
-        <div class="tk-detail">Lun 05 Oct · Tirano → Alp Grüm → St. Moritz · ~2h15 · <strong style="color:var(--giallo);">hora exacta pendiente (billetes en el ZIP)</strong></div>
+        <div class="tk-detail">Lun 05 Oct · Tirano → Alp Grüm → St. Moritz · ~2h15 · hora exacta pendiente (billetes en el ZIP)</div>
       </div>
     </div>
   </div>
@@ -427,7 +452,7 @@
 
 <div class="intro-strip">
   <span class="paw">🐾</span>
-  <span>6 días · 2 bases · 2 museos Ferrari · 1 tren por los Alpes · 1 noche de schranz · Flaco vigila al novio</span>
+  <span>6 días · 2 bases · 2 museos Ferrari · 1 tren por los Alpes · 1 noche de schranz · 0 excusas</span>
   <span class="paw">🏎️</span>
 </div>
 
@@ -439,7 +464,7 @@
     <div class="route-line"></div>
     <div class="route-stop"><div class="stop-dot solo">👟</div><span class="stop-label">Vie 02<br>Mi Milán</span></div>
     <div class="route-line"></div>
-    <div class="route-stop"><div class="stop-dot">🔊</div><span class="stop-label">Sáb 03<br>Chicos + GATE</span></div>
+    <div class="route-stop"><div class="stop-dot">🔊</div><span class="stop-label">Sáb 03<br>Manada + GATE</span></div>
     <div class="route-line"></div>
     <div class="route-stop"><div class="stop-dot">🏎️</div><span class="stop-label">Dom 04<br>Ferrari + Módena</span></div>
     <div class="route-line"></div>
@@ -449,7 +474,7 @@
   </div>
   <div class="legend">
     <span><i style="background:var(--giallo)"></i> Itinerario de Mayker (solo)</span>
-    <span><i style="background:var(--rosso)"></i> Despedida con el grupo</span>
+    <span><i style="background:var(--rosso)"></i> Despedida con la manada</span>
   </div>
 </section>
 
@@ -460,17 +485,91 @@
       <tbody>
         <tr><td>Jue 01</td><td><span class="who who-m" style="margin:0">Mayker</span></td><td>—</td><td>✈️ BCN → BGY 18:15</td><td>🏨 Lux Hotel Durante · pizza rápida</td></tr>
         <tr><td>Vie 02</td><td><span class="who who-m" style="margin:0">Mayker</span></td><td>💼 Trabajo</td><td>🍕 Pizza AM → Duomo → Axel Arigato → Brera → papelerías</td><td>🍷 Milán tranquilo</td></tr>
-        <tr><td>Sáb 03</td><td><span class="who who-m" style="margin:0">Mayker</span> → <span class="who who-g" style="margin:0">Grupo</span></td><td>🧳 Check-out · ✈️ chicos en MXP 10:45</td><td>🥟 Luini → Duomo → Brera → aperitivo</td><td>🔊 GATE · hard techno</td></tr>
-        <tr><td>Dom 04</td><td><span class="who who-g" style="margin:0">Grupo</span></td><td>🏎️ Museo Ferrari Maranello</td><td>🍝 Módena → centro → Museo Enzo Ferrari</td><td>🏨 Milán · cena ligera</td></tr>
-        <tr><td>Lun 05</td><td><span class="who who-g" style="margin:0">Grupo</span></td><td>🚂 Tirano → Bernina</td><td>🚂 St. Moritz → regreso</td><td>🛏️ Descanso</td></tr>
-        <tr><td>Mar 06</td><td><span class="who who-g" style="margin:0">Grupo</span> → <span class="who who-m" style="margin:0">Mayker</span></td><td>🏰 Castello → Sempione</td><td>🌊 Navigli → compras</td><td>✈️ Mayker: BGY 21:15</td></tr>
+        <tr><td>Sáb 03</td><td><span class="who who-m" style="margin:0">Mayker</span> + <span class="who who-p" style="margin:0">Madeira</span></td><td>🧳 Check-out · ✈️ FNC → MXP 10:45</td><td>🥟 Luini → Duomo → Brera → aperitivo</td><td>🔊 GATE · hard techno</td></tr>
+        <tr><td>Dom 04</td><td><span class="who who-g" style="margin:0">Manada</span></td><td>🏎️ Museo Ferrari Maranello</td><td>🍝 Módena → centro → Museo Enzo Ferrari</td><td>🏨 Milán · cena ligera</td></tr>
+        <tr><td>Lun 05</td><td><span class="who who-g" style="margin:0">Manada</span></td><td>🚂 Tirano → Bernina</td><td>🚂 St. Moritz → regreso</td><td>🛏️ Descanso</td></tr>
+        <tr><td>Mar 06</td><td><span class="who who-g" style="margin:0">Manada</span></td><td>🏰 Castello → Sempione</td><td>🌊 Navigli → compras</td><td>✈️ BGY 21:15 · MXP 21:55</td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
+<div class="rules-box">
+  <div class="rules-inner">
+    <h3>📜 Normas de la manada</h3>
+    <p class="rsub">De obligado cumplimiento. Flaco es el juez y no acepta recursos.</p>
+    <div class="rules-grid">
+      <div>
+        <h4>⚖️ Las normas</h4>
+        <ol>
+          <li>Lo que pasa en Milán se queda en Milán. Y en el grupo de WhatsApp, para siempre.</li>
+          <li>El novio no paga ni una ronda. El novio no decide ni una ronda.</li>
+          <li>Nadie se queda atrás en GATE. Ni en el Bernina. Sobre todo en el Bernina.</li>
+          <li>Quien llegue tarde a una salida paga el siguiente café. En Suiza.</li>
+          <li>Prohibido hablar de la boda antes del segundo spritz.</li>
+        </ol>
+      </div>
+      <div>
+        <h4>🎯 Retos para Sergio</h4>
+        <ol>
+          <li>Pedir el panzerotto en Luini en italiano y con gestos de mano.</li>
+          <li>Girar el talón sobre el toro de la Galleria (da suerte… y la necesita).</li>
+          <li>Cantar «Nessun dorma» en Piazza Grande, en la ciudad de Pavarotti.</li>
+          <li>Conseguir un consejo matrimonial de un italiano mayor de 70.</li>
+          <li>Foto en el Museo Ferrari fingiendo que el coche es suyo.</li>
+          <li>Aguantar en GATE hasta que suene el primer schranz de verdad.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MALETA Y CLIMA -->
+<section class="country-section" id="maleta" style="margin-top:32px;padding-bottom:28px;">
+  <div class="cs-inner">
+    <div class="cs-title">
+      <div class="ct-tag">🌦️ Clima y maleta</div>
+      <h2>Qué tiempo hará y qué meter en la maleta</h2>
+      <div class="ct-sub">Previsión consultada el 1 de octubre · revisadla la víspera de cada día</div>
+    </div>
+    <div class="scroll-x" style="margin-bottom:18px;">
+      <table class="summary-table" style="min-width:560px;">
+        <thead><tr><th>Día</th><th>Dónde</th><th>Máx / Mín</th><th>Cielo</th><th>Ropa</th></tr></thead>
+        <tbody>
+          <tr><td>Jue 01</td><td>Milán</td><td>— / ~15°C</td><td>🌙 Templado</td><td>Sudadera fina</td></tr>
+          <tr><td>Vie 02</td><td>Milán</td><td>~25° / 15°</td><td>🌤️ Casi verano</td><td>Manga corta + capa fina</td></tr>
+          <tr><td>Sáb 03</td><td>Milán</td><td>25° / 15°</td><td>⛅ Nubes y claros</td><td>Día cómodo · noche: ropa de fiesta</td></tr>
+          <tr><td>Dom 04</td><td>Módena</td><td>~25° / 14°</td><td>⛅ Nubes y claros</td><td>Cómodo · gafas de sol</td></tr>
+          <tr><td>Lun 05</td><td>St. Moritz · Bernina</td><td>~10° / -2°</td><td>🌨️ 40 % chubascos</td><td><strong>Abrigo, gorro y capas</strong></td></tr>
+          <tr><td>Mar 06</td><td>Milán</td><td>27° / 14°</td><td>☀️ Despejado</td><td>Manga corta</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="fact-grid">
+      <div class="fact fact-mi">
+        <div class="f-title">🔊 Ropa de fiesta · GATE</div>
+        <p>🖤 Lo típico en techno: negro, y cuanto más sencillo mejor<br>👟 Zapatillas cómodas y cerradas: son 5–6 h de pie<br>🩳 Nada de chanclas ni pinta de turista<br>🧥 Chaqueta fina para la salida (~15°C)<br>🎧 Tapones para los oídos (el schranz no perdona)<br>💳 Bolsillos: móvil, DNI, tarjeta, powerbank</p>
+      </div>
+      <div class="fact fact-mo">
+        <div class="f-title">🍝 Para el aperitivo y las cenas</div>
+        <p>👕 Camisa o polo: Milán se arregla para el aperitivo<br>👖 Pantalón largo para la noche<br>👞 Unas zapatillas limpias o zapatos<br>🕶️ Gafas de sol (domingo: obligatorias)</p>
+      </div>
+      <div class="fact fact-be">
+        <div class="f-title">🏔️ Para el Bernina (lunes)</div>
+        <p>🧥 Abrigo de verdad o plumífero<br>🧣 Gorro, braga de cuello y guantes<br>🥾 Calzado cerrado que aguante agua<br>🧦 Capas: camiseta + sudadera + abrigo<br>🪪 DNI / pasaporte · ¡es Suiza!</p>
+      </div>
+      <div class="fact fact-pt">
+        <div class="f-title">🎒 Básicos de todo el viaje</div>
+        <p>👟 Calzado muy cómodo: se anda mucho<br>🔋 Powerbank y cargador<br>🩹 Ibuprofeno y sales (por si acaso)<br>🧴 Protector solar (25–27°C en Milán)<br>🪪 Documentación y tarjeta contactless</p>
+      </div>
+    </div>
+    <div class="alert-box">🐾 <strong>Flaco avisa:</strong> en Milán hará casi verano, pero el lunes en St. Moritz se pasa de 25°C a bajo cero. Nadie se libra de llevar abrigo, por mucho que en Madeira estéis acostumbrados al clima perfecto.</div>
+  </div>
+</section>
+
 <!-- CONTEXTO -->
-<section class="country-section" id="contexto">
+<section class="country-section" id="contexto" style="margin-top:32px;">
   <div class="cs-inner">
     <div class="cs-title">
       <div class="ct-tag">🌍 Conoce el destino · Datos</div>
@@ -479,24 +578,24 @@
     </div>
 
     <div class="scroll-x" style="margin-bottom:20px;">
-      <table class="compare-table">
-        <thead><tr><th>Indicador</th><th>🇮🇹 Milán</th><th>🇪🇸 Barcelona</th><th>🇪🇸 Madrid</th></tr></thead>
+      <table class="compare-table" style="min-width:680px;">
+        <thead><tr><th>Indicador</th><th>🇮🇹 Milán</th><th>🇪🇸 Barcelona</th><th>🇪🇸 Madrid</th><th>🇵🇹 Lisboa</th></tr></thead>
         <tbody>
-          <tr><td>👥 Población (ciudad)</td><td><strong>~1,37 M</strong></td><td><strong>~1,70 M</strong></td><td><strong>~3,4 M</strong></td></tr>
-          <tr><td>🏙️ Área metropolitana</td><td>~3,2 M</td><td>~5,7 M</td><td>~7 M</td></tr>
-          <tr><td>📐 Superficie municipal</td><td>182 km²</td><td>101 km²</td><td>604 km²</td></tr>
-          <tr><td>📊 Densidad</td><td>~7.500/km²</td><td><span class="hl">~16.500/km²</span></td><td>~5.600/km²</td></tr>
-          <tr><td>💶 Su región en el PIB del país</td><td><span class="hl">Lombardía ≈ 22 %</span></td><td>Cataluña ≈ 19 %</td><td>C. de Madrid ≈ 19 %</td></tr>
-          <tr><td>⛪ Catedral icónica</td><td>Duomo · 1386–1965</td><td>Sagrada Família · 1882–hoy</td><td>Almudena · 1883–1993</td></tr>
-          <tr><td>⚽ Estadio</td><td>San Siro · ~75.000</td><td>Spotify Camp Nou · ~105.000</td><td>Bernabéu · ~83.000</td></tr>
-          <tr><td>🚇 Líneas de metro</td><td>5 (M1–M5)</td><td>12</td><td>13</td></tr>
-          <tr><td>🎫 Billete sencillo</td><td>2,20 €</td><td>2,65 €</td><td>1,50–2 €</td></tr>
+          <tr><td>👥 Población (ciudad)</td><td><strong>~1,37 M</strong></td><td><strong>~1,70 M</strong></td><td><strong>~3,4 M</strong></td><td><strong>~0,55 M</strong></td></tr>
+          <tr><td>🏙️ Área metropolitana</td><td>~3,2 M</td><td>~5,7 M</td><td>~7 M</td><td>~2,9 M</td></tr>
+          <tr><td>📐 Superficie municipal</td><td>182 km²</td><td>101 km²</td><td>604 km²</td><td>100 km²</td></tr>
+          <tr><td>📊 Densidad</td><td>~7.500/km²</td><td><span class="hl">~16.500/km²</span></td><td>~5.600/km²</td><td>~5.500/km²</td></tr>
+          <tr><td>💶 Peso de su región en el PIB</td><td><span class="hl">Lombardía ≈ 22 %</span></td><td>Cataluña ≈ 19 %</td><td>Com. de Madrid ≈ 19 %</td><td>Área de Lisboa ≈ 36 %</td></tr>
+          <tr><td>⛪ Catedral</td><td>Duomo · 1386–1965</td><td>Sagrada Família · 1882–hoy</td><td>Almudena · 1883–1993</td><td>Sé · desde 1147</td></tr>
+          <tr><td>⚽ Estadio</td><td>San Siro · ~75.000</td><td>Spotify Camp Nou · ~105.000</td><td>Bernabéu · ~83.000</td><td>Estádio da Luz · ~65.000</td></tr>
+          <tr><td>🚇 Líneas de metro</td><td>5</td><td>12</td><td>13</td><td>4</td></tr>
+          <tr><td>🎫 Billete sencillo</td><td>2,20 €</td><td>2,65 €</td><td>1,50–2 €</td><td>~1,85 €</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="bars">
-      <div class="gb-title">🇮🇹 vs 🇪🇸 · Los dos países</div>
+      <div class="gb-title">🇮🇹 · 🇪🇸 · 🇵🇹 · Los tres países de la manada</div>
       <div class="bar-row">
         <div class="bar-label"><span>👥 Italia · población</span><strong style="color:var(--verde)">~59 M</strong></div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(to right,#008C45,#4cc27f)"></div></div>
@@ -506,34 +605,38 @@
         <div class="bar-track"><div class="bar-fill" style="width:83%;background:linear-gradient(to right,#C8102E,#e8566c)"></div></div>
       </div>
       <div class="bar-row">
-        <div class="bar-label"><span>🎂 Edad mediana · Italia</span><strong style="color:var(--verde)">~48 años</strong></div>
-        <div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(to right,#008C45,#4cc27f)"></div></div>
+        <div class="bar-label"><span>👥 Portugal · población</span><strong style="color:#006600">~10,7 M</strong></div>
+        <div class="bar-track"><div class="bar-fill" style="width:18%;background:linear-gradient(to right,#006600,#3fa03f)"></div></div>
       </div>
       <div class="bar-row">
-        <div class="bar-label"><span>🎂 Edad mediana · España</span><strong style="color:var(--rosso)">~46 años</strong></div>
-        <div class="bar-track"><div class="bar-fill" style="width:95%;background:linear-gradient(to right,#C8102E,#e8566c)"></div></div>
+        <div class="bar-label"><span>🏝️ Madeira · población</span><strong style="color:#006600">~0,25 M</strong></div>
+        <div class="bar-track"><div class="bar-fill" style="width:1.5%;background:linear-gradient(to right,#006600,#3fa03f)"></div></div>
       </div>
-      <div class="bar-note">Italia es el país más envejecido de la UE. Sergio sube la media de casados del grupo 😄</div>
+      <div class="bar-note">Toda Madeira cabe cinco veces y media en Milán. Aun así, la mayoría de la manada viene de allí. Milán, avisada estás.</div>
     </div>
 
     <div class="fact-grid">
       <div class="fact fact-mi">
         <div class="f-title">🏙️ Milán · De qué vive</div>
-        <p>💶 Bolsa de Italia y banca (Piazza Affari)<br>👗 Moda · Prada, Armani, Versace, Dolce&amp;Gabbana<br>🪑 Diseño · Salone del Mobile cada abril<br>📺 Medios y publicidad<br>🎭 La Scala · ópera desde 1778<br>⚽ Inter y Milan comparten San Siro</p>
+        <p>💶 Bolsa de Italia y banca<br>👗 Moda · Prada, Armani, Versace<br>🪑 Diseño · Salone del Mobile<br>🎭 La Scala · ópera desde 1778<br>⚽ Inter y Milan comparten San Siro</p>
       </div>
       <div class="fact fact-mo">
         <div class="f-title">🏎️ Módena · Motor Valley</div>
-        <p>🐎 Ferrari (Maranello), Maserati (Módena)<br>🚗 Lamborghini y Pagani a menos de 1 h<br>🧪 Aceto Balsamico Tradizionale DOP · 12 años mínimo<br>🍷 Lambrusco, el tinto con burbujas<br>🎤 Ciudad natal de Luciano Pavarotti<br>⭐ Osteria Francescana · 3 estrellas Michelin</p>
+        <p>🐎 Ferrari (Maranello) y Maserati<br>🚗 Lamborghini y Pagani a menos de 1 h<br>🧪 Aceto Balsamico Tradizionale DOP<br>🍷 Lambrusco, el tinto con burbujas<br>🎤 Ciudad natal de Pavarotti</p>
       </div>
       <div class="fact fact-be">
         <div class="f-title">🚂 Bernina Express · En cifras</div>
-        <p>🏔️ Punto más alto: Ospizio Bernina · 2.253 m<br>🌉 196 puentes y 55 túneles<br>🔄 Viaducto helicoidal de Brusio<br>📐 Pendientes de hasta el 7 % sin cremallera<br>🏛️ Patrimonio UNESCO desde 2008<br>🇮🇹→🇨🇭 Cruza la frontera en Campocologno</p>
+        <p>🏔️ Punto más alto: 2.253 m<br>🌉 196 puentes y 55 túneles<br>🔄 Viaducto helicoidal de Brusio<br>📐 Pendientes de hasta el 7 %<br>🏛️ Patrimonio UNESCO desde 2008</p>
+      </div>
+      <div class="fact fact-pt">
+        <div class="f-title">🇵🇹 Portugal y Madeira</div>
+        <p>🏝️ Madeira: isla atlántica, región autónoma<br>⚽ Funchal, cuna de Cristiano Ronaldo<br>✈️ El aeropuerto FNC lleva su nombre<br>🍷 Vino de Madeira, fortificado y eterno<br>🌺 Laurisilva · Patrimonio UNESCO<br>🛫 FNC → MXP: ~3h45 de vuelo</p>
       </div>
     </div>
 
     <div class="connection-box">
-      <div class="cb-title">🐾 Conexión curiosa · Milán, Módena y el Cavallino</div>
-      <p>El caballito negro de Ferrari era el emblema del aviador <strong style="color:var(--giallo)">Francesco Baracca</strong>, as de la Primera Guerra Mundial. Su madre se lo ofreció a Enzo Ferrari en 1923 "para que le diera suerte", y Enzo le añadió el fondo <strong style="color:var(--giallo)">amarillo de Módena</strong>, su ciudad. Por eso Flaco, perro aviador de toda la vida, lleva gafas de piloto y bufanda rosso corsa. Je-je-je.</p>
+      <div class="cb-title">🐾 Conexión curiosa · El caballito y el aviador</div>
+      <p>El caballito negro de Ferrari era el emblema del aviador <strong style="color:var(--giallo)">Francesco Baracca</strong>, as de la Primera Guerra Mundial. Su madre se lo regaló a Enzo Ferrari en 1923 «para que le diera suerte», y Enzo le puso el fondo <strong style="color:var(--giallo)">amarillo de Módena</strong>. Por eso Flaco va con gafas de piloto y bufanda rosso corsa. Y como la manada aterriza desde el aeropuerto Cristiano Ronaldo, el domingo toca foto de grupo haciendo el «siuuu» delante de un Ferrari. Je-je-je.</p>
     </div>
 
     <div class="book-rec">
@@ -541,18 +644,18 @@
       <div class="br-body">
         <div class="br-icon">🎬</div>
         <div>
-          <div class="br-title">"Ferrari"</div>
+          <div class="br-title">«Ferrari»</div>
           <div class="br-author">Michael Mann · 2023 · con Adam Driver y Penélope Cruz</div>
-          <div class="br-text">El verano de 1957 de Enzo Ferrari en Módena: la empresa al borde de la quiebra, su matrimonio roto y la Mille Miglia como apuesta. Buena parte se rodó en Módena y alrededores.</div>
-          <div class="br-why"><b>🐾 Por qué la recomienda Flaco:</b> el domingo pasaréis por la casa natal de Enzo, que hoy es el Museo Enzo Ferrari, y caminaréis por las calles de la peli. Perfecta para el vuelo o la noche del viernes.</div>
+          <div class="br-text">El verano de 1957 de Enzo Ferrari en Módena: la empresa al borde de la quiebra, el matrimonio hecho trizas y la Mille Miglia como apuesta. Buena parte se rodó en Módena.</div>
+          <div class="br-why"><b>🐾 Por qué la recomienda Flaco:</b> el domingo pasaréis por la casa natal de Enzo. Y Sergio puede tomar nota de cómo NO llevar un matrimonio.</div>
         </div>
       </div>
       <div class="br-body">
         <div class="br-icon">📖</div>
         <div>
-          <div class="br-title">"Enzo Ferrari: The Man and the Machine"</div>
+          <div class="br-title">«Enzo Ferrari: The Man and the Machine»</div>
           <div class="br-author">Brock Yates · 1991 · Biografía</div>
-          <div class="br-text">La biografía clásica, poco complaciente, del hombre detrás del caballito: genio, carácter imposible y obsesión por ganar. Para quien quiera llegar a Maranello sabiendo más que el guía.</div>
+          <div class="br-text">La biografía clásica y poco complaciente del hombre detrás del caballito: genio, carácter imposible y obsesión por ganar. Para llegar a Maranello sabiendo más que el guía.</div>
         </div>
       </div>
     </div>
@@ -564,7 +667,7 @@
 <div class="section-title">
   <span class="eyebrow eyebrow-m">Itinerario de Mayker · solo</span>
   <h2>Mi Milán · Jue 01 → Sáb 03 mañana</h2>
-  <p>Antes de que llegue la manada: compras, papelerías y Milán a mi ritmo</p>
+  <p>Antes de que aterrice la manada: compras, papelerías y Milán a mi ritmo</p>
 </div>
 
 <div class="days-wrapper">
@@ -586,15 +689,15 @@
     <div class="day-body"><div class="day-body-inner">
       <div class="weather-bar">
         <div class="wb-icon">🌙</div>
-        <div><div class="wb-day">Principios de octubre · Milán de noche</div><div class="wb-temp">~12–14°C</div><div class="wb-cond">Noches frescas · media habitual</div></div>
-        <div class="wb-tip">🧥 Lleva una chaqueta a mano al salir de BGY. Mira la previsión real el mismo día.</div>
+        <div><div class="wb-day">Jueves 01 · Milán de noche</div><div class="wb-temp">~15°C</div><div class="wb-cond">Anticiclón · noche templada</div></div>
+        <div class="wb-tip">🧥 Basta una sudadera o chaqueta fina al salir de BGY.</div>
       </div>
       <div class="timing-block">
         <div class="tb-title">⏰ Horarios del día</div>
         <div class="timing-row"><span class="tr-time">18:15</span><div class="tr-label"><strong>Vuelo BCN → BGY</strong> · Ryanair FR3320</div></div>
         <div class="timing-row"><span class="tr-time">20:00–20:40</span><div class="tr-label">Aterrizaje en Bérgamo · control, equipaje y salida</div></div>
         <div class="timing-row"><span class="tr-time">20:45–21:45</span><div class="tr-label"><strong>Orio Shuttle</strong> directo BGY → Milano Centrale (~1 h)</div></div>
-        <div class="timing-row"><span class="tr-time">21:45–22:05</span><div class="tr-label">🚕 Taxi desde Centrale al Lux Hotel Durante</div></div>
+        <div class="timing-row"><span class="tr-time">21:45–22:05</span><div class="tr-label">🚕 Taxi de Centrale al Lux Hotel Durante</div></div>
         <div class="timing-row"><span class="tr-time">~22:15</span><div class="tr-label"><strong>Check-in</strong> Lux Hotel Durante</div></div>
         <div class="timing-row"><span class="tr-time">22:30–23:30</span><div class="tr-label">🍕 Algo rápido cerca del hotel. Nada de cena formal.</div></div>
       </div>
@@ -610,14 +713,14 @@
       <div class="two-col">
         <div class="info-block">
           <h4>🐾 Flaco dice</h4>
-          <p>Llegas con maleta y después de volar: taxi y listo. Hay opción de metro + bus, pero no compensa. El hotel está a unos 500 m de Loreto (M1 + M2), así que mañana llegas fácil al centro.</p>
+          <p>Llegas con maleta y recién bajado del avión: taxi y listo. Hay metro + bus, pero no compensa. El hotel está a unos 500 m de Loreto (M1 + M2), así que mañana llegas fácil al centro.</p>
         </div>
         <div class="info-block">
           <h4>📌 Objetivo</h4>
           <ul><li>Llegar sin complicaciones</li><li>Cenar algo ligero</li><li>Dormir pronto: mañana trabajas</li></ul>
         </div>
       </div>
-      <div class="flaco-quote"><svg><use href="#flaco"/></svg>"Sniff sniff… ¡huele a pizza desde la pista! Mañana empieza Milán de verdad."</div>
+      <div class="flaco-quote"><svg><use href="#flaco"/></svg>«Sniff sniff… ¡huele a pizza desde la pista! Disfruta de la paz, que dura dos días.»</div>
     </div></div>
   </div>
 
@@ -638,8 +741,8 @@
     <div class="day-body"><div class="day-body-inner">
       <div class="weather-bar">
         <div class="wb-icon">🌤️</div>
-        <div><div class="wb-day">Principios de octubre · Milán</div><div class="wb-temp">~20°C / 12°C</div><div class="wb-cond">Media habitual · tiempo para caminar</div></div>
-        <div class="wb-tip">👟 Hoy se camina mucho: Porta Romana → Duomo → Brera son unos 3–4 km.</div>
+        <div><div class="wb-day">Viernes 02 · Milán</div><div class="wb-temp">~25°C / 15°C</div><div class="wb-cond">Anticiclón · casi verano</div></div>
+        <div class="wb-tip">👟 Hoy se camina: Porta Romana → Duomo → Brera son unos 3–4 km. Manga corta de día; algo fino para la noche.</div>
       </div>
       <div class="timing-block">
         <div class="tb-title">⏰ Horarios del día</div>
@@ -658,12 +761,12 @@
 
       <div class="food-card">
         <div class="food-head"><span class="fi">🍕</span><div><div class="food-name">Pizza AM <a class="maps-btn-sm" href="https://www.google.com/maps/search/?api=1&query=Pizza+AM+Milano" target="_blank" rel="noopener">📍 Maps</a></div><div class="food-meta">Porta Romana · ⭐ 4,5 · 02 9631 3156</div></div></div>
-        <p>La recomendación de Sergio. Comida relativamente rápida y empiezas la ruta.</p>
+        <p>La recomendación de Sergio. Si está mala, tenemos argumento para toda la boda.</p>
       </div>
 
       <div class="transport-block">
         <div class="t-icon">🚶</div>
-        <div class="t-text"><strong>Porta Romana → Duomo</strong>Unos 20 min a pie. También M3 desde Porta Romana hasta Duomo (2 paradas).
+        <div class="t-text"><strong>Porta Romana → Duomo</strong>Unos 20 min a pie, o la M3 de Porta Romana a Duomo (2 paradas).
           <div class="transport-prices"><div class="tp-item"><div class="tp-label">🎫 Metro ATM</div><div class="tp-val">2,20 €</div><div class="tp-sub">90 min · contactless en el torno</div></div></div>
         </div>
       </div>
@@ -680,21 +783,21 @@
             <li><strong>1.ª</strong> END Milano · Via dei Mercanti, pegado al Duomo <a class="maps-btn-sm" href="https://www.google.com/maps/search/?api=1&query=END+Milano+Via+dei+Mercanti" target="_blank" rel="noopener">📍</a></li>
             <li><strong>2.ª</strong> Rinascente · Piazza Duomo <a class="maps-btn-sm" href="https://www.google.com/maps/search/?api=1&query=Rinascente+Milano+Piazza+Duomo" target="_blank" rel="noopener">📍</a></li>
             <li>Prueba tallas → 🎯 compra hecha</li>
-            <li>Si no hay suerte, hay otra ocasión el martes</li>
+            <li>Si no hay suerte, segunda oportunidad el martes</li>
           </ul>
         </div>
       </div>
 
       <div class="food-card">
         <div class="food-head"><span class="fi">✏️</span><div><div class="food-name">Pettinaroli · prioridad n.º 1 <a class="maps-btn-sm" href="https://www.google.com/maps/search/?api=1&query=Pettinaroli+Via+Brera+4+Milano" target="_blank" rel="noopener">📍 Maps</a></div><div class="food-meta">Via Brera 4 · tienda histórica</div></div></div>
-        <p>Mucho más especial que una papelería normal: cuadernos, grabados, mapas antiguos y papel de verdad.</p>
+        <p>Mucho más que una papelería: cuadernos, grabados, mapas antiguos y papel de verdad.</p>
       </div>
       <div class="food-card">
         <div class="food-head"><span class="fi">📓</span><div><div class="food-name">Fabriano Boutique <a class="maps-btn-sm" href="https://www.google.com/maps/search/?api=1&query=Fabriano+Boutique+Via+Ponte+Vetero+17+Milano" target="_blank" rel="noopener">📍 Maps</a></div><div class="food-meta">Via Ponte Vetero 17 · Brera</div></div></div>
-        <p>Papel de Fabriano, que lleva fabricándose desde el siglo XIII. Para cerrar la ruta de papelerías.</p>
+        <p>Papel de Fabriano, fabricado desde el siglo XIII. Para cerrar la ruta de papelerías.</p>
       </div>
       <div class="pill-row"><span class="pill">🍕 Pizza AM</span><span class="pill">🏛️ Duomo por fuera</span><span class="pill">👟 Axel Arigato</span><span class="pill">✏️ Pettinaroli</span><span class="pill">🌙 Duomo iluminado</span></div>
-      <div class="flaco-quote"><svg><use href="#flaco"/></svg>"Probablemente sea el momento en que más disfrutes Milán sin tener que seguir a nadie. Je-je-je."</div>
+      <div class="flaco-quote"><svg><use href="#flaco"/></svg>«Último día de persona civilizada. Mañana aterriza Madeira. Je-je-je.»</div>
     </div></div>
   </div>
 
@@ -705,8 +808,8 @@
         <div class="day-badge bg-3">🧳</div>
         <div class="day-meta">
           <div class="day-date">Sábado 03 Octubre · Mañana</div>
-          <div class="day-title">Check-out y mudanza a Nina's House</div>
-          <div class="day-subtitle">Desayuno → maletas → check-out Lux Hotel → reunión con el grupo</div>
+          <div class="day-title">Check-out y mudanza</div>
+          <div class="day-subtitle">Desayuno → maletas → check-out → reunión con la manada</div>
           <span class="day-tag t-solo">🟡 Solo Mayker</span>
         </div>
         <div class="day-chevron">▼</div>
@@ -718,11 +821,11 @@
         <div class="timing-row"><span class="tr-time">08:30–09:00</span><div class="tr-label">☕ Desayuno</div></div>
         <div class="timing-row"><span class="tr-time">09:00–10:00</span><div class="tr-label">Recoger tus cosas</div></div>
         <div class="timing-row"><span class="tr-time">10:00–11:00</span><div class="tr-label"><strong>Check-out</strong> Lux Hotel Durante (como tarde a las 11:00)</div></div>
-        <div class="timing-row"><span class="tr-time">~11:30</span><div class="tr-label">Ir a Nina's House (Via Pellegrino Rossi 28) a dejar tu maleta, si te lo permiten</div></div>
-        <div class="timing-row"><span class="tr-time">12:30–13:00</span><div class="tr-label">🤝 <strong>Te juntas con los chicos</strong> → sigue en "La despedida"</div></div>
+        <div class="timing-row"><span class="tr-time">~11:30</span><div class="tr-label">Dejar tu maleta en Nina's House o, si no se puede, en la consigna (plan B)</div></div>
+        <div class="timing-row"><span class="tr-time">12:30–13:00</span><div class="tr-label">🤝 <strong>Te juntas con la manada</strong> → sigue en «La despedida»</div></div>
       </div>
-      <div class="alert-box red">⚠️ <strong>Lo único que hay que dejar resuelto antes:</strong> pregunta HOY a Nina's House si se puede dejar equipaje antes del check-in de las 15:00. Si no, hace falta un plan B de consigna (Radical Storage o Bounce cerca de Centrale).</div>
-      <div class="flaco-quote"><svg><use href="#flaco"/></svg>"Se acabó la paz. ¡Que llega la manada! 🐾🐾🐾🐾🐾"</div>
+      <div class="alert-box">🧳 <strong>Maletas:</strong> si Nina's House no os deja dejarlas antes de las 15:00, vamos todos a una consigna del centro. El plan B está en el día del sábado.</div>
+      <div class="flaco-quote"><svg><use href="#flaco"/></svg>«Se acabó la paz. ¡Aterriza la manada! 🐾🐾🐾🐾🐾»</div>
     </div></div>
   </div>
 
@@ -732,7 +835,7 @@
 <!-- ===================== LA DESPEDIDA (GRUPO) ===================== -->
 <section id="despedida">
 <div class="section-title">
-  <span class="eyebrow eyebrow-g">Itinerario del grupo · despedida</span>
+  <span class="eyebrow eyebrow-g">Itinerario de la manada · despedida</span>
   <h2>La despedida de Sergio · Sáb 03 → Mar 06</h2>
   <p>Toca cada día para desplegar el plan completo</p>
 </div>
@@ -745,60 +848,66 @@
       <div class="day-trigger-inner">
         <div class="day-badge bg-3">🔊</div>
         <div class="day-meta">
-          <div class="day-date">Sábado 03 Octubre · Llegan los chicos</div>
+          <div class="day-date">Sábado 03 Octubre · Aterriza Madeira</div>
           <div class="day-title">Luini, Duomo, aperitivo y GATE</div>
-          <div class="day-subtitle">MXP 10:45 → equipaje → panzerotti → Brera → hard techno</div>
-          <span class="day-tag t-group">🔴 Grupo</span><span class="day-tag t-night">🔊 Schranz 23:00</span>
+          <div class="day-subtitle">MXP 10:45 → maletas → panzerotti → Brera → hard techno</div>
+          <span class="day-tag t-group">🔴 Manada</span><span class="day-tag t-night">🔊 Schranz 23:00</span>
         </div>
         <div class="day-chevron">▼</div>
       </div>
     </button>
     <div class="day-body"><div class="day-body-inner">
-      <div class="bride-banner"><span class="bi">🤵</span><div><strong>¡Empieza oficialmente la despedida de Sergio!</strong><span>Hoy hay que ser inteligentes: por la noche hay techno.</span></div></div>
+      <div class="bride-banner"><span class="bi">🤵</span><div><strong>¡Empieza la cuenta atrás de la libertad de Sergio!</strong><span>Hoy hay que ser listos: por la noche hay techno.</span></div></div>
       <div class="weather-bar">
         <div class="wb-icon">🌤️</div>
-        <div><div class="wb-day">Principios de octubre · Milán</div><div class="wb-temp">~20°C / 12°C</div><div class="wb-cond">Media habitual</div></div>
-        <div class="wb-tip">🔋 Powerbank cargado y chaqueta ligera para la salida de GATE a las tantas.</div>
+        <div><div class="wb-day">Sábado 03 · Milán</div><div class="wb-temp">25°C / 15°C</div><div class="wb-cond">Nubes y claros · viento flojo</div></div>
+        <div class="wb-tip">🔋 Powerbank cargado. A las 4–5 h, al salir de GATE, rondará los 15°C: una chaqueta fina que quepa en el bolsillo o en el guardarropa.</div>
       </div>
       <div class="timing-block">
         <div class="tb-title">⏰ Horarios del día</div>
-        <div class="timing-row"><span class="tr-time">10:45</span><div class="tr-label">✈️ <strong>El grupo aterriza en MXP</strong></div></div>
-        <div class="timing-row"><span class="tr-time">11:15–11:30</span><div class="tr-label">Salida de Malpensa (5 personas + equipaje)</div></div>
-        <div class="timing-row"><span class="tr-time">~12:30–12:45</span><div class="tr-label">Llegada al centro de Milán</div></div>
-        <div class="timing-row"><span class="tr-time">12:30–13:00</span><div class="tr-label">🧳 Dejar mochilas en Nina's House (o en consigna)</div></div>
+        <div class="timing-row"><span class="tr-time">06:00</span><div class="tr-label">✈️ Despega la manada de Funchal (FR6671). Madrugón histórico.</div></div>
+        <div class="timing-row"><span class="tr-time">10:45</span><div class="tr-label">✈️ <strong>Aterrizan en MXP</strong></div></div>
+        <div class="timing-row"><span class="tr-time">11:15–11:30</span><div class="tr-label">Salida de Malpensa → Malpensa Express a Centrale</div></div>
+        <div class="timing-row"><span class="tr-time">~12:30</span><div class="tr-label">Llegada a Milano Centrale</div></div>
+        <div class="timing-row"><span class="tr-time">12:30–13:00</span><div class="tr-label">🧳 Maletas: Nina's House o <strong>consigna en el centro</strong></div></div>
         <div class="timing-row"><span class="tr-time">13:15</span><div class="tr-label">🥟 <strong>Panzerotti Luini</strong>: panzerotto, bebida y a la calle</div></div>
         <div class="timing-row"><span class="tr-time">14:00</span><div class="tr-label">🏛️ Duomo</div></div>
-        <div class="timing-row"><span class="tr-time">14:30</span><div class="tr-label">Galleria Vittorio Emanuele II</div></div>
+        <div class="timing-row"><span class="tr-time">14:30</span><div class="tr-label">Galleria Vittorio Emanuele II · reto del toro 🐂</div></div>
         <div class="timing-row"><span class="tr-time">15:00</span><div class="tr-label">Piazza della Scala</div></div>
         <div class="timing-row"><span class="tr-time">15:30</span><div class="tr-label">Paseo hacia Brera</div></div>
         <div class="timing-row"><span class="tr-time">16:00–17:30</span><div class="tr-label">☕ Brera: pasear, fotos, café, tiendas. Nada de museos.</div></div>
-        <div class="timing-row"><span class="tr-time">17:30–19:00</span><div class="tr-label">🍹 <strong>Aperitivo</strong>: un par de rondas tranquilas</div></div>
+        <div class="timing-row"><span class="tr-time">17:30–19:00</span><div class="tr-label">🍹 <strong>Aperitivo</strong>: empieza oficialmente la despedida</div></div>
         <div class="timing-row"><span class="tr-time">19:30–21:00</span><div class="tr-label">🍝 Cena, sin alargarla</div></div>
-        <div class="timing-row"><span class="tr-time">21:00–22:30</span><div class="tr-label">🏨 Volver a casa: ducha, cambiarse, cargar móviles y powerbank</div></div>
+        <div class="timing-row"><span class="tr-time">21:00–22:30</span><div class="tr-label">🏨 A casa: ducha, cambiarse, cargar móviles y powerbank</div></div>
         <div class="timing-row"><span class="tr-time">23:00</span><div class="tr-label">🔊 <strong>GATE · Schranz Movement — O.B.I.</strong> (entrar entre 23:30 y 00:00)</div></div>
       </div>
       <div class="transport-block">
         <div class="t-icon">🚆</div>
-        <div class="t-text"><strong>Malpensa → Milán</strong>Malpensa Express a Centrale o Cadorna, unos 50 min, con trenes cada 30 min. Siendo 5 con equipaje, calculad estar en el centro hacia las 12:30–12:45.
+        <div class="t-text"><strong>Malpensa → Milán</strong>Malpensa Express a Centrale, ~50 min, un tren cada 30 min. Con equipaje, contad con estar en el centro hacia las 12:30.
           <div class="transport-prices">
             <div class="tp-item"><div class="tp-label">🚆 Malpensa Express</div><div class="tp-val">~13 € p.p.</div><div class="tp-sub">~50 min · cada 30 min</div></div>
-            <div class="tp-item"><div class="tp-label">🚕 Taxi MXP (tarifa fija)</div><div class="tp-val">~110 € total</div><div class="tp-sub">si cabéis 5 con maletas</div></div>
+            <div class="tp-item"><div class="tp-label">🚕 Taxi MXP (tarifa fija)</div><div class="tp-val">~110 € total</div><div class="tp-sub">si cabéis todos con maletas</div></div>
           </div>
         </div>
       </div>
+      <div class="alert-box red">🧳 <strong>Plan B maletas · si Nina's House no deja dejarlas antes de las 15:00:</strong> se dejan en una consigna del centro y se recogen antes de ir a casa a cambiarse.
+        <br>• <strong>KiPoint Milano Centrale</strong>, la consigna oficial dentro de la estación: os pilla de camino desde Malpensa, y de ahí M3 directa a Duomo.
+        <br>• O una consigna de app (<strong>Bounce</strong> / <strong>Radical Storage</strong>) junto al Duomo, reservada desde el móvil.
+        <br><a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=KiPoint+deposito+bagagli+Milano+Centrale" target="_blank" rel="noopener">📍 Consigna Centrale</a> <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=luggage+storage+near+Duomo+Milano" target="_blank" rel="noopener">📍 Consignas junto al Duomo</a>
+      </div>
       <div class="food-card">
         <div class="food-head"><span class="fi">🥟</span><div><div class="food-name">Panzerotti Luini <a class="maps-btn-sm" href="https://www.google.com/maps/search/?api=1&query=Panzerotti+Luini+Milano" target="_blank" rel="noopener">📍 Maps</a></div><div class="food-meta">Via Santa Radegonda 16 · junto al Duomo · ⭐ 4,1 · 02 8646 1917</div></div></div>
-        <p>Aquí no hay discusión: llegan con hambre → Luini. Panzerotto de mozzarella y tomate, bebida y a caminar. Suele haber cola, pero avanza rápido.</p>
+        <p>Aquí no se discute: la manada llega con hambre → Luini. Suele haber cola, pero va rápida. Primer reto de Sergio: pedir en italiano.</p>
       </div>
       <div class="gate-box">
         <h4>🔊 Sábado noche · confirmado</h4>
         <div class="gn">SCHRANZ MOVEMENT — O.B.I.</div>
-        <p>📍 Gate Milano · Via Valtellina 21 · 🕚 23:00–05:00<br>Hard techno / schranz: encaja mucho mejor que una discoteca comercial. Entrar sobre 23:30–00:00 → O.B.I. / DSTM → fiesta → salir cuando el grupo diga basta. No hace falta aguantar hasta las 05:00.</p>
+        <p>📍 Gate Milano · Via Valtellina 21 · 🕚 23:00–05:00<br>Hard techno / schranz, nada de reguetón de discoteca comercial. Entrar sobre 23:30–00:00 → O.B.I. / DSTM → fiesta → salir cuando la manada diga basta. No hace falta aguantar hasta las 05:00… pero quien se vaya primero paga el desayuno.</p>
         <a class="maps-btn-dark" href="https://www.google.com/maps/search/?api=1&query=Gate+Milano+Via+Valtellina+21" target="_blank" rel="noopener">📍 Gate Milano</a>
       </div>
       <div class="alert-box">🎒 <strong>Nada de mochila grande en GATE.</strong> Lo justo: móvil, documento, tarjeta y powerbank. Mañana hay Ferrari a las 09:00.</div>
-      <div class="pill-row"><span class="pill">🥟 Luini</span><span class="pill">🏛️ Duomo</span><span class="pill">☕ Brera</span><span class="pill">🍹 Aperitivo</span><span class="pill">🔊 Schranz</span></div>
-      <div class="flaco-quote"><svg><use href="#flaco"/></svg>"¿El novio quiere ir a casa a la 1? Je-je-je… ¡ni lo sueñes!"</div>
+      <div class="pill-row"><span class="pill">🥟 Luini</span><span class="pill">🏛️ Duomo</span><span class="pill">🐂 El toro</span><span class="pill">🍹 Aperitivo</span><span class="pill">🔊 Schranz</span></div>
+      <div class="flaco-quote"><svg><use href="#flaco"/></svg>«¿El novio quiere irse a casa a la 1? Je-je-je… ni lo sueñes.»</div>
     </div></div>
   </div>
 
@@ -811,7 +920,7 @@
           <div class="day-date">Domingo 04 Octubre · Motor Valley</div>
           <div class="day-title">Maranello + Módena · los dos museos</div>
           <div class="day-subtitle">Museo Ferrari → comida modenesa → centro → Museo Enzo Ferrari</div>
-          <span class="day-tag t-group">🔴 Grupo</span><span class="day-tag t-solo">🍝 Día de comer bien</span>
+          <span class="day-tag t-group">🔴 Manada</span><span class="day-tag t-solo">🍝 Día de comer bien</span>
         </div>
         <div class="day-chevron">▼</div>
       </div>
@@ -819,16 +928,16 @@
     <div class="day-body"><div class="day-body-inner">
       <div class="weather-bar">
         <div class="wb-icon">⛅</div>
-        <div><div class="wb-day">Principios de octubre · Emilia-Romaña</div><div class="wb-temp">~21°C / 11°C</div><div class="wb-cond">Media habitual</div></div>
-        <div class="wb-tip">🕶️ Gafas de sol después de GATE: muy necesarias.</div>
+        <div><div class="wb-day">Domingo 04 · Emilia-Romaña</div><div class="wb-temp">~25°C / 14°C</div><div class="wb-cond">Nubes y claros · sin lluvia prevista</div></div>
+        <div class="wb-tip">🕶️ Gafas de sol después de GATE: imprescindibles, y no por el sol.</div>
       </div>
       <div class="timing-block">
         <div class="tb-title">⏰ Horarios del día</div>
         <div class="timing-row"><span class="tr-time">08:00</span><div class="tr-label">Despertar (sí, después de GATE 😅)</div></div>
-        <div class="timing-row"><span class="tr-time">08:30</span><div class="tr-label">☕ Desayuno</div></div>
+        <div class="timing-row"><span class="tr-time">08:30</span><div class="tr-label">☕ Desayuno (y un ibuprofeno si hace falta)</div></div>
         <div class="timing-row"><span class="tr-time">09:00</span><div class="tr-label">🚗 <strong>Salida de Milán</strong></div></div>
-        <div class="timing-row"><span class="tr-time">10:30–12:00</span><div class="tr-label">🏎️ <strong>Museo Ferrari Maranello</strong> · reserva 1h15–1h30</div></div>
-        <div class="timing-row"><span class="tr-time">12:30–14:00</span><div class="tr-label">🍝 <strong>Comida en Módena</strong> (ver opciones abajo)</div></div>
+        <div class="timing-row"><span class="tr-time">10:30–12:00</span><div class="tr-label">🏎️ <strong>Museo Ferrari Maranello</strong> · 1h15–1h30</div></div>
+        <div class="timing-row"><span class="tr-time">12:30–14:00</span><div class="tr-label">🍝 <strong>Comida</strong> (ver opciones abajo)</div></div>
         <div class="timing-row"><span class="tr-time">14:00–15:30</span><div class="tr-label">Piazza Grande → Duomo → Ghirlandina → Via Emilia → Osteria Francescana (por fuera)</div></div>
         <div class="timing-row"><span class="tr-time">16:00–17:15</span><div class="tr-label">🏎️ <strong>Museo Enzo Ferrari</strong> · Via Paolo Ferrari 85</div></div>
         <div class="timing-row"><span class="tr-time">17:30–19:30</span><div class="tr-label">🚗 Regreso a Milán, sin prisas</div></div>
@@ -836,7 +945,7 @@
       </div>
       <div class="transport-block">
         <div class="t-icon">🚗</div>
-        <div class="t-text"><strong>Milán → Maranello → Módena → Milán</strong>Siendo 5, lo más cómodo es coche de alquiler grande o traslado privado: Milán–Maranello son ~190 km (~2 h) y Maranello–Módena ~20 min. Alternativa: Frecciarossa Milano → Modena (~1 h) + lanzadera de los museos Ferrari hasta Maranello.
+        <div class="t-text"><strong>Milán → Maranello → Módena → Milán</strong>Para 5, lo más cómodo es coche grande de alquiler o traslado privado: Milán–Maranello son ~190 km (~2 h) y Maranello–Módena ~20 min. Alternativa: Frecciarossa Milano → Modena (~1 h) + lanzadera de los museos Ferrari a Maranello.
           <div class="transport-prices">
             <div class="tp-item"><div class="tp-label">🚗 Coche de alquiler 7 plazas</div><div class="tp-val">a presupuestar</div><div class="tp-sub">+ autopista y gasolina</div></div>
             <div class="tp-item"><div class="tp-label">🚄 Tren + shuttle</div><div class="tp-val">~25–40 € p.p. ida</div><div class="tp-sub">según tarifa Trenitalia/Italo</div></div>
@@ -846,12 +955,12 @@
       <div class="two-col">
         <div class="info-block">
           <h4>🏎️ Museo Ferrari Maranello</h4>
-          <p>Fórmula 1, coches de calle y la historia de la Scuderia, a pocos metros de la fábrica. La entrada habla de ~1 h, pero mejor 1h15–1h30.</p>
+          <p>Fórmula 1, coches de calle y la historia de la Scuderia, junto a la fábrica. La entrada habla de ~1 h, pero mejor 1h15–1h30.</p>
           <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=Museo+Ferrari+Maranello" target="_blank" rel="noopener">📍 Museo Ferrari</a>
         </div>
         <div class="info-block">
           <h4>🏎️ Museo Enzo Ferrari Módena</h4>
-          <p>La casa natal de Enzo junto a la galería moderna con techo amarillo en forma de capó. Último acceso 18:15.</p>
+          <p>La casa natal de Enzo junto a una galería moderna con el techo amarillo en forma de capó. Última entrada 18:15.</p>
           <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=Museo+Enzo+Ferrari+Via+Paolo+Ferrari+85+Modena" target="_blank" rel="noopener">📍 Museo Enzo Ferrari</a>
         </div>
       </div>
@@ -859,7 +968,7 @@
       <div class="dinner-primary">
         <h4>🍝 Comida en Módena · opción del plan</h4>
         <div class="dinner-name">Taverna dei Servi</div>
-        <div class="dinner-detail">Cocina modenesa tradicional en pleno centro. Ideal para comer bien y salir caminando hacia Piazza Grande. ⭐ 4,1 · 059 217134</div>
+        <div class="dinner-detail">Cocina modenesa tradicional en pleno centro. Para comer bien y salir andando hacia Piazza Grande. ⭐ 4,1 · 059 217134</div>
         <div class="dinner-tags"><span class="dinner-tag">🥟 Tortellini</span><span class="dinner-tag">🫓 Tigelle</span><span class="dinner-tag">🥐 Gnocco fritto</span><span class="dinner-tag">🥓 Embutidos</span><span class="dinner-tag">🍝 Pasta fresca</span><span class="dinner-tag">🍷 Lambrusco</span></div>
         <a class="maps-btn-dark" href="https://www.google.com/maps/search/?api=1&query=Taverna+dei+Servi+Modena" target="_blank" rel="noopener">📍 Taverna dei Servi</a>
         <div class="dinner-warning">⚠️ Domingo a mediodía y sois 5: reservad mesa por teléfono.</div>
@@ -869,10 +978,10 @@
         <span class="new-badge">🐾 El añadido de Flaco</span>
         <h4>🏎️ Alternativa con sabor a Cavallino · en Maranello</h4>
         <div class="dinner-name">Ristorante Cavallino · de Massimo Bottura</div>
-        <div class="dinner-detail">El restaurante histórico de Ferrari, justo enfrente de la entrada de la fábrica, donde comían Enzo y los pilotos. Hoy lo lleva <strong>Massimo Bottura</strong>, el chef de la Osteria Francescana (3 estrellas Michelin). Cocina emiliana tradicional reinterpretada. Es la forma más asequible de comer "Bottura" en el viaje, y está a dos pasos del Museo Ferrari: salís del museo y entráis a comer.</div>
+        <div class="dinner-detail">El restaurante histórico de Ferrari, enfrente de la entrada de la fábrica, donde comían Enzo y los pilotos. Hoy lo lleva <strong>Massimo Bottura</strong>, el chef de la Osteria Francescana (3 estrellas Michelin). Cocina emiliana tradicional reinterpretada. Es la forma más asequible de comer «Bottura» en el viaje, y está a dos pasos del Museo Ferrari.</div>
         <div class="dinner-tags"><span class="dinner-tag">🐎 Historia Ferrari</span><span class="dinner-tag">👨‍🍳 Massimo Bottura</span><span class="dinner-tag">📍 Via Abetone Inferiore 1, Maranello</span><span class="dinner-tag">🥟 Tortellini en brodo</span></div>
         <a class="maps-btn-dark" href="https://www.google.com/maps/search/?api=1&query=Ristorante+Cavallino+Via+Abetone+Inferiore+1+Maranello" target="_blank" rel="noopener">📍 Ristorante Cavallino</a>
-        <div class="dinner-warning">⚠️ Revisad que abre el domingo a mediodía y reservad: es pequeño y muy buscado. Si coméis aquí, el plan queda: Museo Ferrari 10:30 → Cavallino 12:15 → Módena centro 14:15 → Enzo Ferrari 16:00.</div>
+        <div class="dinner-warning">⚠️ Comprobad que abre el domingo a mediodía y reservad: es pequeño y muy buscado. Con Cavallino el plan queda: Museo Ferrari 10:30 → Cavallino 12:15 → Módena centro 14:15 → Enzo Ferrari 16:00.</div>
       </div>
 
       <button class="more-options-toggle" onclick="toggleMore('more-modena', this)">🍽️ Ver más opciones para comer en Módena ▼</button>
@@ -880,32 +989,32 @@
         <div class="alt-dinner">
           <h5>Franceschetta58</h5>
           <div class="alt-sub">📍 Via Vignolese 58 · Módena · el bistró de Bottura</div>
-          <p>Versión informal y divertida de la cocina de Bottura, más barata que la Francescana. Está algo fuera del casco antiguo, a unos 15 min a pie de Piazza Grande. Confirmad el horario del domingo.</p>
+          <p>La versión informal y gamberra de la cocina de Bottura, más barata que la Francescana. Algo fuera del casco antiguo, a ~15 min a pie de Piazza Grande. Confirmad el horario del domingo.</p>
         </div>
         <div class="alt-dinner">
           <h5>Gnocco fritto y tigelle para picar</h5>
           <div class="alt-sub">📍 Centro histórico · entre Piazza Grande y Via Emilia</div>
-          <p>Si se alarga el museo y vais justos, cualquier "gnoccheria" del centro resuelve: gnocco fritto con prosciutto y mortadela, tigelle con lardo y una copa de Lambrusco. Rápido y muy modenés.</p>
+          <p>Si el museo se alarga y vais justos: gnocco fritto con prosciutto y mortadela, tigelle con lardo y una copa de Lambrusco. Rápido y muy modenés.</p>
         </div>
         <div class="alt-dinner">
           <h5>Aceto Balsamico · para llevar a casa</h5>
           <div class="alt-sub">🎁 Souvenir obligatorio</div>
-          <p>Buscad el sello <strong>"Aceto Balsamico Tradizionale di Modena DOP"</strong> (botellita de 100 ml, 12 o 25 años). Lo de "IGP" es el del súper.</p>
+          <p>Buscad el sello <strong>«Aceto Balsamico Tradizionale di Modena DOP»</strong> (botellita de 100 ml, 12 o 25 años). El «IGP» es el del súper.</p>
         </div>
       </div>
 
       <div class="two-col" style="margin-top:12px;">
         <div class="info-block">
           <h4>🏛️ Centro de Módena · 14:00–15:30</h4>
-          <ul><li>Piazza Grande (UNESCO)</li><li>Duomo románico</li><li>Torre Ghirlandina</li><li>Via Emilia</li><li>Osteria Francescana, solo por fuera (Via Stella 22)</li></ul>
+          <ul><li>Piazza Grande (UNESCO) · reto «Nessun dorma» 🎤</li><li>Duomo románico</li><li>Torre Ghirlandina</li><li>Via Emilia</li><li>Osteria Francescana, solo por fuera (Via Stella 22)</li></ul>
           <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=Piazza+Grande+Modena" target="_blank" rel="noopener">📍 Piazza Grande</a>
         </div>
         <div class="info-block">
           <h4>🐾 Flaco dice</h4>
-          <p>Hoy se come de verdad. En Módena se va a comer, no a probar: tortellini, gnocco, lambrusco y unas gotas de balsámico. Y esta noche, a dormir.</p>
+          <p>Hoy se come en serio. A Módena se viene a comer, no a probar: tortellini, gnocco, lambrusco y unas gotas de balsámico. Y esta noche, a dormir como angelitos.</p>
         </div>
       </div>
-      <div class="flaco-quote"><svg><use href="#flaco"/></svg>"¡Vroooom! Gafas puestas, bufanda roja… este es MI día. Je-je-je."</div>
+      <div class="flaco-quote"><svg><use href="#flaco"/></svg>«¡Vroooom! Gafas puestas, bufanda roja… y el novio con resaca en el asiento de atrás. Je-je-je.»</div>
     </div></div>
   </div>
 
@@ -918,7 +1027,7 @@
           <div class="day-date">Lunes 05 Octubre · Los Alpes</div>
           <div class="day-title">Bernina Express</div>
           <div class="day-subtitle">Milán → Tirano → Alp Grüm → St. Moritz → regreso a Milán</div>
-          <span class="day-tag t-group">🔴 Grupo</span><span class="day-tag t-fly">🇨🇭 Pasaporte/DNI</span>
+          <span class="day-tag t-group">🔴 Manada</span><span class="day-tag t-fly">🇨🇭 DNI / pasaporte</span>
         </div>
         <div class="day-chevron">▼</div>
       </div>
@@ -926,17 +1035,17 @@
     <div class="day-body"><div class="day-body-inner">
       <div class="weather-bar">
         <div class="wb-icon">🏔️</div>
-        <div><div class="wb-day">Octubre · paso de Bernina (2.253 m)</div><div class="wb-temp">~0–10°C</div><div class="wb-cond">En St. Moritz y en el paso hace frío de verdad</div></div>
-        <div class="wb-tip">🧣 Ropa de abrigo, por capas. Puede haber nieve arriba. Mirad la previsión el domingo por la noche.</div>
+        <div><div class="wb-day">Lunes 05 · St. Moritz y paso de Bernina</div><div class="wb-temp">-2°C a ~10°C</div><div class="wb-cond">40 % de chubascos · nieve en altura</div></div>
+        <div class="wb-tip">🧣 Ropa de abrigo y por capas. Puede haber nieve arriba. Los de Madeira, avisados: esto no es Funchal.</div>
       </div>
-      <div class="alert-box">🕐 <strong>Horario exacto pendiente.</strong> Los billetes están en un ZIP. En cuanto tengamos la hora del tren, este día se convierte en un plan minuto a minuto. El horario de verano del Bernina Express 2026 llega hasta el 25 de octubre, así que el 5 de octubre aún es temporada de verano.</div>
+      <div class="alert-box">🕐 <strong>Horario exacto pendiente.</strong> Los billetes están en un ZIP: con la hora del tren, este día pasa a ser un plan minuto a minuto. El horario de verano del Bernina Express 2026 dura hasta el 25 de octubre, así que el día 5 sigue siendo verano.</div>
       <div class="timing-block">
         <div class="tb-title">⏰ Esquema del día</div>
         <div class="timing-row"><span class="tr-time">Muy temprano</span><div class="tr-label">🚆 Milano Centrale → Tirano (regional Trenord, ~2h30)</div></div>
         <div class="timing-row"><span class="tr-time">Hora billete</span><div class="tr-label">🚂 <strong>Bernina Express</strong> Tirano → Alp Grüm → St. Moritz (~2h15)</div></div>
         <div class="timing-row"><span class="tr-time">Tarde</span><div class="tr-label">🏔️ St. Moritz: paseo por el lago y el pueblo</div></div>
         <div class="timing-row"><span class="tr-time">Regreso</span><div class="tr-label">🚆 Vuelta a Milán (según billete)</div></div>
-        <div class="timing-row"><span class="tr-time">Noche</span><div class="tr-label">🛏️ Descanso</div></div>
+        <div class="timing-row"><span class="tr-time">Noche</span><div class="tr-label">🛏️ Descanso. Mañana nos separamos.</div></div>
       </div>
       <div class="two-col">
         <div class="info-block">
@@ -945,11 +1054,11 @@
         </div>
         <div class="info-block">
           <h4>🇨🇭 Suiza · recordatorios</h4>
-          <ul><li>DNI o pasaporte encima</li><li>Moneda: franco suizo, aunque la tarjeta va bien</li><li>Datos móviles: Suiza no está en el roaming UE</li><li>Café en St. Moritz: prepárate para pagar</li></ul>
+          <ul><li>DNI o pasaporte encima</li><li>Moneda: franco suizo (la tarjeta funciona)</li><li>Datos: Suiza no entra en el roaming de la UE</li><li>Café en St. Moritz: prepara la cartera</li></ul>
         </div>
       </div>
       <div class="pill-row"><span class="pill">🚂 UNESCO</span><span class="pill">🏔️ 2.253 m</span><span class="pill">🌉 196 puentes</span><span class="pill">🇮🇹 → 🇨🇭</span></div>
-      <div class="flaco-quote"><svg><use href="#flaco"/></svg>"Las gafas de aviador sirven también para el tren panorámico. Sniff… ¡huele a nieve!"</div>
+      <div class="flaco-quote"><svg><use href="#flaco"/></svg>«Las gafas de aviador valen también para el tren panorámico. Sniff… ¡huele a nieve y a franco suizo!»</div>
     </div></div>
   </div>
 
@@ -961,8 +1070,8 @@
         <div class="day-meta">
           <div class="day-date">Martes 06 Octubre · Último día</div>
           <div class="day-title">Castello, Sempione y Navigli</div>
-          <div class="day-subtitle">Check-out → castillo → parque → canales → compras → BGY</div>
-          <span class="day-tag t-group">🔴 Grupo</span><span class="day-tag t-fly">✈️ Mayker · BGY 21:15</span>
+          <div class="day-subtitle">Check-out → castillo → parque → canales → compras → aeropuertos</div>
+          <span class="day-tag t-group">🔴 Manada</span><span class="day-tag t-fly">✈️ BGY 21:15 · MXP 21:55</span>
         </div>
         <div class="day-chevron">▼</div>
       </div>
@@ -970,44 +1079,52 @@
     <div class="day-body"><div class="day-body-inner">
       <div class="weather-bar">
         <div class="wb-icon">🌤️</div>
-        <div><div class="wb-day">Principios de octubre · Milán</div><div class="wb-temp">~20°C / 12°C</div><div class="wb-cond">Media habitual</div></div>
-        <div class="wb-tip">🧳 Día con maletas en consigna: mochila pequeña y a caminar.</div>
+        <div><div class="wb-day">Martes 06 · Milán</div><div class="wb-temp">27°C / 14°C</div><div class="wb-cond">Despejado · el día más caluroso</div></div>
+        <div class="wb-tip">🧳 Maletas en consigna: mochila pequeña, gafas de sol y a caminar.</div>
       </div>
       <div class="timing-block">
         <div class="tb-title">⏰ Horarios del día</div>
-        <div class="timing-row"><span class="tr-time">08:00–10:00</span><div class="tr-label"><strong>Check-out Nina's House</strong> · maletas a consigna</div></div>
+        <div class="timing-row"><span class="tr-time">08:00–10:00</span><div class="tr-label"><strong>Check-out Nina's House</strong> · maletas a la consigna</div></div>
         <div class="timing-row"><span class="tr-time">10:00</span><div class="tr-label">🏰 Castello Sforzesco</div></div>
         <div class="timing-row"><span class="tr-time">11:00</span><div class="tr-label">🌳 Parco Sempione</div></div>
         <div class="timing-row"><span class="tr-time">11:30</span><div class="tr-label">Arco della Pace</div></div>
         <div class="timing-row"><span class="tr-time">12:30–14:00</span><div class="tr-label">🍝 Comida tranquila</div></div>
-        <div class="timing-row"><span class="tr-time">14:00–16:00</span><div class="tr-label">🌊 <strong>Navigli</strong>: Darsena → Naviglio Grande · café o cerveza</div></div>
-        <div class="timing-row"><span class="tr-time">16:00–17:00</span><div class="tr-label">🛍️ Últimas compras (Axel Arigato o papelería, si quedó pendiente)</div></div>
-        <div class="timing-row"><span class="tr-time">17:00</span><div class="tr-label">🧳 Recoger equipaje</div></div>
+        <div class="timing-row"><span class="tr-time">14:00–16:00</span><div class="tr-label">🌊 <strong>Navigli</strong>: Darsena → Naviglio Grande · último brindis</div></div>
+        <div class="timing-row"><span class="tr-time">16:00–17:00</span><div class="tr-label">🛍️ Últimas compras (Axel Arigato o papelería, si quedó algo)</div></div>
+        <div class="timing-row"><span class="tr-time">17:00</span><div class="tr-label">🧳 Recoger maletas · todos juntos a Centrale</div></div>
       </div>
+      <div class="alert-box">🧳 <strong>Maletas del martes:</strong> la misma consigna del sábado (KiPoint en Centrale) es la mejor opción, porque los dos aeropuertos salen de allí.</div>
 
       <div class="mayker-only">
-        <div class="mo-title">🟡 Solo Mayker · vuelta a casa</div>
+        <div class="mo-title">🟡 Mayker · vuelta a Barcelona</div>
         <div class="timing-row"><span class="tr-time">17:30–18:00</span><div class="tr-label">🚌 Orio Shuttle Milano Centrale → BGY</div></div>
         <div class="timing-row"><span class="tr-time">18:45–19:00</span><div class="tr-label">Llegada a BGY, con más de 2 h de margen</div></div>
         <div class="timing-row"><span class="tr-time">21:15</span><div class="tr-label">✈️ <strong>BGY → BCN</strong> · llegada 22:55</div></div>
-        <p style="margin-top:6px;">Es Bérgamo, no Malpensa. Mejor no apurar: el tráfico de salida de Milán un martes por la tarde puede dar sustos.</p>
+        <p style="margin-top:6px;">Es Bérgamo, no Malpensa. El tráfico de salida un martes por la tarde puede dar sustos: mejor no apurar.</p>
       </div>
-      <div class="alert-box">✈️ <strong>Resto del grupo:</strong> añadid aquí vuestro vuelo de vuelta cuando lo tengáis a mano.</div>
+
+      <div class="bye-box">
+        <div class="mo-title">🇵🇹 La manada de Madeira · vuelta a Funchal</div>
+        <div class="timing-row"><span class="tr-time">~18:25</span><div class="tr-label">🚆 Malpensa Express Centrale → MXP (~50 min)</div></div>
+        <div class="timing-row"><span class="tr-time">~19:15</span><div class="tr-label">Llegada a MXP, con 2h40 de margen</div></div>
+        <div class="timing-row"><span class="tr-time">21:55</span><div class="tr-label">✈️ <strong>MXP → FNC</strong> · Ryanair FR6672 · llegada 00:55 (miércoles)</div></div>
+        <p>Abrazo de despedida en Centrale hacia las 17:45. Sergio vuelve a casa casado… bueno, casi.</p>
+      </div>
 
       <div class="two-col">
         <div class="info-block">
           <h4>🏰 Castello + Sempione</h4>
-          <p>Fortaleza de los Sforza (s. XV) con patios de entrada libre. Detrás, el parque más grande del centro hasta el Arco della Pace.</p>
+          <p>La fortaleza de los Sforza (s. XV), con patios de entrada libre. Detrás, el parque más grande del centro hasta el Arco della Pace.</p>
           <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=Castello+Sforzesco+Milano" target="_blank" rel="noopener">📍 Castello Sforzesco</a>
         </div>
         <div class="info-block">
           <h4>🌊 Navigli</h4>
-          <p>Los canales diseñados en parte con ideas de Leonardo. Darsena y Naviglio Grande: terrazas, tiendas pequeñas y el mejor sitio para la última cerveza juntos.</p>
+          <p>Canales con esclusas que se inspiran en ideas de Leonardo. Darsena y Naviglio Grande: terrazas, tiendas pequeñas y el sitio perfecto para la última cerveza juntos.</p>
           <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=Naviglio+Grande+Milano" target="_blank" rel="noopener">📍 Naviglio Grande</a>
         </div>
       </div>
-      <div class="pill-row"><span class="pill">🏰 Castello</span><span class="pill">🌳 Sempione</span><span class="pill">🌊 Navigli</span><span class="pill">🛍️ Últimas compras</span><span class="pill">✈️ BGY</span></div>
-      <div class="flaco-quote"><svg><use href="#flaco"/></svg>"Misión cumplida: el novio vuelve entero… más o menos. Je-je-je-je."</div>
+      <div class="pill-row"><span class="pill">🏰 Castello</span><span class="pill">🌳 Sempione</span><span class="pill">🌊 Navigli</span><span class="pill">🛍️ Últimas compras</span><span class="pill">✈️ BGY + MXP</span></div>
+      <div class="flaco-quote"><svg><use href="#flaco"/></svg>«Misión cumplida: el novio vuelve entero… más o menos. Je-je-je-je.»</div>
     </div></div>
   </div>
 
@@ -1017,17 +1134,18 @@
 <!-- PENDIENTES -->
 <section class="todo-section" id="pendientes">
   <div class="todo-inner">
-    <h2>🐾 Pendientes antes de que llegue la manada</h2>
+    <h2>🐾 Pendientes antes de que aterrice la manada</h2>
     <p class="sub">Toca para marcar · se guarda en este móvil</p>
     <div class="todo-progress"><div id="todoBar"></div></div>
     <div id="todoList">
-      <label class="todo-item"><input type="checkbox" data-id="maletas"><div><div class="tt">Confirmar con Nina's House si se pueden dejar maletas antes de las 15:00</div><div class="td">Sábado 03 · si no, buscar consigna (plan B)</div></div></label>
+      <label class="todo-item"><input type="checkbox" data-id="maletas"><div><div class="tt">Preguntar a Nina's House si se pueden dejar las maletas antes de las 15:00</div><div class="td">Si no: consigna en Centrale o junto al Duomo (plan B)</div></div></label>
       <label class="todo-item"><input type="checkbox" data-id="bernina"><div><div class="tt">Sacar la hora exacta del Bernina Express del ZIP</div><div class="td">Lunes 05 · también el tren Milán → Tirano y la vuelta</div></div></label>
-      <label class="todo-item"><input type="checkbox" data-id="coche"><div><div class="tt">Decidir transporte del domingo: coche para 5, traslado o tren + shuttle</div><div class="td">Domingo 04 · salida 09:00</div></div></label>
-      <label class="todo-item"><input type="checkbox" data-id="comida"><div><div class="tt">Reservar comida del domingo: Taverna dei Servi o Cavallino</div><div class="td">Confirmar que abren el domingo a mediodía · 5 personas</div></div></label>
-      <label class="todo-item"><input type="checkbox" data-id="gate"><div><div class="tt">Entradas GATE · Schranz Movement compradas para los 5</div><div class="td">Sábado 03 · 23:00</div></div></label>
-      <label class="todo-item"><input type="checkbox" data-id="vuelta"><div><div class="tt">Apuntar el vuelo de vuelta del resto del grupo</div><div class="td">Martes 06</div></div></label>
-      <label class="todo-item"><input type="checkbox" data-id="roaming"><div><div class="tt">Revisar roaming en Suiza</div><div class="td">Lunes 05 · Suiza no está incluida en el roaming UE</div></div></label>
+      <label class="todo-item"><input type="checkbox" data-id="coche"><div><div class="tt">Decidir el transporte del domingo: coche para 5, traslado o tren + lanzadera</div><div class="td">Domingo 04 · salida 09:00</div></div></label>
+      <label class="todo-item"><input type="checkbox" data-id="comida"><div><div class="tt">Reservar la comida del domingo: Taverna dei Servi o Cavallino</div><div class="td">Comprobar que abren el domingo a mediodía · 5 personas</div></div></label>
+      <label class="todo-item"><input type="checkbox" data-id="gate"><div><div class="tt">Entradas de GATE · Schranz Movement compradas para los 5</div><div class="td">Sábado 03 · 23:00</div></div></label>
+      <label class="todo-item"><input type="checkbox" data-id="checkin"><div><div class="tt">Check-in online de Ryanair (FR6671 / FR6672 y BGY ↔ BCN)</div><div class="td">Ryanair cobra el check-in en el aeropuerto</div></div></label>
+      <label class="todo-item"><input type="checkbox" data-id="ropa"><div><div class="tt">Meter en la maleta la ropa de fiesta y el abrigo para el Bernina</div><div class="td">Negro para GATE · capas y gorro para St. Moritz</div></div></label>
+      <label class="todo-item"><input type="checkbox" data-id="roaming"><div><div class="tt">Revisar el roaming en Suiza</div><div class="td">Lunes 05 · Suiza no entra en el roaming de la UE</div></div></label>
     </div>
   </div>
 </section>
@@ -1040,6 +1158,483 @@
 </footer>
 
 <script>
+// Traducción ES → PT (português europeu). Clave = texto español tal cual aparece en la página.
+window.I18N_PT = {
+"La Ruta de Flaco": "A Rota do Flaco",
+"Milán · Ferrari · Bernina — Los últimos días de libertad de Sergio": "Milão · Ferrari · Bernina — Os últimos dias de liberdade do Sergio",
+"1–6 octubre 2026 · Barcelona + Madeira → Milán": "1–6 outubro 2026 · Barcelona + Madeira → Milão",
+"sniff sniff… je-je-je-je 🐾": "sniff sniff… hé-hé-hé-hé 🐾",
+"Reservas": "Reservas",
+"Ruta": "Rota",
+"Contexto": "Contexto",
+"Mi Milán": "O Milão do Mayker",
+"La despedida": "A despedida",
+"Pendientes": "Pendentes",
+"✅ Todo atado y bien atado": "✅ Tudo tratado e bem tratado",
+"Vuelos, camas y entradas · Mayker & la manada de Sergio": "Voos, camas e bilhetes · Mayker & a matilha do Sergio",
+"✈️ Vuelos de Mayker": "✈️ Voos do Mayker",
+"Ida · Jue 01 Oct": "Ida · Qui 01 Out",
+"BCN → BGY (Bérgamo) · Ryanair FR3320": "BCN → BGY (Bérgamo) · Ryanair FR3320",
+"Vuelta · Mar 06 Oct": "Regresso · Ter 06 Out",
+"BGY → BCN · ojo: Bérgamo, no Malpensa": "BGY → BCN · atenção: Bérgamo, não Malpensa",
+"✈️ Vuelos del grupo · desde Madeira": "✈️ Voos do grupo · desde a Madeira",
+"Ida · Sáb 03 Oct": "Ida · Sáb 03 Out",
+"FNC → MXP (Malpensa) · Ryanair FR6671": "FNC → MXP (Malpensa) · Ryanair FR6671",
+"MXP → FNC · Ryanair FR6672": "MXP → FNC · Ryanair FR6672",
+"🔒 Localizadores y nombres fuera de la web: cada uno los tiene en su email de Ryanair.": "🔒 Códigos de reserva e nomes fora do site: cada um tem os seus no email da Ryanair.",
+"🏨 Base 1 · Jue 01 → Sáb 03": "🏨 Base 1 · Qui 01 → Sáb 03",
+"~500 m de Loreto (M1/M2)": "~500 m de Loreto (M1/M2)",
+"Solo Mayker": "Só o Mayker",
+"Check-out hasta 11:00": "Check-out até às 11:00",
+"🏠 Base 2 · Sáb 03 → Mar 06": "🏠 Base 2 · Sáb 03 → Ter 06",
+"Apartamento para 5 personas": "Apartamento para 5 pessoas",
+"Toda la manada": "A matilha toda",
+"Check-in desde 15:00": "Check-in a partir das 15:00",
+"🧳 Si no dejan las maletas antes de las 15:00 → consigna en el centro (plan B en el sábado).": "🧳 Se não deixarem as malas antes das 15:00 → depósito de bagagem no centro (plano B no sábado).",
+"🎫 Entradas y planes": "🎫 Bilhetes e planos",
+"Sáb 03 Oct · 23:00–05:00 · Gate Milano, Via Valtellina 21": "Sáb 03 Out · 23:00–05:00 · Gate Milano, Via Valtellina 21",
+"Maranello + Módena · válido desde el Dom 04 · los dos museos en 48 h · 09:30–19:00 (última entrada 18:15)": "Maranello + Modena · válido a partir de Dom 04 · os dois museus em 48 h · 09:30–19:00 (última entrada 18:15)",
+"Lun 05 Oct · Tirano → Alp Grüm → St. Moritz · ~2h15 · hora exacta pendiente (billetes en el ZIP)": "Seg 05 Out · Tirano → Alp Grüm → St. Moritz · ~2h15 · hora exata pendente (bilhetes no ZIP)",
+"Emergencias Italia": "Emergências Itália",
+"6 días · 2 bases · 2 museos Ferrari · 1 tren por los Alpes · 1 noche de schranz · 0 excusas": "6 dias · 2 bases · 2 museus Ferrari · 1 comboio pelos Alpes · 1 noite de schranz · 0 desculpas",
+"La ruta de Flaco · 01–06 Octubre 2026": "A rota do Flaco · 01–06 Outubro 2026",
+"Jue 01": "Qui 01",
+"Llega Mayker": "Chega o Mayker",
+"Vie 02": "Sex 02",
+"Sáb 03": "Sáb 03",
+"Manada + GATE": "Matilha + GATE",
+"Dom 04": "Dom 04",
+"Ferrari + Módena": "Ferrari + Modena",
+"Lun 05": "Seg 05",
+"Mar 06": "Ter 06",
+"Navigli + vuelta": "Navigli + regresso",
+"Itinerario de Mayker (solo)": "Itinerário do Mayker (sozinho)",
+"Despedida con la manada": "Despedida com a matilha",
+"Día": "Dia",
+"Quién": "Quem",
+"Mañana": "Manhã",
+"Tarde": "Tarde",
+"Noche": "Noite",
+"🏨 Lux Hotel Durante · pizza rápida": "🏨 Lux Hotel Durante · pizza rápida",
+"Trabajo": "Trabalho",
+"💼 Trabajo": "💼 Trabalho",
+"🍕 Pizza AM → Duomo → Axel Arigato → Brera → papelerías": "🍕 Pizza AM → Duomo → Axel Arigato → Brera → papelarias",
+"🍷 Milán tranquilo": "🍷 Milão com calma",
+"🧳 Check-out · ✈️ FNC → MXP 10:45": "🧳 Check-out · ✈️ FNC → MXP 10:45",
+"🥟 Luini → Duomo → Brera → aperitivo": "🥟 Luini → Duomo → Brera → aperitivo",
+"🔊 GATE · hard techno": "🔊 GATE · hard techno",
+"Manada": "Matilha",
+"🏎️ Museo Ferrari Maranello": "🏎️ Museu Ferrari Maranello",
+"🍝 Módena → centro → Museo Enzo Ferrari": "🍝 Modena → centro → Museu Enzo Ferrari",
+"🏨 Milán · cena ligera": "🏨 Milão · jantar leve",
+"🚂 Tirano → Bernina": "🚂 Tirano → Bernina",
+"🚂 St. Moritz → regreso": "🚂 St. Moritz → regresso",
+"🛏️ Descanso": "🛏️ Descanso",
+"🏰 Castello → Sempione": "🏰 Castello → Sempione",
+"🌊 Navigli → compras": "🌊 Navigli → compras",
+"📜 Normas de la manada": "📜 Regras da matilha",
+"De obligado cumplimiento. Flaco es el juez y no acepta recursos.": "De cumprimento obrigatório. O Flaco é o juiz e não aceita recursos.",
+"⚖️ Las normas": "⚖️ As regras",
+"Lo que pasa en Milán se queda en Milán. Y en el grupo de WhatsApp, para siempre.": "O que acontece em Milão fica em Milão. E no grupo de WhatsApp, para sempre.",
+"El novio no paga ni una ronda. El novio no decide ni una ronda.": "O noivo não paga uma única rodada. O noivo também não escolhe nenhuma.",
+"Nadie se queda atrás en GATE. Ni en el Bernina. Sobre todo en el Bernina.": "Ninguém fica para trás no GATE. Nem no Bernina. Sobretudo no Bernina.",
+"Quien llegue tarde a una salida paga el siguiente café. En Suiza.": "Quem chegar atrasado a uma saída paga o próximo café. Na Suíça.",
+"Prohibido hablar de la boda antes del segundo spritz.": "Proibido falar do casamento antes do segundo spritz.",
+"🎯 Retos para Sergio": "🎯 Desafios para o Sergio",
+"Pedir el panzerotto en Luini en italiano y con gestos de mano.": "Pedir o panzerotto no Luini em italiano e com gestos de mão.",
+"Girar el talón sobre el toro de la Galleria (da suerte… y la necesita).": "Rodar o calcanhar em cima do touro da Galleria (dá sorte… e ele precisa).",
+"Cantar «Nessun dorma» en Piazza Grande, en la ciudad de Pavarotti.": "Cantar «Nessun dorma» na Piazza Grande, na cidade do Pavarotti.",
+"Conseguir un consejo matrimonial de un italiano mayor de 70.": "Arrancar um conselho matrimonial a um italiano com mais de 70 anos.",
+"Foto en el Museo Ferrari fingiendo que el coche es suyo.": "Foto no Museu Ferrari a fingir que o carro é dele.",
+"Aguantar en GATE hasta que suene el primer schranz de verdad.": "Aguentar no GATE até tocar o primeiro schranz a sério.",
+"🌍 Conoce el destino · Datos": "🌍 Conhece o destino · Dados",
+"Milán en contexto": "Milão em contexto",
+"Cifras redondeadas · ISTAT, INE, Eurostat, FMI · últimos datos disponibles": "Valores arredondados · ISTAT, INE, Eurostat, FMI · últimos dados disponíveis",
+"Indicador": "Indicador",
+"🇮🇹 Milán": "🇮🇹 Milão",
+"🇪🇸 Barcelona": "🇪🇸 Barcelona",
+"🇪🇸 Madrid": "🇪🇸 Madrid",
+"🇵🇹 Lisboa": "🇵🇹 Lisboa",
+"👥 Población (ciudad)": "👥 População (cidade)",
+"🏙️ Área metropolitana": "🏙️ Área metropolitana",
+"📐 Superficie municipal": "📐 Área do município",
+"📊 Densidad": "📊 Densidade",
+"💶 Peso de su región en el PIB": "💶 Peso da sua região no PIB",
+"Lombardía ≈ 22 %": "Lombardia ≈ 22 %",
+"Cataluña ≈ 19 %": "Catalunha ≈ 19 %",
+"Com. de Madrid ≈ 19 %": "Com. de Madrid ≈ 19 %",
+"Área de Lisboa ≈ 36 %": "Área de Lisboa ≈ 36 %",
+"⛪ Catedral": "⛪ Catedral",
+"Sagrada Família · 1882–hoy": "Sagrada Família · 1882–hoje",
+"Sé · desde 1147": "Sé · desde 1147",
+"⚽ Estadio": "⚽ Estádio",
+"🚇 Líneas de metro": "🚇 Linhas de metro",
+"🎫 Billete sencillo": "🎫 Bilhete simples",
+"🇮🇹 · 🇪🇸 · 🇵🇹 · Los tres países de la manada": "🇮🇹 · 🇪🇸 · 🇵🇹 · Os três países da matilha",
+"👥 Italia · población": "👥 Itália · população",
+"👥 España · población": "👥 Espanha · população",
+"👥 Portugal · población": "👥 Portugal · população",
+"🏝️ Madeira · población": "🏝️ Madeira · população",
+"Toda Madeira cabe cinco veces y media en Milán. Aun así, la mayoría de la manada viene de allí. Milán, avisada estás.": "A Madeira inteira cabe cinco vezes e meia em Milão. Mesmo assim, a maior parte da matilha vem de lá. Milão, estás avisada.",
+"🏙️ Milán · De qué vive": "🏙️ Milão · Do que vive",
+"💶 Bolsa de Italia y banca": "💶 Bolsa de Itália e banca",
+"👗 Moda · Prada, Armani, Versace": "👗 Moda · Prada, Armani, Versace",
+"🪑 Diseño · Salone del Mobile": "🪑 Design · Salone del Mobile",
+"🎭 La Scala · ópera desde 1778": "🎭 La Scala · ópera desde 1778",
+"⚽ Inter y Milan comparten San Siro": "⚽ Inter e Milan partilham San Siro",
+"🏎️ Módena · Motor Valley": "🏎️ Modena · Motor Valley",
+"🐎 Ferrari (Maranello) y Maserati": "🐎 Ferrari (Maranello) e Maserati",
+"🚗 Lamborghini y Pagani a menos de 1 h": "🚗 Lamborghini e Pagani a menos de 1 h",
+"🍷 Lambrusco, el tinto con burbujas": "🍷 Lambrusco, o tinto com bolhas",
+"🎤 Ciudad natal de Pavarotti": "🎤 Cidade natal do Pavarotti",
+"🚂 Bernina Express · En cifras": "🚂 Bernina Express · Em números",
+"🏔️ Punto más alto: 2.253 m": "🏔️ Ponto mais alto: 2.253 m",
+"🌉 196 puentes y 55 túneles": "🌉 196 pontes e 55 túneis",
+"🔄 Viaducto helicoidal de Brusio": "🔄 Viaduto helicoidal de Brusio",
+"📐 Pendientes de hasta el 7 %": "📐 Inclinações até 7 %",
+"🏛️ Patrimonio UNESCO desde 2008": "🏛️ Património UNESCO desde 2008",
+"🇵🇹 Portugal y Madeira": "🇵🇹 Portugal e Madeira",
+"🏝️ Madeira: isla atlántica, región autónoma": "🏝️ Madeira: ilha atlântica, região autónoma",
+"⚽ Funchal, cuna de Cristiano Ronaldo": "⚽ Funchal, berço de Cristiano Ronaldo",
+"✈️ El aeropuerto FNC lleva su nombre": "✈️ O aeroporto FNC tem o nome dele",
+"🍷 Vino de Madeira, fortificado y eterno": "🍷 Vinho da Madeira, fortificado e eterno",
+"🌺 Laurisilva · Patrimonio UNESCO": "🌺 Laurissilva · Património UNESCO",
+"🛫 FNC → MXP: ~3h45 de vuelo": "🛫 FNC → MXP: ~3h45 de voo",
+"🐾 Conexión curiosa · El caballito y el aviador": "🐾 Ligação curiosa · O cavalinho e o aviador",
+"El caballito negro de Ferrari era el emblema del aviador": "O cavalinho preto da Ferrari era o emblema do aviador",
+", as de la Primera Guerra Mundial. Su madre se lo regaló a Enzo Ferrari en 1923 «para que le diera suerte», y Enzo le puso el fondo": ", ás da Primeira Guerra Mundial. A mãe dele ofereceu-o a Enzo Ferrari em 1923 «para lhe dar sorte», e Enzo pôs-lhe o fundo",
+"amarillo de Módena": "amarelo de Modena",
+". Por eso Flaco va con gafas de piloto y bufanda rosso corsa. Y como la manada aterriza desde el aeropuerto Cristiano Ronaldo, el domingo toca foto de grupo haciendo el «siuuu» delante de un Ferrari. Je-je-je.": ". Por isso o Flaco usa óculos de piloto e cachecol rosso corsa. E como a matilha aterra vinda do aeroporto Cristiano Ronaldo, no domingo há foto de grupo a fazer o «siuuu» à frente de um Ferrari. Hé-hé-hé.",
+"🎬📚 Para ver y leer antes del domingo": "🎬📚 Para ver e ler antes de domingo",
+"Michael Mann · 2023 · con Adam Driver y Penélope Cruz": "Michael Mann · 2023 · com Adam Driver e Penélope Cruz",
+"El verano de 1957 de Enzo Ferrari en Módena: la empresa al borde de la quiebra, el matrimonio hecho trizas y la Mille Miglia como apuesta. Buena parte se rodó en Módena.": "O verão de 1957 de Enzo Ferrari em Modena: a empresa à beira da falência, o casamento em cacos e a Mille Miglia como aposta. Grande parte foi filmada em Modena.",
+"🐾 Por qué la recomienda Flaco:": "🐾 Porque é que o Flaco recomenda:",
+"el domingo pasaréis por la casa natal de Enzo. Y Sergio puede tomar nota de cómo NO llevar un matrimonio.": "no domingo vão passar pela casa natal do Enzo. E o Sergio pode tomar nota de como NÃO levar um casamento.",
+"Brock Yates · 1991 · Biografía": "Brock Yates · 1991 · Biografia",
+"La biografía clásica y poco complaciente del hombre detrás del caballito: genio, carácter imposible y obsesión por ganar. Para llegar a Maranello sabiendo más que el guía.": "A biografia clássica e nada condescendente do homem por trás do cavalinho: génio, feitio impossível e obsessão por ganhar. Para chegar a Maranello a saber mais do que o guia.",
+"Itinerario de Mayker · solo": "Itinerário do Mayker · sozinho",
+"Mi Milán · Jue 01 → Sáb 03 mañana": "O Milão do Mayker · Qui 01 → Sáb 03 manhã",
+"Antes de que aterrice la manada: compras, papelerías y Milán a mi ritmo": "Antes de a matilha aterrar: compras, papelarias e Milão ao meu ritmo",
+"Jueves 01 Octubre · Llegada": "Quinta 01 Outubro · Chegada",
+"Aterrizaje en Bérgamo": "Aterragem em Bérgamo",
+"Orio Shuttle → Centrale → taxi → hotel → pizza → a dormir": "Orio Shuttle → Centrale → táxi → hotel → pizza → cama",
+"🟡 Solo Mayker": "🟡 Só o Mayker",
+"Principios de octubre · Milán de noche": "Início de outubro · Milão à noite",
+"Noches frescas · media habitual": "Noites frescas · média habitual",
+"🧥 Chaqueta a mano al salir de BGY. Mira la previsión real el mismo día.": "🧥 Casaco à mão ao sair de BGY. Vê a previsão real no próprio dia.",
+"⏰ Horarios del día": "⏰ Horários do dia",
+"Vuelo BCN → BGY": "Voo BCN → BGY",
+"Aterrizaje en Bérgamo · control, equipaje y salida": "Aterragem em Bérgamo · controlo, bagagem e saída",
+"directo BGY → Milano Centrale (~1 h)": "direto BGY → Milano Centrale (~1 h)",
+"🚕 Taxi de Centrale al Lux Hotel Durante": "🚕 Táxi de Centrale para o Lux Hotel Durante",
+"🍕 Algo rápido cerca del hotel. Nada de cena formal.": "🍕 Algo rápido perto do hotel. Nada de jantar formal.",
+"Bérgamo → Milano Centrale": "Bérgamo → Milano Centrale",
+"Orio Shuttle directo, sin trenes ni transbordos. Esta noche no compensa complicarse.": "Orio Shuttle direto, sem comboios nem transbordos. Esta noite não vale a pena complicar.",
+"~60 min · directo": "~60 min · direto",
+"🚕 Taxi Centrale → hotel": "🚕 Táxi Centrale → hotel",
+"🐾 Flaco dice": "🐾 O Flaco diz",
+"Llegas con maleta y recién bajado del avión: taxi y listo. Hay metro + bus, pero no compensa. El hotel está a unos 500 m de Loreto (M1 + M2), así que mañana llegas fácil al centro.": "Chegas com mala e acabado de sair do avião: táxi e pronto. Há metro + autocarro, mas não compensa. O hotel fica a uns 500 m de Loreto (M1 + M2), por isso amanhã chegas facilmente ao centro.",
+"📌 Objetivo": "📌 Objetivo",
+"Llegar sin complicaciones": "Chegar sem complicações",
+"Cenar algo ligero": "Jantar algo leve",
+"Dormir pronto: mañana trabajas": "Dormir cedo: amanhã trabalhas",
+"«Sniff sniff… ¡huele a pizza desde la pista! Disfruta de la paz, que dura dos días.»": "«Sniff sniff… cheira a pizza desde a pista! Aproveita a paz, que só dura dois dias.»",
+"Viernes 02 Octubre · Mi día": "Sexta 02 Outubro · O meu dia",
+"Pizza AM, Duomo, Axel Arigato y papelerías": "Pizza AM, Duomo, Axel Arigato e papelarias",
+"Trabajo hasta las 14:00 → Porta Romana → centro → Brera": "Trabalho até às 14:00 → Porta Romana → centro → Brera",
+"🎯 Misión compras": "🎯 Missão compras",
+"Principios de octubre · Milán": "Início de outubro · Milão",
+"Media habitual · tiempo para caminar": "Média habitual · tempo para caminhar",
+"👟 Hoy se camina: Porta Romana → Duomo → Brera son unos 3–4 km.": "👟 Hoje anda-se: Porta Romana → Duomo → Brera são uns 3–4 km.",
+"Ir hacia Porta Romana": "Ir para Porta Romana",
+", la recomendación del novio": ", a recomendação do noivo",
+"Misión Axel Arigato": "Missão Axel Arigato",
+": primero END Milano y, si no, Rinascente": ": primeiro END Milano e, se não, Rinascente",
+"Paseo: Via Brera → Via Fiori Chiari → Piazza del Carmine": "Passeio: Via Brera → Via Fiori Chiari → Piazza del Carmine",
+"🍷 Aperitivo / cena libre": "🍷 Aperitivo / jantar livre",
+"🌙 Paseo nocturno: Brera → Galleria → Duomo iluminado": "🌙 Passeio noturno: Brera → Galleria → Duomo iluminado",
+"La recomendación de Sergio. Si está mala, tenemos argumento para toda la boda.": "A recomendação do Sergio. Se for má, temos assunto para o casamento inteiro.",
+"Unos 20 min a pie, o la M3 de Porta Romana a Duomo (2 paradas).": "Uns 20 min a pé, ou a M3 de Porta Romana até Duomo (2 paragens).",
+"90 min · contactless en el torno": "90 min · contactless no torniquete",
+"🏛️ El primer Milán": "🏛️ O primeiro Milão",
+"Piazza del Duomo, Galleria y La Scala. Hoy": "Piazza del Duomo, Galleria e La Scala. Hoje",
+"no entraría": "não entrava",
+"al Duomo salvo que te apetezca mucho: la idea es conocer Milán, no encerrarte en un museo.": "no Duomo, a não ser que te apeteça muito: a ideia é conhecer Milão, não fechar-te num museu.",
+"👟 Misión Axel Arigato": "👟 Missão Axel Arigato",
+"END Milano · Via dei Mercanti, pegado al Duomo": "END Milano · Via dei Mercanti, colado ao Duomo",
+"Prueba tallas → 🎯 compra hecha": "Experimenta tamanhos → 🎯 compra feita",
+"Si no hay suerte, segunda oportunidad el martes": "Se não houver sorte, segunda oportunidade na terça",
+"Pettinaroli · prioridad n.º 1": "Pettinaroli · prioridade n.º 1",
+"Via Brera 4 · tienda histórica": "Via Brera 4 · loja histórica",
+"Mucho más que una papelería: cuadernos, grabados, mapas antiguos y papel de verdad.": "Muito mais do que uma papelaria: cadernos, gravuras, mapas antigos e papel a sério.",
+"Papel de Fabriano, fabricado desde el siglo XIII. Para cerrar la ruta de papelerías.": "Papel de Fabriano, fabricado desde o século XIII. Para fechar a rota das papelarias.",
+"🏛️ Duomo por fuera": "🏛️ Duomo por fora",
+"«Último día de persona civilizada. Mañana aterriza Madeira. Je-je-je.»": "«Último dia de pessoa civilizada. Amanhã aterra a Madeira. Hé-hé-hé.»",
+"Sábado 03 Octubre · Mañana": "Sábado 03 Outubro · Manhã",
+"Check-out y mudanza": "Check-out e mudança",
+"Desayuno → maletas → check-out → reunión con la manada": "Pequeno-almoço → malas → check-out → encontro com a matilha",
+"⏰ Horarios de la mañana": "⏰ Horários da manhã",
+"☕ Desayuno": "☕ Pequeno-almoço",
+"Recoger tus cosas": "Arrumar as tuas coisas",
+"Lux Hotel Durante (como tarde a las 11:00)": "Lux Hotel Durante (o mais tardar às 11:00)",
+"Dejar tu maleta en Nina's House o, si no se puede, en la consigna (plan B)": "Deixar a tua mala na Nina's House ou, se não der, no depósito de bagagem (plano B)",
+"Te juntas con la manada": "Juntas-te à matilha",
+"→ sigue en «La despedida»": "→ continua em «A despedida»",
+"Maletas:": "Malas:",
+"si Nina's House no os deja dejarlas antes de las 15:00, vamos todos a una consigna del centro. El plan B está en el día del sábado.": "se a Nina's House não deixar deixá-las antes das 15:00, vamos todos a um depósito de bagagem no centro. O plano B está no dia de sábado.",
+"«Se acabó la paz. ¡Aterriza la manada! 🐾🐾🐾🐾🐾»": "«Acabou-se a paz. Aterra a matilha! 🐾🐾🐾🐾🐾»",
+"Itinerario de la manada · despedida": "Itinerário da matilha · despedida",
+"La despedida de Sergio · Sáb 03 → Mar 06": "A despedida do Sergio · Sáb 03 → Ter 06",
+"Toca cada día para desplegar el plan completo": "Toca em cada dia para abrir o plano completo",
+"Sábado 03 Octubre · Aterriza Madeira": "Sábado 03 Outubro · Aterra a Madeira",
+"Luini, Duomo, aperitivo y GATE": "Luini, Duomo, aperitivo e GATE",
+"MXP 10:45 → maletas → panzerotti → Brera → hard techno": "MXP 10:45 → malas → panzerotti → Brera → hard techno",
+"🔴 Manada": "🔴 Matilha",
+"🔊 Schranz 23:00": "🔊 Schranz 23:00",
+"¡Empieza la cuenta atrás de la libertad de Sergio!": "Começa a contagem decrescente da liberdade do Sergio!",
+"Hoy hay que ser listos: por la noche hay techno.": "Hoje é preciso ter juízo: à noite há techno.",
+"Media habitual": "Média habitual",
+"🔋 Powerbank cargado y chaqueta ligera para salir de GATE a las tantas.": "🔋 Powerbank carregado e casaco leve para sair do GATE a altas horas.",
+"✈️ Despega la manada de Funchal (FR6671). Madrugón histórico.": "✈️ A matilha descola do Funchal (FR6671). Madrugada histórica.",
+"Aterrizan en MXP": "Aterram em MXP",
+"Salida de Malpensa → Malpensa Express a Centrale": "Saída de Malpensa → Malpensa Express para Centrale",
+"Llegada a Milano Centrale": "Chegada a Milano Centrale",
+"🧳 Maletas: Nina's House o": "🧳 Malas: Nina's House ou",
+"consigna en el centro": "depósito de bagagem no centro",
+": panzerotto, bebida y a la calle": ": panzerotto, bebida e rua",
+"Galleria Vittorio Emanuele II · reto del toro 🐂": "Galleria Vittorio Emanuele II · desafio do touro 🐂",
+"Paseo hacia Brera": "Passeio até Brera",
+"☕ Brera: pasear, fotos, café, tiendas. Nada de museos.": "☕ Brera: passear, fotos, café, lojas. Nada de museus.",
+"Aperitivo": "Aperitivo",
+": empieza oficialmente la despedida": ": começa oficialmente a despedida",
+"🍝 Cena, sin alargarla": "🍝 Jantar, sem o esticar",
+"🏨 A casa: ducha, cambiarse, cargar móviles y powerbank": "🏨 Para casa: duche, mudar de roupa, carregar telemóveis e powerbank",
+"(entrar entre 23:30 y 00:00)": "(entrar entre as 23:30 e as 00:00)",
+"Malpensa → Milán": "Malpensa → Milão",
+"Malpensa Express a Centrale, ~50 min, un tren cada 30 min. Con equipaje, contad con estar en el centro hacia las 12:30.": "Malpensa Express para Centrale, ~50 min, um comboio a cada 30 min. Com bagagem, contem estar no centro por volta das 12:30.",
+"~50 min · cada 30 min": "~50 min · a cada 30 min",
+"🚕 Taxi MXP (tarifa fija)": "🚕 Táxi MXP (tarifa fixa)",
+"si cabéis todos con maletas": "se couberem todos com as malas",
+"Plan B maletas · si Nina's House no deja dejarlas antes de las 15:00:": "Plano B malas · se a Nina's House não deixar deixá-las antes das 15:00:",
+"se dejan en una consigna del centro y se recogen antes de ir a casa a cambiarse.": "ficam num depósito de bagagem no centro e vão-se buscar antes de ir a casa mudar de roupa.",
+", la consigna oficial dentro de la estación: os pilla de camino desde Malpensa, y de ahí M3 directa a Duomo.": ", o depósito oficial dentro da estação: fica no caminho desde Malpensa, e daí a M3 vai direta ao Duomo.",
+"• O una consigna de app (": "• Ou um depósito por app (",
+") junto al Duomo, reservada desde el móvil.": ") junto ao Duomo, reservado pelo telemóvel.",
+"📍 Consigna Centrale": "📍 Depósito Centrale",
+"📍 Consignas junto al Duomo": "📍 Depósitos junto ao Duomo",
+"Via Santa Radegonda 16 · junto al Duomo · ⭐ 4,1 · 02 8646 1917": "Via Santa Radegonda 16 · junto ao Duomo · ⭐ 4,1 · 02 8646 1917",
+"Aquí no se discute: la manada llega con hambre → Luini. Suele haber cola, pero va rápida. Primer reto de Sergio: pedir en italiano.": "Aqui não se discute: a matilha chega com fome → Luini. Costuma haver fila, mas anda depressa. Primeiro desafio do Sergio: pedir em italiano.",
+"🔊 Sábado noche · confirmado": "🔊 Sábado à noite · confirmado",
+"Hard techno / schranz, nada de reguetón de discoteca comercial. Entrar sobre 23:30–00:00 → O.B.I. / DSTM → fiesta → salir cuando la manada diga basta. No hace falta aguantar hasta las 05:00… pero quien se vaya primero paga el desayuno.": "Hard techno / schranz, nada de reggaeton de discoteca comercial. Entrar por volta das 23:30–00:00 → O.B.I. / DSTM → festa → sair quando a matilha disser chega. Não é preciso aguentar até às 05:00… mas quem sair primeiro paga o pequeno-almoço.",
+"Nada de mochila grande en GATE.": "Nada de mochila grande no GATE.",
+"Lo justo: móvil, documento, tarjeta y powerbank. Mañana hay Ferrari a las 09:00.": "Só o essencial: telemóvel, documento, cartão e powerbank. Amanhã há Ferrari às 09:00.",
+"🐂 El toro": "🐂 O touro",
+"«¿El novio quiere irse a casa a la 1? Je-je-je… ni lo sueñes.»": "«O noivo quer ir para casa à 1? Hé-hé-hé… nem sonhes.»",
+"Domingo 04 Octubre · Motor Valley": "Domingo 04 Outubro · Motor Valley",
+"Maranello + Módena · los dos museos": "Maranello + Modena · os dois museus",
+"Museo Ferrari → comida modenesa → centro → Museo Enzo Ferrari": "Museu Ferrari → almoço modenês → centro → Museu Enzo Ferrari",
+"🍝 Día de comer bien": "🍝 Dia de comer bem",
+"Principios de octubre · Emilia-Romaña": "Início de outubro · Emília-Romanha",
+"🕶️ Gafas de sol después de GATE: imprescindibles, y no por el sol.": "🕶️ Óculos de sol depois do GATE: indispensáveis, e não é por causa do sol.",
+"Despertar (sí, después de GATE 😅)": "Acordar (sim, depois do GATE 😅)",
+"☕ Desayuno (y un ibuprofeno si hace falta)": "☕ Pequeno-almoço (e um ibuprofeno se for preciso)",
+"Salida de Milán": "Saída de Milão",
+"Museo Ferrari Maranello": "Museu Ferrari Maranello",
+"Museo Ferrari": "Museu Ferrari",
+"Museo Enzo Ferrari": "Museu Enzo Ferrari",
+"Comida": "Almoço",
+"(ver opciones abajo)": "(ver opções em baixo)",
+"Piazza Grande → Duomo → Ghirlandina → Via Emilia → Osteria Francescana (por fuera)": "Piazza Grande → Duomo → Ghirlandina → Via Emilia → Osteria Francescana (por fora)",
+"🚗 Regreso a Milán, sin prisas": "🚗 Regresso a Milão, sem pressas",
+"Cena ligera o una copa. Hoy": "Jantar leve ou um copo. Hoje",
+"no hay fiesta": "não há festa",
+": mañana toca Bernina.": ": amanhã é dia de Bernina.",
+"Milán → Maranello → Módena → Milán": "Milão → Maranello → Modena → Milão",
+"Para 5, lo más cómodo es coche grande de alquiler o traslado privado: Milán–Maranello son ~190 km (~2 h) y Maranello–Módena ~20 min. Alternativa: Frecciarossa Milano → Modena (~1 h) + lanzadera de los museos Ferrari a Maranello.": "Para 5, o mais cómodo é um carro grande alugado ou transfer privado: Milão–Maranello são ~190 km (~2 h) e Maranello–Modena ~20 min. Alternativa: Frecciarossa Milano → Modena (~1 h) + shuttle dos museus Ferrari até Maranello.",
+"🚗 Coche de alquiler 7 plazas": "🚗 Carro alugado de 7 lugares",
+"a presupuestar": "a orçamentar",
+"+ autopista y gasolina": "+ portagens e combustível",
+"🚄 Tren + shuttle": "🚄 Comboio + shuttle",
+"~25–40 € p.p. ida": "~25–40 € p.p. ida",
+"según tarifa Trenitalia/Italo": "conforme a tarifa Trenitalia/Italo",
+"Fórmula 1, coches de calle y la historia de la Scuderia, junto a la fábrica. La entrada habla de ~1 h, pero mejor 1h15–1h30.": "Fórmula 1, carros de estrada e a história da Scuderia, junto à fábrica. O bilhete fala em ~1 h, mas melhor 1h15–1h30.",
+"📍 Museo Ferrari": "📍 Museu Ferrari",
+"🏎️ Museo Enzo Ferrari Módena": "🏎️ Museu Enzo Ferrari Modena",
+"La casa natal de Enzo junto a una galería moderna con el techo amarillo en forma de capó. Última entrada 18:15.": "A casa natal do Enzo junto a uma galeria moderna com o telhado amarelo em forma de capô. Última entrada 18:15.",
+"📍 Museo Enzo Ferrari": "📍 Museu Enzo Ferrari",
+"🍝 Comida en Módena · opción del plan": "🍝 Almoço em Modena · opção do plano",
+"Cocina modenesa tradicional en pleno centro. Para comer bien y salir andando hacia Piazza Grande. ⭐ 4,1 · 059 217134": "Cozinha modenesa tradicional em pleno centro. Para comer bem e sair a pé para a Piazza Grande. ⭐ 4,1 · 059 217134",
+"🥓 Embutidos": "🥓 Enchidos",
+"🍝 Pasta fresca": "🍝 Massa fresca",
+"⚠️ Domingo a mediodía y sois 5: reservad mesa por teléfono.": "⚠️ Domingo ao almoço e são 5: reservem mesa por telefone.",
+"🐾 El añadido de Flaco": "🐾 A sugestão do Flaco",
+"🏎️ Alternativa con sabor a Cavallino · en Maranello": "🏎️ Alternativa com sabor a Cavallino · em Maranello",
+"Ristorante Cavallino · de Massimo Bottura": "Ristorante Cavallino · de Massimo Bottura",
+"El restaurante histórico de Ferrari, enfrente de la entrada de la fábrica, donde comían Enzo y los pilotos. Hoy lo lleva": "O restaurante histórico da Ferrari, em frente à entrada da fábrica, onde comiam o Enzo e os pilotos. Hoje é gerido por",
+", el chef de la Osteria Francescana (3 estrellas Michelin). Cocina emiliana tradicional reinterpretada. Es la forma más asequible de comer «Bottura» en el viaje, y está a dos pasos del Museo Ferrari.": ", o chef da Osteria Francescana (3 estrelas Michelin). Cozinha emiliana tradicional reinterpretada. É a forma mais acessível de comer «Bottura» na viagem, e fica a dois passos do Museu Ferrari.",
+"🐎 Historia Ferrari": "🐎 História Ferrari",
+"🥟 Tortellini en brodo": "🥟 Tortellini in brodo",
+"⚠️ Comprobad que abre el domingo a mediodía y reservad: es pequeño y muy buscado. Con Cavallino el plan queda: Museo Ferrari 10:30 → Cavallino 12:15 → Módena centro 14:15 → Enzo Ferrari 16:00.": "⚠️ Confirmem que abre ao domingo ao almoço e reservem: é pequeno e muito procurado. Com o Cavallino o plano fica: Museu Ferrari 10:30 → Cavallino 12:15 → centro de Modena 14:15 → Enzo Ferrari 16:00.",
+"🍽️ Ver más opciones para comer en Módena ▼": "🍽️ Ver mais opções para comer em Modena ▼",
+"🍽️ Ver más opciones para comer en Módena ▲": "🍽️ Ver mais opções para comer em Modena ▲",
+"📍 Via Vignolese 58 · Módena · el bistró de Bottura": "📍 Via Vignolese 58 · Modena · o bistrô do Bottura",
+"La versión informal y gamberra de la cocina de Bottura, más barata que la Francescana. Algo fuera del casco antiguo, a ~15 min a pie de Piazza Grande. Confirmad el horario del domingo.": "A versão informal e descarada da cozinha do Bottura, mais barata do que a Francescana. Um pouco fora do centro histórico, a ~15 min a pé da Piazza Grande. Confirmem o horário de domingo.",
+"Gnocco fritto y tigelle para picar": "Gnocco fritto e tigelle para petiscar",
+"📍 Centro histórico · entre Piazza Grande y Via Emilia": "📍 Centro histórico · entre a Piazza Grande e a Via Emilia",
+"Si el museo se alarga y vais justos: gnocco fritto con prosciutto y mortadela, tigelle con lardo y una copa de Lambrusco. Rápido y muy modenés.": "Se o museu se prolongar e estiverem à pressa: gnocco fritto com prosciutto e mortadela, tigelle com lardo e um copo de Lambrusco. Rápido e muito modenês.",
+"Aceto Balsamico · para llevar a casa": "Aceto Balsamico · para levar para casa",
+"🎁 Souvenir obligatorio": "🎁 Souvenir obrigatório",
+"Buscad el sello": "Procurem o selo",
+"(botellita de 100 ml, 12 o 25 años). El «IGP» es el del súper.": "(garrafinha de 100 ml, 12 ou 25 anos). O «IGP» é o do supermercado.",
+"🏛️ Centro de Módena · 14:00–15:30": "🏛️ Centro de Modena · 14:00–15:30",
+"Piazza Grande (UNESCO) · reto «Nessun dorma» 🎤": "Piazza Grande (UNESCO) · desafio «Nessun dorma» 🎤",
+"Duomo románico": "Duomo românico",
+"Osteria Francescana, solo por fuera (Via Stella 22)": "Osteria Francescana, só por fora (Via Stella 22)",
+"Hoy se come en serio. A Módena se viene a comer, no a probar: tortellini, gnocco, lambrusco y unas gotas de balsámico. Y esta noche, a dormir como angelitos.": "Hoje come-se a sério. A Modena vem-se para comer, não para provar: tortellini, gnocco, lambrusco e umas gotas de balsâmico. E esta noite, a dormir como anjinhos.",
+"«¡Vroooom! Gafas puestas, bufanda roja… y el novio con resaca en el asiento de atrás. Je-je-je.»": "«Vroooom! Óculos postos, cachecol vermelho… e o noivo de ressaca no banco de trás. Hé-hé-hé.»",
+"Lunes 05 Octubre · Los Alpes": "Segunda 05 Outubro · Os Alpes",
+"Milán → Tirano → Alp Grüm → St. Moritz → regreso a Milán": "Milão → Tirano → Alp Grüm → St. Moritz → regresso a Milão",
+"🇨🇭 DNI / pasaporte": "🇨🇭 Cartão de Cidadão / passaporte",
+"Octubre · paso de Bernina (2.253 m)": "Outubro · passo de Bernina (2.253 m)",
+"Arriba y en St. Moritz hace frío de verdad": "Lá em cima e em St. Moritz faz frio a sério",
+"🧣 Ropa de abrigo y por capas. Puede haber nieve arriba. Los de Madeira, avisados: esto no es Funchal.": "🧣 Roupa quente e por camadas. Pode haver neve lá em cima. Malta da Madeira, estão avisados: isto não é o Funchal.",
+"Horario exacto pendiente.": "Horário exato pendente.",
+"Los billetes están en un ZIP: con la hora del tren, este día pasa a ser un plan minuto a minuto. El horario de verano del Bernina Express 2026 dura hasta el 25 de octubre, así que el día 5 sigue siendo verano.": "Os bilhetes estão num ZIP: com a hora do comboio, este dia passa a ser um plano ao minuto. O horário de verão do Bernina Express 2026 vai até 25 de outubro, por isso o dia 5 ainda é verão.",
+"⏰ Esquema del día": "⏰ Esquema do dia",
+"Muy temprano": "Muito cedo",
+"🚆 Milano Centrale → Tirano (regional Trenord, ~2h30)": "🚆 Milano Centrale → Tirano (regional Trenord, ~2h30)",
+"Hora billete": "Hora do bilhete",
+"Tirano → Alp Grüm → St. Moritz (~2h15)": "Tirano → Alp Grüm → St. Moritz (~2h15)",
+"🏔️ St. Moritz: paseo por el lago y el pueblo": "🏔️ St. Moritz: passeio pelo lago e pela vila",
+"Regreso": "Regresso",
+"🚆 Vuelta a Milán (según billete)": "🚆 Regresso a Milão (conforme o bilhete)",
+"🛏️ Descanso. Mañana nos separamos.": "🛏️ Descanso. Amanhã separamo-nos.",
+"🚂 Qué mirar desde el tren": "🚂 O que ver do comboio",
+"Viaducto helicoidal de Brusio": "Viaduto helicoidal de Brusio",
+"Lago Bianco y Ospizio Bernina": "Lago Bianco e Ospizio Bernina",
+"Alp Grüm y el glaciar Palü": "Alp Grüm e o glaciar Palü",
+"Valle de Poschiavo": "Vale de Poschiavo",
+"🇨🇭 Suiza · recordatorios": "🇨🇭 Suíça · lembretes",
+"DNI o pasaporte encima": "Cartão de Cidadão ou passaporte contigo",
+"Moneda: franco suizo (la tarjeta funciona)": "Moeda: franco suíço (o cartão funciona)",
+"Datos: Suiza no entra en el roaming de la UE": "Dados: a Suíça não entra no roaming da UE",
+"Café en St. Moritz: prepara la cartera": "Café em St. Moritz: prepara a carteira",
+"🌉 196 puentes": "🌉 196 pontes",
+"«Las gafas de aviador valen también para el tren panorámico. Sniff… ¡huele a nieve y a franco suizo!»": "«Os óculos de aviador também servem para o comboio panorâmico. Sniff… cheira a neve e a franco suíço!»",
+"Martes 06 Octubre · Último día": "Terça 06 Outubro · Último dia",
+"Castello, Sempione y Navigli": "Castello, Sempione e Navigli",
+"Check-out → castillo → parque → canales → compras → aeropuertos": "Check-out → castelo → parque → canais → compras → aeroportos",
+"🧳 Maletas en consigna: mochila pequeña y a caminar.": "🧳 Malas no depósito: mochila pequena e a andar.",
+"Check-out Nina's House": "Check-out Nina's House",
+"· maletas a la consigna": "· malas para o depósito",
+"🍝 Comida tranquila": "🍝 Almoço tranquilo",
+": Darsena → Naviglio Grande · último brindis": ": Darsena → Naviglio Grande · último brinde",
+"🛍️ Últimas compras (Axel Arigato o papelería, si quedó algo)": "🛍️ Últimas compras (Axel Arigato ou papelaria, se ficou alguma coisa)",
+"🧳 Recoger maletas · todos juntos a Centrale": "🧳 Ir buscar as malas · todos juntos para Centrale",
+"Maletas del martes:": "Malas de terça:",
+"la misma consigna del sábado (KiPoint en Centrale) es la mejor opción, porque los dos aeropuertos salen de allí.": "o mesmo depósito de sábado (KiPoint em Centrale) é a melhor opção, porque os dois aeroportos saem de lá.",
+"🟡 Mayker · vuelta a Barcelona": "🟡 Mayker · regresso a Barcelona",
+"Llegada a BGY, con más de 2 h de margen": "Chegada a BGY, com mais de 2 h de margem",
+"· llegada 22:55": "· chegada 22:55",
+"Es Bérgamo, no Malpensa. El tráfico de salida un martes por la tarde puede dar sustos: mejor no apurar.": "É Bérgamo, não Malpensa. O trânsito de saída numa terça à tarde pode pregar sustos: melhor não arriscar.",
+"🇵🇹 La manada de Madeira · vuelta a Funchal": "🇵🇹 A matilha da Madeira · regresso ao Funchal",
+"Llegada a MXP, con 2h40 de margen": "Chegada a MXP, com 2h40 de margem",
+"· Ryanair FR6672 · llegada 00:55 (miércoles)": "· Ryanair FR6672 · chegada 00:55 (quarta-feira)",
+"Abrazo de despedida en Centrale hacia las 17:45. Sergio vuelve a casa casado… bueno, casi.": "Abraço de despedida em Centrale por volta das 17:45. O Sergio volta para casa casado… bem, quase.",
+"La fortaleza de los Sforza (s. XV), con patios de entrada libre. Detrás, el parque más grande del centro hasta el Arco della Pace.": "A fortaleza dos Sforza (séc. XV), com pátios de entrada livre. Atrás, o maior parque do centro até ao Arco della Pace.",
+"Canales con esclusas que se inspiran en ideas de Leonardo. Darsena y Naviglio Grande: terrazas, tiendas pequeñas y el sitio perfecto para la última cerveza juntos.": "Canais com eclusas inspiradas em ideias de Leonardo. Darsena e Naviglio Grande: esplanadas, lojas pequenas e o sítio perfeito para a última cerveja juntos.",
+"🛍️ Últimas compras": "🛍️ Últimas compras",
+"«Misión cumplida: el novio vuelve entero… más o menos. Je-je-je-je.»": "«Missão cumprida: o noivo volta inteiro… mais ou menos. Hé-hé-hé-hé.»",
+"🐾 Pendientes antes de que aterrice la manada": "🐾 Pendentes antes de a matilha aterrar",
+"Toca para marcar · se guarda en este móvil": "Toca para marcar · fica guardado neste telemóvel",
+"Preguntar a Nina's House si se pueden dejar las maletas antes de las 15:00": "Perguntar à Nina's House se se podem deixar as malas antes das 15:00",
+"Si no: consigna en Centrale o junto al Duomo (plan B)": "Se não: depósito em Centrale ou junto ao Duomo (plano B)",
+"Sacar la hora exacta del Bernina Express del ZIP": "Tirar a hora exata do Bernina Express do ZIP",
+"Lunes 05 · también el tren Milán → Tirano y la vuelta": "Segunda 05 · também o comboio Milão → Tirano e o regresso",
+"Decidir el transporte del domingo: coche para 5, traslado o tren + lanzadera": "Decidir o transporte de domingo: carro para 5, transfer ou comboio + shuttle",
+"Domingo 04 · salida 09:00": "Domingo 04 · saída 09:00",
+"Reservar la comida del domingo: Taverna dei Servi o Cavallino": "Reservar o almoço de domingo: Taverna dei Servi ou Cavallino",
+"Comprobar que abren el domingo a mediodía · 5 personas": "Confirmar que abrem ao domingo ao almoço · 5 pessoas",
+"Entradas de GATE · Schranz Movement compradas para los 5": "Bilhetes do GATE · Schranz Movement comprados para os 5",
+"Check-in online de Ryanair (FR6671 / FR6672 y BGY ↔ BCN)": "Check-in online da Ryanair (FR6671 / FR6672 e BGY ↔ BCN)",
+"Ryanair cobra el check-in en el aeropuerto": "A Ryanair cobra o check-in no aeroporto",
+"Revisar el roaming en Suiza": "Ver o roaming na Suíça",
+"Lunes 05 · Suiza no entra en el roaming de la UE": "Segunda 05 · a Suíça não entra no roaming da UE",
+"Je-je-je… ¡Viva el novio!": "Hé-hé-hé… Viva o noivo!",
+"Seis días, dos museos Ferrari, un tren por los Alpes y una noche de schranz. Sergio, Flaco te vigila. 🐾🏎️🚂": "Seis dias, dois museus Ferrari, um comboio pelos Alpes e uma noite de schranz. Sergio, o Flaco está de olho em ti. 🐾🏎️🚂",
+"LA RUTA DE FLACO · MILÁN 2026 · MAYKER": "A ROTA DO FLACO · MILÃO 2026 · MAYKER",
+"Maleta": "Mala",
+"🌦️ Clima y maleta": "🌦️ Tempo e mala",
+"Qué tiempo hará y qué meter en la maleta": "Que tempo vai fazer e o que levar na mala",
+"Previsión consultada el 1 de octubre · revisadla la víspera de cada día": "Previsão consultada a 1 de outubro · confirmem na véspera de cada dia",
+"Dónde": "Onde",
+"Máx / Mín": "Máx / Mín",
+"Cielo": "Céu",
+"Ropa": "Roupa",
+"Milán": "Milão",
+"Módena": "Modena",
+"🌙 Templado": "🌙 Ameno",
+"Sudadera fina": "Sweat fina",
+"🌤️ Casi verano": "🌤️ Quase verão",
+"Manga corta + capa fina": "Manga curta + camada fina",
+"⛅ Nubes y claros": "⛅ Nuvens e abertas",
+"Día cómodo · noche: ropa de fiesta": "Dia confortável · noite: roupa de festa",
+"Cómodo · gafas de sol": "Confortável · óculos de sol",
+"🌨️ 40 % chubascos": "🌨️ 40 % aguaceiros",
+"Abrigo, gorro y capas": "Casaco, gorro e camadas",
+"☀️ Despejado": "☀️ Céu limpo",
+"Manga corta": "Manga curta",
+"🔊 Ropa de fiesta · GATE": "🔊 Roupa de festa · GATE",
+"🖤 Lo típico en techno: negro, y cuanto más sencillo mejor": "🖤 O clássico do techno: preto, e quanto mais simples melhor",
+"👟 Zapatillas cómodas y cerradas: son 5–6 h de pie": "👟 Ténis confortáveis e fechados: são 5–6 h de pé",
+"🩳 Nada de chanclas ni pinta de turista": "🩳 Nada de chinelos nem ar de turista",
+"🧥 Chaqueta fina para la salida (~15°C)": "🧥 Casaco fino para a saída (~15°C)",
+"🎧 Tapones para los oídos (el schranz no perdona)": "🎧 Tampões para os ouvidos (o schranz não perdoa)",
+"💳 Bolsillos: móvil, DNI, tarjeta, powerbank": "💳 Bolsos: telemóvel, CC, cartão, powerbank",
+"🍝 Para el aperitivo y las cenas": "🍝 Para o aperitivo e os jantares",
+"👕 Camisa o polo: Milán se arregla para el aperitivo": "👕 Camisa ou polo: Milão arranja-se para o aperitivo",
+"👖 Pantalón largo para la noche": "👖 Calças compridas para a noite",
+"👞 Unas zapatillas limpias o zapatos": "👞 Uns ténis limpos ou sapatos",
+"🕶️ Gafas de sol (domingo: obligatorias)": "🕶️ Óculos de sol (domingo: obrigatórios)",
+"🏔️ Para el Bernina (lunes)": "🏔️ Para o Bernina (segunda)",
+"🧥 Abrigo de verdad o plumífero": "🧥 Casaco a sério ou de penas",
+"🧣 Gorro, braga de cuello y guantes": "🧣 Gorro, gola e luvas",
+"🥾 Calzado cerrado que aguante agua": "🥾 Calçado fechado que aguente água",
+"🧦 Capas: camiseta + sudadera + abrigo": "🧦 Camadas: t-shirt + sweat + casaco",
+"🪪 DNI / pasaporte · ¡es Suiza!": "🪪 CC / passaporte · é a Suíça!",
+"🎒 Básicos de todo el viaje": "🎒 Básicos para a viagem toda",
+"👟 Calzado muy cómodo: se anda mucho": "👟 Calçado muito confortável: anda-se muito",
+"🔋 Powerbank y cargador": "🔋 Powerbank e carregador",
+"🩹 Ibuprofeno y sales (por si acaso)": "🩹 Ibuprofeno e sais (pelo sim, pelo não)",
+"🧴 Protector solar (25–27°C en Milán)": "🧴 Protetor solar (25–27°C em Milão)",
+"🪪 Documentación y tarjeta contactless": "🪪 Documentos e cartão contactless",
+"Flaco avisa:": "O Flaco avisa:",
+"en Milán hará casi verano, pero el lunes en St. Moritz se pasa de 25°C a bajo cero. Nadie se libra de llevar abrigo, por mucho que en Madeira estéis acostumbrados al clima perfecto.": "em Milão vai estar quase verão, mas na segunda em St. Moritz passa-se de 25°C para abaixo de zero. Ninguém se livra de levar casaco, por muito que na Madeira estejam habituados ao clima perfeito.",
+"Duomo · 1386–1965": "Duomo · 1386–1965",
+"🧪 Aceto Balsamico Tradizionale DOP": "🧪 Aceto Balsamico Tradizionale DOP",
+"Jueves 01 · Milán de noche": "Quinta 01 · Milão à noite",
+"Anticiclón · noche templada": "Anticiclone · noite amena",
+"🧥 Basta una sudadera o chaqueta fina al salir de BGY.": "🧥 Chega uma sweat ou casaco fino ao sair de BGY.",
+"Viernes 02 · Milán": "Sexta 02 · Milão",
+"Anticiclón · casi verano": "Anticiclone · quase verão",
+"👟 Hoy se camina: Porta Romana → Duomo → Brera son unos 3–4 km. Manga corta de día; algo fino para la noche.": "👟 Hoje anda-se: Porta Romana → Duomo → Brera são uns 3–4 km. Manga curta de dia; algo fino para a noite.",
+"Sábado 03 · Milán": "Sábado 03 · Milão",
+"Nubes y claros · viento flojo": "Nuvens e abertas · vento fraco",
+"🔋 Powerbank cargado. A las 4–5 h, al salir de GATE, rondará los 15°C: una chaqueta fina que quepa en el bolsillo o en el guardarropa.": "🔋 Powerbank carregado. Às 4–5 h, à saída do GATE, estarão uns 15°C: um casaco fino que caiba no bolso ou no bengaleiro.",
+"🌙 Duomo iluminado": "🌙 Duomo iluminado",
+"Domingo 04 · Emilia-Romaña": "Domingo 04 · Emília-Romanha",
+"Nubes y claros · sin lluvia prevista": "Nuvens e abertas · sem chuva prevista",
+"Lunes 05 · St. Moritz y paso de Bernina": "Segunda 05 · St. Moritz e passo de Bernina",
+"40 % de chubascos · nieve en altura": "40 % de aguaceiros · neve em altitude",
+"Martes 06 · Milán": "Terça 06 · Milão",
+"Despejado · el día más caluroso": "Céu limpo · o dia mais quente",
+"🧳 Maletas en consigna: mochila pequeña, gafas de sol y a caminar.": "🧳 Malas no depósito: mochila pequena, óculos de sol e a andar.",
+"Meter en la maleta la ropa de fiesta y el abrigo para el Bernina": "Pôr na mala a roupa de festa e o casaco para o Bernina",
+"Negro para GATE · capas y gorro para St. Moritz": "Preto para o GATE · camadas e gorro para St. Moritz",
+"🏰 Castello + Sempione": "🏰 Castello + Sempione"
+};
+</script>
+<script>
   function toggleDay(id){
     const el=document.getElementById(id);
     const open=!el.classList.contains('open');
@@ -1049,36 +1644,79 @@
   function toggleMore(id,btn){
     const el=document.getElementById(id);
     const open=el.classList.toggle('open');
-    if(btn) btn.innerHTML=btn.innerHTML.replace(open?'▼':'▲',open?'▲':'▼');
+    if(btn) btn.lastChild.nodeValue=btn.lastChild.nodeValue.replace(open?'▼':'▲',open?'▲':'▼');
   }
 
-  // Abre el día de hoy (o el primero si el viaje aún no ha empezado)
-  (function(){
-    const d=new Date();
-    const today=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-    const days=[...document.querySelectorAll('.day-accordion[data-date]')];
-    const matches=days.filter(x=>x.dataset.date===today);
-    const pill=document.getElementById('todayPill');
-    if(matches.length){
-      matches.forEach(m=>{
-        m.classList.add('open','is-today');
-        m.querySelector('.day-trigger').setAttribute('aria-expanded','true');
-        const tags=m.querySelector('.day-meta');
-        tags.insertAdjacentHTML('beforeend','<span class="day-tag t-today">📍 HOY</span>');
-      });
-      pill.textContent='📍 Hoy toca: '+matches.map(m=>m.querySelector('.day-title').textContent).join(' · ');
-      pill.hidden=false;
-    } else if(today<'2026-10-01'){
-      const diff=Math.ceil((new Date('2026-10-01T18:15:00')-d)/86400000);
-      pill.textContent='⏳ Faltan '+diff+' días para despegar';
-      pill.hidden=false;
-      days[0].classList.add('open');
-    } else {
-      days[0].classList.add('open');
-    }
-  })();
+  // ─── IDIOMA (ES / PT) ───────────────────────
+  const I18N_PT = window.I18N_PT || {};
+  const UI = {
+    es:{title:'La Ruta de Flaco · Milán 2026',today:'📍 Hoy toca: ',days:n=>'⏳ Faltan '+n+' días para despegar',hoy:'📍 HOY'},
+    pt:{title:'A Rota do Flaco · Milão 2026',today:'📍 Hoje toca: ',days:n=>'⏳ Faltam '+n+' dias para descolar',hoy:'📍 HOJE'}
+  };
+  let lang='es';
+  const original=new Map();
+  const norm=s=>s.replace(/\s+/g,' ').trim();
+  function textNodes(){
+    const out=[];
+    const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>{
+      const p=n.parentElement;
+      if(!p||p.closest('script,style,[data-noi18n]')) return NodeFilter.FILTER_REJECT;
+      return norm(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;
+    }});
+    while(w.nextNode()) out.push(w.currentNode);
+    return out;
+  }
+  function applyLang(l){
+    lang=l;
+    textNodes().forEach(n=>{
+      if(!original.has(n)) original.set(n,n.nodeValue);
+      const src=original.get(n);
+      if(l==='es'){n.nodeValue=src;return;}
+      const key=norm(src);
+      const tr=I18N_PT[key];
+      if(tr===undefined) return;
+      const lead=src.match(/^\s*/)[0], trail=src.match(/\s*$/)[0];
+      n.nodeValue=lead+tr+trail;
+    });
+    document.documentElement.lang=l==='pt'?'pt-PT':'es';
+    document.title=UI[l].title;
+    document.querySelectorAll('.lang-switch button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+    renderToday();
+    try{localStorage.setItem('milan2026-lang',l);}catch(e){}
+  }
+  document.querySelectorAll('.lang-switch button').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
 
-  // Pendientes (guardado local)
+  // ─── HOY ────────────────────────────────────
+  const now=new Date();
+  const todayStr=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+  const allDays=[...document.querySelectorAll('.day-accordion[data-date]')];
+  const todayDays=allDays.filter(x=>x.dataset.date===todayStr);
+  todayDays.forEach(m=>{
+    m.classList.add('open','is-today');
+    m.querySelector('.day-trigger').setAttribute('aria-expanded','true');
+    m.querySelector('.day-meta').insertAdjacentHTML('beforeend','<span class="day-tag t-today" data-noi18n data-hoy></span>');
+  });
+  if(!todayDays.length) allDays[0].classList.add('open');
+  function renderToday(){
+    const pill=document.getElementById('todayPill');
+    document.querySelectorAll('[data-hoy]').forEach(t=>t.textContent=UI[lang].hoy);
+    if(todayDays.length){
+      pill.textContent=UI[lang].today+todayDays.map(m=>m.querySelector('.day-title').textContent).join(' · ');
+      pill.hidden=false;
+    } else if(todayStr<'2026-10-01'){
+      pill.textContent=UI[lang].days(Math.ceil((new Date('2026-10-01T18:15:00')-now)/86400000));
+      pill.hidden=false;
+    }
+  }
+  document.getElementById("todayPill").setAttribute("data-noi18n","");
+
+  let startLang='es';
+  try{ startLang=localStorage.getItem('milan2026-lang')||'es'; }catch(e){}
+  const qp=new URLSearchParams(location.search).get('lang');
+  if(qp==='pt'||qp==='es') startLang=qp;
+  applyLang(startLang);
+
+  // ─── PENDIENTES ─────────────────────────────
   (function(){
     const KEY='milan2026-todo';
     let state={};
@@ -1098,7 +1736,7 @@
     render();
   })();
 
-  // Nav activo al hacer scroll
+  // ─── NAV ACTIVO ─────────────────────────────
   const navLinks=document.querySelectorAll('.sticky-nav a');
   const obs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
