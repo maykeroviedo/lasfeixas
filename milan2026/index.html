@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Ruta de Flaco · Milán 2026</title>
+<meta name="description" content="Despedida de soltero de Sergio · Milán + Ferrari + Bernina · 1–6 octubre 2026">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap');
+  :root{
+    --cream:#F8F2E6;--rosso:#C8102E;--rosso-deep:#7E0A1C;--giallo:#FFCC00;--nero:#141414;
+    --verde:#008C45;--alp:#3A6EA5;--ink:#1A1208;--mist:#EFE6D4;--gold:#B8862B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--ink);overflow-x:hidden;}
+
+  /* HERO */
+  .hero{background:var(--rosso-deep);padding:56px 24px 44px;text-align:center;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 18px,rgba(255,255,255,.04) 18px,rgba(255,255,255,.04) 36px);}
+  .hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:8px;background:linear-gradient(to right,var(--verde) 0 33.3%,#fff 33.3% 66.6%,var(--rosso) 66.6%);}
+  .hero-dog{width:150px;height:150px;display:block;margin:0 auto 10px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45));animation:snicker 2.6s ease-in-out infinite;position:relative;z-index:1;}
+  @keyframes snicker{0%,100%{transform:translateY(0) rotate(-3deg);}25%{transform:translateY(-4px) rotate(2deg);}50%{transform:translateY(-9px) rotate(-2deg);}75%{transform:translateY(-3px) rotate(3deg);}}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3.6rem);color:var(--giallo);line-height:1.1;position:relative;z-index:1;}
+  .hero h1 em{font-style:italic;color:#fff;display:block;font-size:.55em;letter-spacing:.03em;margin-top:6px;}
+  .hero-sub{margin-top:14px;color:rgba(255,255,255,.72);font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;position:relative;z-index:1;}
+  .hero-laugh{margin-top:10px;font-family:'DM Mono',monospace;color:var(--giallo);font-size:.8rem;opacity:.85;position:relative;z-index:1;}
+  .crumb-trail{display:flex;justify-content:center;gap:8px;margin-top:22px;position:relative;z-index:1;}
+  .crumb{font-size:10px;opacity:.5;color:var(--giallo);}
+  .crumb.active{opacity:1;font-size:15px;}
+  .today-pill{display:inline-block;margin-top:18px;background:var(--giallo);color:var(--rosso-deep);border-radius:999px;padding:6px 14px;font-size:.78rem;font-weight:700;position:relative;z-index:1;}
+
+  /* STICKY NAV */
+  .sticky-nav{position:sticky;top:0;z-index:200;background:var(--nero);display:flex;overflow-x:auto;scrollbar-width:none;box-shadow:0 2px 14px rgba(0,0,0,.35);}
+  .sticky-nav::-webkit-scrollbar{display:none;}
+  .sticky-nav a{flex-shrink:0;color:rgba(255,255,255,.65);text-decoration:none;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:13px 14px;border-bottom:3px solid transparent;transition:color .2s,border-color .2s;}
+  .sticky-nav a:hover,.sticky-nav a.active{color:var(--giallo);border-bottom-color:var(--rosso);}
+
+  /* VIAJE CONFIRMADO */
+  .booking-section{background:#1b1b1f;}
+  .booking-header{background:linear-gradient(135deg,#2a2a30,#141414);padding:20px 24px 14px;text-align:center;}
+  .booking-header .tag{font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:#90E890;font-weight:700;margin-bottom:6px;}
+  .booking-header h2{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--giallo);}
+  .booking-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));max-width:900px;margin:0 auto;}
+  .b-block{padding:18px 22px;border-right:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);}
+  .b-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:#FF8A8A;font-weight:700;margin-bottom:12px;}
+  .flight-box{background:rgba(255,255,255,.06);border-radius:8px;padding:10px 12px;margin-bottom:8px;}
+  .flight-box .fl{font-size:.68rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;}
+  .flight-box .fh{color:white;font-weight:700;font-size:1rem;}
+  .flight-box .fd{color:rgba(255,255,255,.6);font-size:.78rem;}
+  .who{display:inline-block;border-radius:4px;padding:1px 6px;font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-left:6px;vertical-align:middle;}
+  .who-m{background:var(--giallo);color:var(--rosso-deep);}
+  .who-g{background:var(--rosso);color:#fff;}
+  .hotel-name{color:white;font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:4px;}
+  .hotel-addr{font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:6px;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0;}
+  .tag-pill{background:rgba(255,138,138,.1);border:1px solid rgba(255,138,138,.25);color:#FFB3B3;border-radius:999px;padding:2px 8px;font-size:.68rem;}
+  .warn-pill{background:rgba(255,204,0,.08);border-radius:6px;padding:8px 10px;border:1px solid rgba(255,204,0,.18);font-size:.72rem;color:var(--giallo);line-height:1.45;}
+  .ticket-box{background:rgba(144,232,144,.08);border-radius:8px;padding:10px 12px;border:1px solid rgba(144,232,144,.15);margin-bottom:10px;}
+  .ticket-box.pending{background:rgba(255,204,0,.06);border-color:rgba(255,204,0,.2);}
+  .tk-title{color:white;font-weight:700;font-size:.9rem;}
+  .tk-detail{font-size:.78rem;color:rgba(255,255,255,.62);margin-top:3px;line-height:1.45;}
+
+  /* CONTACTS BAR */
+  .contacts-bar{background:#0c0c0c;padding:14px 24px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;}
+  .cb-item{text-align:center;}
+  .cb-item .cl{font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.35);margin-bottom:3px;}
+  .cb-item .cv{color:var(--giallo);font-weight:700;font-size:.9rem;}
+  .cb-item .cv a{color:inherit;text-decoration:none;}
+  .cb-div{width:1px;height:30px;background:rgba(255,255,255,.1);}
+
+  /* INTRO STRIP */
+  .intro-strip{background:var(--giallo);padding:18px 24px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:.84rem;font-weight:500;text-align:center;color:var(--rosso-deep);}
+  .intro-strip .paw{font-size:1.4rem;}
+
+  /* MAP STRIP */
+  .map-strip{background:#F2DCC8;padding:32px 16px;text-align:center;}
+  .map-strip h2{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--rosso-deep);margin-bottom:20px;}
+  .route-visual{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;row-gap:14px;max-width:760px;margin:0 auto;}
+  .route-stop{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:74px;}
+  .stop-dot{width:38px;height:38px;border-radius:50%;background:var(--rosso);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.15rem;border:3px solid var(--cream);box-shadow:0 2px 8px rgba(0,0,0,.2);}
+  .stop-dot.solo{background:var(--giallo);}
+  .stop-label{font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--rosso-deep);text-align:center;line-height:1.35;}
+  .route-line{width:28px;height:3px;background:repeating-linear-gradient(to right,var(--rosso) 0,var(--rosso) 6px,transparent 6px,transparent 12px);margin-bottom:22px;flex-shrink:0;}
+  .legend{display:flex;justify-content:center;gap:16px;margin-top:18px;font-size:.72rem;color:var(--rosso-deep);font-weight:600;flex-wrap:wrap;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .legend i{width:12px;height:12px;border-radius:50%;display:inline-block;}
+
+  /* RESUMEN */
+  .summary-wrap{max-width:900px;margin:0 auto;padding:8px 16px 8px;}
+  .summary-table{width:100%;border-collapse:collapse;font-size:.8rem;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(126,10,28,.08);}
+  .summary-table th{background:var(--rosso-deep);color:var(--giallo);font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;padding:10px;text-align:left;}
+  .summary-table td{padding:10px;border-bottom:1px solid #eee2cc;vertical-align:top;line-height:1.45;}
+  .summary-table tr:nth-child(even) td{background:#FBF6EC;}
+  .summary-table td:first-child{font-weight:700;color:var(--rosso-deep);white-space:nowrap;}
+  .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px;}
+  .scroll-x .summary-table{min-width:620px;}
+
+  /* COUNTRY DATA */
+  .country-section{background:#fff;padding:32px 20px 8px;}
+  .cs-inner{max-width:860px;margin:0 auto;}
+  .cs-title{text-align:center;margin-bottom:24px;}
+  .ct-tag{font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:var(--verde);font-weight:700;margin-bottom:6px;}
+  .cs-title h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--rosso-deep);}
+  .ct-sub{font-size:.78rem;color:#999;margin-top:4px;}
+  .compare-table{width:100%;min-width:560px;border-collapse:collapse;font-size:.8rem;}
+  .compare-table thead th{padding:10px 12px;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;}
+  .compare-table thead th:nth-child(1){background:var(--rosso-deep);color:var(--giallo);text-align:left;}
+  .compare-table thead th:nth-child(2){background:var(--verde);color:#fff;text-align:center;}
+  .compare-table thead th:nth-child(3){background:#C8102E;color:#fff;text-align:center;}
+  .compare-table thead th:nth-child(4){background:#D9A400;color:#3a2a00;text-align:center;}
+  .compare-table tbody tr:nth-child(odd){background:var(--cream);}
+  .compare-table tbody td{padding:9px 12px;border-bottom:1px solid #ecdfc6;}
+  .compare-table tbody td:first-child{font-weight:700;color:var(--rosso-deep);}
+  .compare-table tbody td:not(:first-child){text-align:center;}
+  .hl{background:var(--giallo);color:var(--rosso-deep);border-radius:4px;padding:2px 6px;font-weight:700;}
+  .bars{background:var(--cream);border-radius:12px;padding:16px 20px;margin:16px 0;border:1.5px solid var(--giallo);}
+  .bars .gb-title{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:var(--verde);margin-bottom:14px;}
+  .bar-row{margin-bottom:10px;}
+  .bar-label{display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:3px;gap:8px;}
+  .bar-track{background:#e2d8c6;border-radius:999px;height:10px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:999px;}
+  .bar-note{font-size:.7rem;color:#999;margin-top:8px;font-style:italic;}
+  .fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:20px;}
+  .fact{border-radius:12px;padding:16px;}
+  .fact-mi{background:#FFF0F0;border-left:4px solid var(--rosso);}
+  .fact-mo{background:#FFF8DC;border-left:4px solid #D9A400;}
+  .fact-be{background:#EEF4FB;border-left:4px solid var(--alp);}
+  .fact .f-title{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:10px;}
+  .fact-mi .f-title{color:var(--rosso);} .fact-mo .f-title{color:#8a6800;} .fact-be .f-title{color:var(--alp);}
+  .fact p{font-size:.8rem;color:#333;line-height:1.7;}
+  .connection-box{background:linear-gradient(135deg,var(--rosso-deep),var(--rosso));border-radius:12px;padding:16px 20px;margin-bottom:20px;}
+  .connection-box .cb-title{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:var(--giallo);margin-bottom:10px;}
+  .connection-box p{color:rgba(255,255,255,.9);font-size:.83rem;line-height:1.6;}
+  .book-rec{background:linear-gradient(135deg,#1a1a1a,#2d2d2d);border-radius:12px;padding:20px 22px;margin-bottom:28px;border:1.5px solid var(--rosso);}
+  .br-tag{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:#FF8A8A;margin-bottom:14px;}
+  .br-body{display:flex;gap:16px;align-items:flex-start;margin-bottom:16px;}
+  .br-body:last-child{margin-bottom:0;}
+  .br-icon{font-size:2.8rem;flex-shrink:0;line-height:1;}
+  .br-title{color:var(--giallo);font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;margin-bottom:2px;}
+  .br-author{color:rgba(255,255,255,.7);font-size:.78rem;font-weight:600;margin-bottom:8px;}
+  .br-text{color:rgba(255,255,255,.8);font-size:.82rem;line-height:1.6;}
+  .br-why{margin-top:10px;background:rgba(255,204,0,.08);border-left:3px solid var(--giallo);padding:10px 14px;border-radius:0 8px 8px 0;font-size:.8rem;color:rgba(255,255,255,.78);line-height:1.5;}
+  .br-why b{color:var(--giallo);}
+
+  /* SECTION TITLE */
+  .section-title{text-align:center;padding:48px 24px 22px;}
+  .section-title .eyebrow{display:inline-block;border-radius:999px;padding:4px 12px;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;}
+  .eyebrow-m{background:var(--giallo);color:var(--rosso-deep);}
+  .eyebrow-g{background:var(--rosso);color:#fff;}
+  .section-title h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,4vw,2rem);color:var(--rosso-deep);}
+  .section-title p{color:var(--gold);font-size:.85rem;margin-top:6px;font-style:italic;}
+
+  /* DAYS ACCORDION */
+  .days-wrapper{max-width:860px;margin:0 auto;padding:0 16px 40px;}
+  .day-accordion{background:#fff;border-radius:16px;overflow:hidden;margin-bottom:20px;box-shadow:0 4px 24px rgba(126,10,28,.1);border-top:5px solid var(--rosso);}
+  .day-accordion.solo{border-top-color:var(--giallo);}
+  .day-accordion.is-today{box-shadow:0 0 0 3px var(--giallo),0 6px 28px rgba(126,10,28,.18);}
+  .day-trigger{width:100%;background:none;border:none;cursor:pointer;padding:0;text-align:left;font:inherit;color:inherit;}
+  .day-trigger-inner{width:100%;display:flex;align-items:center;gap:16px;padding:20px 22px;transition:background .2s;}
+  .day-trigger-inner:hover{background:rgba(126,10,28,.03);}
+  .day-badge{width:60px;height:60px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0;}
+  .bg-1{background:#FFF3C4;} .bg-2{background:#FFE4CC;} .bg-3{background:#F7D9E3;} .bg-4{background:#FFD6D6;} .bg-5{background:#DCE8F8;} .bg-6{background:#D8ECD8;}
+  .day-meta{flex:1;min-width:0;}
+  .day-date{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);font-weight:700;margin-bottom:3px;}
+  .day-title{font-family:'Playfair Display',serif;font-size:1.22rem;color:var(--rosso-deep);line-height:1.2;}
+  .day-subtitle{font-size:.78rem;color:#888;margin-top:3px;}
+  .day-chevron{font-size:1.1rem;color:var(--gold);transition:transform .3s;flex-shrink:0;}
+  .day-accordion.open .day-chevron{transform:rotate(180deg);}
+  .day-tag{display:inline-block;border-radius:999px;padding:3px 10px;font-size:.66rem;font-weight:700;margin-top:6px;margin-right:4px;}
+  .t-solo{background:var(--giallo);color:var(--rosso-deep);}
+  .t-group{background:var(--rosso);color:#fff;}
+  .t-fly{background:#90E890;color:#1a3a1a;}
+  .t-night{background:#2a1a3a;color:#E3C8FF;}
+  .t-today{background:#141414;color:var(--giallo);}
+  .day-body{max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.4,0,.2,1);}
+  .day-accordion.open .day-body{max-height:9000px;}
+  .day-body-inner{padding:0 22px 24px;}
+
+  .transport-block{background:#F0F6FF;border-left:4px solid #5A9FD4;margin-bottom:14px;border-radius:8px;padding:10px 14px;display:flex;align-items:flex-start;gap:10px;}
+  .t-icon{font-size:1.2rem;flex-shrink:0;margin-top:1px;}
+  .t-text{font-size:.8rem;color:#2a5a8a;line-height:1.5;}
+  .t-text strong{font-weight:700;display:block;font-size:.74rem;text-transform:uppercase;letter-spacing:.07em;color:#1a3a6a;margin-bottom:2px;}
+  .transport-prices{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;padding-top:10px;border-top:1px dashed rgba(90,159,212,.35);}
+  .tp-item .tp-label{font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:#5A9FD4;font-weight:700;}
+  .tp-item .tp-val{font-size:.85rem;font-weight:700;color:#1a3a6a;}
+  .tp-item .tp-sub{font-size:.68rem;color:#6a8aaa;}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  @media(max-width:560px){.two-col{grid-template-columns:1fr;}}
+  .info-block h4{font-size:.67rem;text-transform:uppercase;letter-spacing:.12em;color:var(--verde);font-weight:700;margin-bottom:6px;}
+  .info-block p,.info-block li{font-size:.84rem;color:#444;line-height:1.55;}
+  .info-block ul{list-style:none;}
+  .info-block ul li::before{content:'🐾 ';font-size:.7rem;}
+
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+  .pill{background:var(--mist);border:1.5px solid var(--giallo);border-radius:999px;padding:5px 13px;font-size:.76rem;font-weight:600;color:var(--rosso-deep);}
+
+  .flaco-quote{background:var(--mist);border-left:4px solid var(--rosso);border-radius:0 8px 8px 0;padding:10px 14px;font-size:.83rem;color:var(--rosso-deep);font-style:italic;margin-bottom:16px;display:flex;gap:10px;align-items:center;}
+  .flaco-quote svg{width:34px;height:34px;flex-shrink:0;}
+  .alert-box{background:#FFF3CD;border-left:4px solid var(--giallo);border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:.8rem;color:#6b4a00;line-height:1.5;}
+  .alert-box.red{background:#FDE8EA;border-left-color:var(--rosso);color:var(--rosso-deep);}
+
+  /* WEATHER */
+  .weather-bar{background:linear-gradient(135deg,#2a4a7a,#3A6EA5);border-radius:10px;padding:14px 18px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+  .wb-icon{font-size:2rem;}
+  .wb-day{font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.65);font-weight:700;margin-bottom:2px;}
+  .wb-temp{font-size:1.3rem;font-weight:700;color:white;}
+  .wb-cond{font-size:.75rem;color:rgba(255,255,255,.75);}
+  .wb-tip{background:rgba(255,255,255,.12);border-radius:8px;padding:8px 12px;font-size:.75rem;color:rgba(255,255,255,.9);flex:1;min-width:170px;line-height:1.45;}
+
+  /* TIMING */
+  .timing-block{background:#FFFAF0;border:1.5px solid var(--giallo);border-radius:10px;padding:14px 16px;margin-bottom:16px;}
+  .tb-title{font-size:.67rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);font-weight:700;margin-bottom:10px;}
+  .timing-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;font-size:.81rem;color:#444;line-height:1.45;}
+  .timing-row:last-child{margin-bottom:0;}
+  .tr-time{background:var(--rosso-deep);color:var(--giallo);border-radius:6px;padding:3px 7px;font-weight:700;font-family:'DM Mono',monospace;font-size:.72rem;flex-shrink:0;min-width:92px;text-align:center;}
+  .tr-label{flex:1;}
+  .tr-label strong{color:var(--rosso-deep);}
+
+  /* FOOD CARDS */
+  .food-card{background:#FFFBF2;border:1.5px solid var(--giallo);border-radius:10px;padding:14px;margin-bottom:10px;}
+  .food-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .food-head .fi{font-size:1.5rem;}
+  .food-name{font-weight:700;color:var(--rosso-deep);}
+  .food-meta{font-size:.72rem;color:var(--gold);}
+  .food-card p{font-size:.82rem;color:#444;line-height:1.5;}
+
+  .dinner-primary{background:linear-gradient(135deg,#3a0610,#7E0A1C);border-radius:12px;padding:18px 20px;margin:16px 0 8px;border:1.5px solid var(--rosso);}
+  .dinner-primary h4{color:var(--giallo);font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:6px;}
+  .dinner-name{color:white;font-family:'Playfair Display',serif;font-size:1.12rem;margin-bottom:4px;}
+  .dinner-detail{color:rgba(255,255,255,.72);font-size:.8rem;line-height:1.55;}
+  .dinner-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+  .dinner-tag{background:rgba(255,204,0,.12);border:1px solid rgba(255,204,0,.3);color:var(--giallo);border-radius:999px;padding:3px 10px;font-size:.7rem;font-weight:600;}
+  .dinner-warning{background:rgba(255,204,0,.1);border:1px solid rgba(255,204,0,.3);border-radius:8px;padding:8px 12px;margin-top:10px;color:var(--giallo);font-size:.76rem;line-height:1.45;}
+  .new-badge{display:inline-block;background:#90E890;color:#123a12;border-radius:4px;padding:2px 7px;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;}
+
+  .more-options-toggle{width:100%;background:none;border:2px dashed rgba(200,16,46,.3);border-radius:10px;cursor:pointer;padding:12px 16px;color:var(--rosso);font:inherit;font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;margin:8px 0;}
+  .more-options-toggle:hover{background:rgba(200,16,46,.04);}
+  .more-options-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1);}
+  .more-options-body.open{max-height:3000px;}
+  .alt-dinner{background:#fafafa;border:1.5px solid #e6e0d6;border-radius:10px;padding:14px 16px;margin-bottom:10px;}
+  .alt-dinner h5{font-family:'Playfair Display',serif;font-size:.98rem;color:var(--rosso-deep);margin-bottom:4px;}
+  .alt-sub{font-size:.72rem;color:var(--gold);font-weight:700;margin-bottom:6px;}
+  .alt-dinner p{font-size:.8rem;color:#555;line-height:1.5;}
+
+  .gate-box{background:linear-gradient(135deg,#0d0d12,#2a1a3a);border-radius:12px;padding:18px 20px;margin:16px 0;border:1.5px solid #6b3fa0;}
+  .gate-box h4{color:#E3C8FF;font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;margin-bottom:6px;}
+  .gate-box .gn{color:#fff;font-family:'DM Mono',monospace;font-size:1.15rem;font-weight:500;letter-spacing:.04em;}
+  .gate-box p{color:rgba(255,255,255,.72);font-size:.8rem;line-height:1.55;margin-top:6px;}
+  .bride-banner{background:linear-gradient(135deg,var(--rosso-deep),var(--rosso));padding:14px 20px;display:flex;align-items:center;gap:12px;border-radius:10px;margin:16px 0;}
+  .bride-banner .bi{font-size:1.6rem;}
+  .bride-banner strong{display:block;color:#fff;font-size:.92rem;}
+  .bride-banner span{color:rgba(255,255,255,.85);font-size:.78rem;}
+
+  .mayker-only{background:#FFF8D6;border:1.5px dashed #D9A400;border-radius:10px;padding:12px 14px;margin-bottom:16px;}
+  .mayker-only .mo-title{font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;color:#8a6800;font-weight:700;margin-bottom:6px;}
+  .mayker-only p{font-size:.8rem;color:#5a4500;line-height:1.5;}
+
+  a.maps-btn{display:inline-flex;align-items:center;gap:5px;background:#4285F4;color:white;text-decoration:none;border-radius:6px;padding:5px 11px;font-size:.72rem;font-weight:700;margin-top:8px;}
+  a.maps-btn:hover{background:#2a6dd9;}
+  a.maps-btn-sm{display:inline-flex;align-items:center;gap:4px;background:#4285F4;color:white;text-decoration:none;border-radius:4px;padding:2px 8px;font-size:.64rem;font-weight:700;margin-left:4px;vertical-align:middle;white-space:nowrap;}
+  a.maps-btn-dark{display:inline-flex;align-items:center;gap:5px;background:rgba(66,133,244,.2);color:#9CC6FF;border:1px solid rgba(66,133,244,.35);text-decoration:none;border-radius:6px;padding:5px 11px;font-size:.72rem;font-weight:700;margin-top:6px;}
+
+  /* PENDIENTES */
+  .todo-section{background:var(--nero);padding:40px 16px;}
+  .todo-inner{max-width:760px;margin:0 auto;}
+  .todo-inner h2{font-family:'Playfair Display',serif;color:var(--giallo);text-align:center;font-size:1.5rem;margin-bottom:6px;}
+  .todo-inner .sub{text-align:center;color:rgba(255,255,255,.55);font-size:.8rem;margin-bottom:20px;}
+  .todo-item{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;margin-bottom:8px;cursor:pointer;}
+  .todo-item input{width:20px;height:20px;accent-color:var(--rosso);flex-shrink:0;margin-top:1px;cursor:pointer;}
+  .todo-item .tt{color:#fff;font-size:.86rem;font-weight:600;}
+  .todo-item .td{color:rgba(255,255,255,.55);font-size:.76rem;margin-top:2px;line-height:1.45;}
+  .todo-item.done .tt{text-decoration:line-through;opacity:.5;}
+  .todo-item.done .td{opacity:.4;}
+  .todo-progress{height:8px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;margin-bottom:18px;}
+  .todo-progress div{height:100%;background:linear-gradient(to right,var(--rosso),var(--giallo));width:0;transition:width .3s;}
+
+  .footer{background:var(--rosso-deep);color:var(--giallo);text-align:center;padding:40px 24px;}
+  .footer svg{width:90px;height:90px;}
+  .footer h3{font-family:'Playfair Display',serif;font-size:1.4rem;margin:12px 0 8px;}
+  .footer p{font-size:.82rem;opacity:.75;max-width:420px;margin:0 auto;line-height:1.6;color:#fff;}
+  .footer .signature{margin-top:24px;font-family:'DM Mono',monospace;font-size:.7rem;opacity:.45;letter-spacing:.1em;}
+
+  @media(max-width:520px){
+    .day-trigger-inner{gap:12px;padding:16px;}
+    .day-badge{width:48px;height:48px;font-size:1.6rem;}
+    .day-body-inner{padding:0 16px 20px;}
+    .tr-time{min-width:78px;font-size:.68rem;}
+    .booking-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Flaco · mascota (SVG reutilizable) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="flaco" viewBox="0 0 200 200">
+      <!-- orejas -->
+      <path d="M52 62 C30 70 22 110 34 132 C44 120 52 100 62 84 Z" fill="#4A2E1A"/>
+      <path d="M148 62 C170 70 178 110 166 132 C156 120 148 100 138 84 Z" fill="#4A2E1A"/>
+      <!-- cabeza -->
+      <ellipse cx="100" cy="96" rx="50" ry="46" fill="#B9865A"/>
+      <!-- hocico -->
+      <ellipse cx="100" cy="126" rx="38" ry="26" fill="#E8C9A0"/>
+      <!-- gorro de aviador -->
+      <path d="M50 84 C50 40 150 40 150 84 C140 70 60 70 50 84 Z" fill="#6B3F1F"/>
+      <path d="M56 80 C70 68 130 68 144 80" stroke="#3A2210" stroke-width="3" fill="none"/>
+      <!-- gafas de aviador -->
+      <rect x="60" y="54" width="80" height="10" rx="5" fill="#3A2210"/>
+      <circle cx="80" cy="58" r="13" fill="#9FD3E8" stroke="#C9A227" stroke-width="5"/>
+      <circle cx="120" cy="58" r="13" fill="#9FD3E8" stroke="#C9A227" stroke-width="5"/>
+      <path d="M73 52 l7 -3" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+      <path d="M113 52 l7 -3" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+      <!-- ojos pícaros (medio cerrados) -->
+      <path d="M72 92 q8 -7 16 0" stroke="#1a1a1a" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M112 92 q8 -7 16 0" stroke="#1a1a1a" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <!-- nariz -->
+      <ellipse cx="100" cy="110" rx="13" ry="9" fill="#1a1a1a"/>
+      <ellipse cx="96" cy="107" rx="4" ry="2" fill="#fff" opacity=".6"/>
+      <!-- sonrisa socarrona con dientes -->
+      <path d="M74 126 Q100 152 126 126 Q100 136 74 126 Z" fill="#5a1010"/>
+      <path d="M78 127 Q100 135 122 127 L120 132 Q100 139 80 132 Z" fill="#fff"/>
+      <path d="M90 129 v5 M100 130 v6 M110 129 v5" stroke="#ddd" stroke-width="1.2"/>
+      <!-- bufanda Ferrari -->
+      <path d="M58 142 Q100 162 142 142 L146 156 Q100 176 54 156 Z" fill="#C8102E"/>
+      <path d="M128 152 L150 188 L136 190 L120 158 Z" fill="#C8102E"/>
+      <path d="M140 182 l6 -2 M136 176 l6 -2" stroke="#FFCC00" stroke-width="2.5"/>
+      <circle cx="100" cy="160" r="6" fill="#FFCC00"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <svg class="hero-dog" role="img" aria-label="Flaco, el perro aviador"><use href="#flaco"/></svg>
+  <h1>La Ruta de Flaco<em>Milán · Ferrari · Bernina — Despedida de soltero de Sergio</em></h1>
+  <p class="hero-sub">1–6 octubre 2026 · Milán → Maranello → Módena → St. Moritz</p>
+  <p class="hero-laugh">sniff sniff… je-je-je-je 🐾</p>
+  <div class="crumb-trail">
+    <span class="crumb">·</span><span class="crumb active">🍕</span><span class="crumb">·</span>
+    <span class="crumb active">🏎️</span><span class="crumb">·</span><span class="crumb active">🚂</span><span class="crumb">·</span>
+  </div>
+  <div class="today-pill" id="todayPill" hidden></div>
+</header>
+
+<nav class="sticky-nav" aria-label="Secciones del viaje">
+  <a href="#reservas">Reservas</a>
+  <a href="#ruta">Ruta</a>
+  <a href="#contexto">Contexto</a>
+  <a href="#mayker">Mi Milán</a>
+  <a href="#despedida">La despedida</a>
+  <a href="#pendientes">Pendientes</a>
+</nav>
+
+<!-- RESERVAS -->
+<section class="booking-section" id="reservas">
+  <div class="booking-header">
+    <div class="tag">✅ Bases, vuelos y entradas</div>
+    <h2>Todos los detalles del viaje · Mayker & la manada de Sergio</h2>
+  </div>
+  <div class="booking-grid">
+
+    <div class="b-block">
+      <div class="b-label">✈️ Vuelos</div>
+      <div class="flight-box">
+        <div class="fl">IDA · Jue 01 Oct <span class="who who-m">Mayker</span></div>
+        <div class="fh">18:15 → 20:00</div>
+        <div class="fd">BCN → BGY (Bérgamo) · Ryanair FR3320</div>
+      </div>
+      <div class="flight-box">
+        <div class="fl">LLEGADA · Sáb 03 Oct <span class="who who-g">Grupo</span></div>
+        <div class="fh">10:45</div>
+        <div class="fd">Aterrizan en MXP (Malpensa)</div>
+      </div>
+      <div class="flight-box">
+        <div class="fl">VUELTA · Mar 06 Oct <span class="who who-m">Mayker</span></div>
+        <div class="fh">21:15 → 22:55</div>
+        <div class="fd">BGY → BCN · ojo: Bérgamo, no Malpensa</div>
+      </div>
+    </div>
+
+    <div class="b-block">
+      <div class="b-label">🏨 Base 1 · Jue 01 → Sáb 03</div>
+      <div class="hotel-name">Lux Hotel Durante</div>
+      <div class="hotel-addr">Piazza Francesco Durante 30 · Milano<br>~500 m de Loreto (M1/M2)</div>
+      <a class="maps-btn-dark" href="https://www.google.com/maps/search/?api=1&query=Lux+Hotel+Durante+Piazza+Francesco+Durante+30+Milano" target="_blank" rel="noopener">📍 Ver en Google Maps</a>
+      <div class="tag-row"><span class="tag-pill">Solo Mayker</span><span class="tag-pill">Check-out hasta 11:00</span></div>
+
+      <div class="b-label" style="margin-top:16px;">🏠 Base 2 · Sáb 03 → Mar 06</div>
+      <div class="hotel-name">Nina's House Milano</div>
+      <div class="hotel-addr">Via Pellegrino Rossi 28 · Milano<br>Apartamento para 5 personas</div>
+      <a class="maps-btn-dark" href="https://www.google.com/maps/search/?api=1&query=Via+Pellegrino+Rossi+28+Milano" target="_blank" rel="noopener">📍 Ver en Google Maps</a>
+      <div class="tag-row"><span class="tag-pill">Todo el grupo</span><span class="tag-pill">Check-in desde 15:00</span></div>
+      <div class="warn-pill">⚠️ Confirmar si se pueden dejar maletas antes de las 15:00 del sábado</div>
+    </div>
+
+    <div class="b-block">
+      <div class="b-label">🎫 Entradas y planes</div>
+      <div class="ticket-box">
+        <div class="tk-title">🔊 GATE · Schranz Movement — O.B.I.</div>
+        <div class="tk-detail">Sáb 03 Oct · 23:00–05:00 · Gate Milano, Via Valtellina 21</div>
+        <a class="maps-btn-dark" href="https://www.google.com/maps/search/?api=1&query=Gate+Milano+Via+Valtellina+21" target="_blank" rel="noopener">📍 Maps</a>
+      </div>
+      <div class="ticket-box">
+        <div class="tk-title">🏎️ Ferrari Museums Pass</div>
+        <div class="tk-detail">Maranello + Módena · válido desde el Dom 04 · ambos museos en 48 h · 09:30–19:00 (última entrada 18:15)</div>
+      </div>
+      <div class="ticket-box pending">
+        <div class="tk-title">🚂 Bernina Express</div>
+        <div class="tk-detail">Lun 05 Oct · Tirano → Alp Grüm → St. Moritz · ~2h15 · <strong style="color:var(--giallo);">hora exacta pendiente (billetes en el ZIP)</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contacts-bar">
+    <div class="cb-item"><div class="cl">Emergencias Italia</div><div class="cv"><a href="tel:112">112</a></div></div>
+    <div class="cb-div"></div>
+    <div class="cb-item"><div class="cl">Taxi Milano</div><div class="cv"><a href="tel:+39024040">02 4040</a> · <a href="tel:+39028585">02 8585</a></div></div>
+    <div class="cb-div"></div>
+    <div class="cb-item"><div class="cl">Pizza AM</div><div class="cv"><a href="tel:+390296313156">02 9631 3156</a></div></div>
+    <div class="cb-div"></div>
+    <div class="cb-item"><div class="cl">Taverna dei Servi</div><div class="cv"><a href="tel:+39059217134">059 217134</a></div></div>
+  </div>
+</section>
+
+<div class="intro-strip">
+  <span class="paw">🐾</span>
+  <span>6 días · 2 bases · 2 museos Ferrari · 1 tren por los Alpes · 1 noche de schranz · Flaco vigila al novio</span>
+  <span class="paw">🏎️</span>
+</div>
+
+<!-- RUTA -->
+<section class="map-strip" id="ruta">
+  <h2>La ruta de Flaco · 01–06 Octubre 2026</h2>
+  <div class="route-visual">
+    <div class="route-stop"><div class="stop-dot solo">✈️</div><span class="stop-label">Jue 01<br>Llega Mayker</span></div>
+    <div class="route-line"></div>
+    <div class="route-stop"><div class="stop-dot solo">👟</div><span class="stop-label">Vie 02<br>Mi Milán</span></div>
+    <div class="route-line"></div>
+    <div class="route-stop"><div class="stop-dot">🔊</div><span class="stop-label">Sáb 03<br>Chicos + GATE</span></div>
+    <div class="route-line"></div>
+    <div class="route-stop"><div class="stop-dot">🏎️</div><span class="stop-label">Dom 04<br>Ferrari + Módena</span></div>
+    <div class="route-line"></div>
+    <div class="route-stop"><div class="stop-dot">🚂</div><span class="stop-label">Lun 05<br>Bernina</span></div>
+    <div class="route-line"></div>
+    <div class="route-stop"><div class="stop-dot">🌊</div><span class="stop-label">Mar 06<br>Navigli + vuelta</span></div>
+  </div>
+  <div class="legend">
+    <span><i style="background:var(--giallo)"></i> Itinerario de Mayker (solo)</span>
+    <span><i style="background:var(--rosso)"></i> Despedida con el grupo</span>
+  </div>
+</section>
+
+<div class="summary-wrap" style="padding-top:28px;">
+  <div class="scroll-x">
+    <table class="summary-table">
+      <thead><tr><th>Día</th><th>Quién</th><th>Mañana</th><th>Tarde</th><th>Noche</th></tr></thead>
+      <tbody>
+        <tr><td>Jue 01</td><td><span class="who who-m" style="margin:0">Mayker</span></td><td>—</td><td>✈️ BCN → BGY 18:15</td><td>🏨 Lux Hotel Durante · pizza rápida</td></tr>
+        <tr><td>Vie 02</td><td><span class="who who-m" style="margin:0">Mayker</span></td><td>💼 Trabajo</td><td>🍕 Pizza AM → Duomo → Axel Arigato → Brera → papelerías</td><td>🍷 Milán tranquilo</td></tr>
+        <tr><td>Sáb 03</td><td><span class="who who-m" style="margin:0">Mayker</span> → <span class="who who-g" style="margin:0">Grupo</span></td><td>🧳 Check-out · ✈️ chicos en MXP 10:45</td><td>🥟 Luini → Duomo → Brera → aperitivo</td><td>🔊 GATE · hard techno</td></tr>
+        <tr><td>Dom 04</td><td><span class="who who-g" style="margin:0">Grupo</span></td><td>🏎️ Museo Ferrari Maranello</td><td>🍝 Módena → centro → Museo Enzo Ferrari</td><td>🏨 Milán · cena ligera</td></tr>
+        <tr><td>Lun 05</td><td><span class="who who-g" style="margin:0">Grupo</span></td><td>🚂 Tirano → Bernina</td><td>🚂 St. Moritz → regreso</td><td>🛏️ Descanso</td></tr>
+        <tr><td>Mar 06</td><td><span class="who who-g" style="margin:0">Grupo</span> → <span class="who who-m" style="margin:0">Mayker</span></td><td>🏰 Castello → Sempione</td><td>🌊 Navigli → compras</td><td>✈️ Mayker: BGY 21:15</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- CONTEXTO -->
+<section class="country-section" id="contexto">
+  <div class="cs-inner">
+    <div class="cs-title">
+      <div class="ct-tag">🌍 Conoce el destino · Datos</div>
+      <h2>Milán en contexto</h2>
+      <div class="ct-sub">Cifras redondeadas · ISTAT, INE, Eurostat, FMI · últimos datos disponibles</div>
+    </div>
+
+    <div class="scroll-x" style="margin-bottom:20px;">
+      <table class="compare-table">
+        <thead><tr><th>Indicador</th><th>🇮🇹 Milán</th><th>🇪🇸 Barcelona</th><th>🇪🇸 Madrid</th></tr></thead>
+        <tbody>
+          <tr><td>👥 Población (ciudad)</td><td><strong>~1,37 M</strong></td><td><strong>~1,70 M</strong></td><td><strong>~3,4 M</strong></td></tr>
+          <tr><td>🏙️ Área metropolitana</td><td>~3,2 M</td><td>~5,7 M</td><td>~7 M</td></tr>
+          <tr><td>📐 Superficie municipal</td><td>182 km²</td><td>101 km²</td><td>604 km²</td></tr>
+          <tr><td>📊 Densidad</td><td>~7.500/km²</td><td><span class="hl">~16.500/km²</span></td><td>~5.600/km²</td></tr>
+          <tr><td>💶 Su región en el PIB del país</td><td><span class="hl">Lombardía ≈ 22 %</span></td><td>Cataluña ≈ 19 %</td><td>C. de Madrid ≈ 19 %</td></tr>
+          <tr><td>⛪ Catedral icónica</td><td>Duomo · 1386–1965</td><td>Sagrada Família · 1882–hoy</td><td>Almudena · 1883–1993</td></tr>
+          <tr><td>⚽ Estadio</td><td>San Siro · ~75.000</td><td>Spotify Camp Nou · ~105.000</td><td>Bernabéu · ~83.000</td></tr>
+          <tr><td>🚇 Líneas de metro</td><td>5 (M1–M5)</td><td>12</td><td>13</td></tr>
+          <tr><td>🎫 Billete sencillo</td><td>2,20 €</td><td>2,65 €</td><td>1,50–2 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bars">
+      <div class="gb-title">🇮🇹 vs 🇪🇸 · Los dos países</div>
+      <div class="bar-row">
+        <div class="bar-label"><span>👥 Italia · población</span><strong style="color:var(--verde)">~59 M</strong></div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(to right,#008C45,#4cc27f)"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label"><span>👥 España · población</span><strong style="color:var(--rosso)">~49 M</strong></div>
+        <div class="bar-track"><div class="bar-fill" style="width:83%;background:linear-gradient(to right,#C8102E,#e8566c)"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label"><span>🎂 Edad mediana · Italia</span><strong style="color:var(--verde)">~48 años</strong></div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(to right,#008C45,#4cc27f)"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label"><span>🎂 Edad mediana · España</span><strong style="color:var(--rosso)">~46 años</strong></div>
+        <div class="bar-track"><div class="bar-fill" style="width:95%;background:linear-gradient(to right,#C8102E,#e8566c)"></div></div>
+      </div>
+      <div class="bar-note">Italia es el país más envejecido de la UE. Sergio sube la media de casados del grupo 😄</div>
+    </div>
+
+    <div class="fact-grid">
+      <div class="fact fact-mi">
+        <div class="f-title">🏙️ Milán · De qué vive</div>
+        <p>💶 Bolsa de Italia y banca (Piazza Affari)<br>👗 Moda · Prada, Armani, Versace, Dolce&amp;Gabbana<br>🪑 Diseño · Salone del Mobile cada abril<br>📺 Medios y publicidad<br>🎭 La Scala · ópera desde 1778<br>⚽ Inter y Milan comparten San Siro</p>
+      </div>
+      <div class="fact fact-mo">
+        <div class="f-title">🏎️ Módena · Motor Valley</div>
+        <p>🐎 Ferrari (Maranello), Maserati (Módena)<br>🚗 Lamborghini y Pagani a menos de 1 h<br>🧪 Aceto Balsamico Tradizionale DOP · 12 años mínimo<br>🍷 Lambrusco, el tinto con burbujas<br>🎤 Ciudad natal de Luciano Pavarotti<br>⭐ Osteria Francescana · 3 estrellas Michelin</p>
+      </div>
+      <div class="fact fact-be">
+        <div class="f-title">🚂 Bernina Express · En cifras</div>
+        <p>🏔️ Punto más alto: Ospizio Bernina · 2.253 m<br>🌉 196 puentes y 55 túneles<br>🔄 Viaducto helicoidal de Brusio<br>📐 Pendientes de hasta el 7 % sin cremallera<br>🏛️ Patrimonio UNESCO desde 2008<br>🇮🇹→🇨🇭 Cruza la frontera en Campocologno</p>
+      </div>
+    </div>
+
+    <div class="connection-box">
+      <div class="cb-title">🐾 Conexión curiosa · Milán, Módena y el Cavallino</div>
+      <p>El caballito negro de Ferrari era el emblema del aviador <strong style="color:var(--giallo)">Francesco Baracca</strong>, as de la Primera Guerra Mundial. Su madre se lo ofreció a Enzo Ferrari en 1923 "para que le diera suerte", y Enzo le añadió el fondo <strong style="color:var(--giallo)">amarillo de Módena</strong>, su ciudad. Por eso Flaco, perro aviador de toda la vida, lleva gafas de piloto y bufanda rosso corsa. Je-je-je.</p>
+    </div>
+
+    <div class="book-rec">
+      <div class="br-tag">🎬📚 Para ver y leer antes del domingo</div>
+      <div class="br-body">
+        <div class="br-icon">🎬</div>
+        <div>
+          <div class="br-title">"Ferrari"</div>
+          <div class="br-author">Michael Mann · 2023 · con Adam Driver y Penélope Cruz</div>
+          <div class="br-text">El verano de 1957 de Enzo Ferrari en Módena: la empresa al borde de la quiebra, su matrimonio roto y la Mille Miglia como apuesta. Buena parte se rodó en Módena y alrededores.</div>
+          <div class="br-why"><b>🐾 Por qué la recomienda Flaco:</b> el domingo pasaréis por la casa natal de Enzo, que hoy es el Museo Enzo Ferrari, y caminaréis por las calles de la peli. Perfecta para el vuelo o la noche del viernes.</div>
+        </div>
+      </div>
+      <div class="br-body">
+        <div class="br-icon">📖</div>
+        <div>
+          <div class="br-title">"Enzo Ferrari: The Man and the Machine"</div>
+          <div class="br-author">Brock Yates · 1991 · Biografía</div>
+          <div class="br-text">La biografía clásica, poco complaciente, del hombre detrás del caballito: genio, carácter imposible y obsesión por ganar. Para quien quiera llegar a Maranello sabiendo más que el guía.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MI MILÁN (MAYKER) ===================== -->
+<section id="mayker">
+<div class="section-title">
+  <span class="eyebrow eyebrow-m">Itinerario de Mayker · solo</span>
+  <h2>Mi Milán · Jue 01 → Sáb 03 mañana</h2>
+  <p>Antes de que llegue la manada: compras, papelerías y Milán a mi ritmo</p>
+</div>
+
+<div class="days-wrapper">
+
+  <!-- JUEVES 1 -->
+  <div class="day-accordion solo" id="day1" data-date="2026-10-01">
+    <button class="day-trigger" onclick="toggleDay('day1')" aria-expanded="false">
+      <div class="day-trigger-inner">
+        <div class="day-badge bg-1">✈️</div>
+        <div class="day-meta">
+          <div class="day-date">Jueves 01 Octubre · Llegada</div>
+          <div class="day-title">Aterrizaje en Bérgamo</div>
+          <div class="day-subtitle">Orio Shuttle → Centrale → taxi → hotel → pizza → a dormir</div>
+          <span class="day-tag t-solo">🟡 Solo Mayker</span><span class="day-tag t-fly">✈️ FR3320 · 18:15</span>
+        </div>
+        <div class="day-chevron">▼</div>
+      </div>
+    </button>
+    <div class="day-body"><div class="day-body-inner">
+      <div class="weather-bar">
+        <div class="wb-icon">🌙</div>
+        <div><div class="wb-day">Principios de octubre · Milán de noche</div><div class="wb-temp">~12–14°C</div><div class="wb-cond">Noches frescas · media habitual</div></div>
+        <div class="wb-tip">🧥 Lleva una chaqueta a mano al salir de BGY. Mira la previsión real el mismo día.</div>
+      </div>
+      <div class="timing-block">
+        <div class="tb-title">⏰ Horarios del día</div>
+        <div class="timing-row"><span class="tr-time">18:15</span><div class="tr-label"><strong>Vuelo BCN → BGY</strong> · Ryanair FR3320</div></div>
+        <div class="timing-row"><span class="tr-time">20:00–20:40</span><div class="tr-label">Aterrizaje en Bérgamo · control, equipaje y salida</div></div>
+        <div class="timing-row"><span class="tr-time">20:45–21:45</span><div class="tr-label"><strong>Orio Shuttle</strong> directo BGY → Milano Centrale (~1 h)</div></div>
+        <div class="timing-row"><span class="tr-time">21:45–22:05</span><div class="tr-label">🚕 Taxi desde Centrale al Lux Hotel Durante</div></div>
+        <div class="timing-row"><span class="tr-time">~22:15</span><div class="tr-label"><strong>Check-in</strong> Lux Hotel Durante</div></div>
+        <div class="timing-row"><span class="tr-time">22:30–23:30</span><div class="tr-label">🍕 Algo rápido cerca del hotel. Nada de cena formal.</div></div>
+      </div>
+      <div class="transport-block">
+        <div class="t-icon">🚌</div>
+        <div class="t-text"><strong>Bérgamo → Milano Centrale</strong>Orio Shuttle directo, sin trenes ni transbordos. Esta noche no compensa complicarse.
+          <div class="transport-prices">
+            <div class="tp-item"><div class="tp-label">🚌 Orio Shuttle</div><div class="tp-val">~10–13 €</div><div class="tp-sub">~60 min · directo</div></div>
+            <div class="tp-item"><div class="tp-label">🚕 Taxi Centrale → hotel</div><div class="tp-val">~12–15 €</div><div class="tp-sub">~15–20 min</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="info-block">
+          <h4>🐾 Flaco dice</h4>
+          <p>Llegas con maleta y después de volar: taxi y listo. Hay opción de metro + bus, pero no compensa. El hotel está a unos 500 m de Loreto (M1 + M2), así que mañana llegas fácil al centro.</p>
+        </div>
+        <div class="info-block">
+          <h4>📌 Objetivo</h4>
+          <ul><li>Llegar sin complicaciones</li><li>Cenar algo ligero</li><li>Dormir pronto: mañana trabajas</li></ul>
+        </div>
+      </div>
+      <div class="flaco-quote"><svg><use href="#flaco"/></svg>"Sniff sniff… ¡huele a pizza desde la pista! Mañana empieza Milán de verdad."</div>
+    </div></div>
+  </div>
+
+  <!-- VIERNES 2 -->
+  <div class="day-accordion solo" id="day2" data-date="2026-10-02">
+    <button class="day-trigger" onclick="toggleDay('day2')" aria-expanded="false">
+      <div class="day-trigger-inner">
+        <div class="day-badge bg-2">👟</div>
+        <div class="day-meta">
+          <div class="day-date">Viernes 02 Octubre · Mi día</div>
+          <div class="day-title">Pizza AM, Duomo, Axel Arigato y papelerías</div>
+          <div class="day-subtitle">Trabajo hasta las 14:00 → Porta Romana → centro → Brera</div>
+          <span class="day-tag t-solo">🟡 Solo Mayker</span><span class="day-tag t-solo">🎯 Misión compras</span>
+        </div>
+        <div class="day-chevron">▼</div>
+      </div>
+    </button>
+    <div class="day-body"><div class="day-body-inner">
+      <div class="weather-bar">
+        <div class="wb-icon">🌤️</div>
+        <div><div class="wb-day">Principios de octubre · Milán</div><div class="wb-temp">~20°C / 12°C</div><div class="wb-cond">Media habitual · tiempo para caminar</div></div>
+        <div class="wb-tip">👟 Hoy se camina mucho: Porta Romana → Duomo → Brera son unos 3–4 km.</div>
+      </div>
+      <div class="timing-block">
+        <div class="tb-title">⏰ Horarios del día</div>
+        <div class="timing-row"><span class="tr-time">→ 14:00</span><div class="tr-label">💼 <strong>Trabajo</strong></div></div>
+        <div class="timing-row"><span class="tr-time">14:00–14:30</span><div class="tr-label">Ir hacia Porta Romana</div></div>
+        <div class="timing-row"><span class="tr-time">14:30</span><div class="tr-label">🍕 <strong>Pizza AM</strong>, la recomendación del novio</div></div>
+        <div class="timing-row"><span class="tr-time">15:30–16:00</span><div class="tr-label">🏛️ Piazza del Duomo</div></div>
+        <div class="timing-row"><span class="tr-time">16:00–16:30</span><div class="tr-label">Galleria Vittorio Emanuele II</div></div>
+        <div class="timing-row"><span class="tr-time">16:30–17:00</span><div class="tr-label">Piazza della Scala</div></div>
+        <div class="timing-row"><span class="tr-time">17:00–18:00</span><div class="tr-label">👟 <strong>Misión Axel Arigato</strong>: primero END Milano y, si no, Rinascente</div></div>
+        <div class="timing-row"><span class="tr-time">~18:15</span><div class="tr-label">✏️ <strong>Pettinaroli</strong> (Via Brera 4) → Fabriano Boutique</div></div>
+        <div class="timing-row"><span class="tr-time">18:30–19:30</span><div class="tr-label">Paseo: Via Brera → Via Fiori Chiari → Piazza del Carmine</div></div>
+        <div class="timing-row"><span class="tr-time">19:30–21:00</span><div class="tr-label">🍷 Aperitivo / cena libre</div></div>
+        <div class="timing-row"><span class="tr-time">21:00–23:00</span><div class="tr-label">🌙 Paseo nocturno: Brera → Galleria → Duomo iluminado</div></div>
+      </div>
+
+      <div class="food-card">
+        <div class="food-head"><span class="fi">🍕</span><div><div class="food-name">Pizza AM <a class="maps-btn-sm" href="https://www.google.com/maps/search/?api=1&query=Pizza+AM+Milano" target="_blank" rel="noopener">📍 Maps</a></div><div class="food-meta">Porta Romana · ⭐ 4,5 · 02 9631 3156</div></div></div>
+        <p>La recomendación de Sergio. Comida relativamente rápida y empiezas la ruta.</p>
+      </div>
+
+      <div class="transport-block">
+        <div class="t-icon">🚶</div>
+        <div class="t-text"><strong>Porta Romana → Duomo</strong>Unos 20 min a pie. También M3 desde Porta Romana hasta Duomo (2 paradas).
+          <div class="transport-prices"><div class="tp-item"><div class="tp-label">🎫 Metro ATM</div><div class="tp-val">2,20 €</div><div class="tp-sub">90 min · contactless en el torno</div></div></div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="info-block">
+          <h4>🏛️ El primer Milán</h4>
+          <p>Piazza del Duomo, Galleria y La Scala. Hoy <strong>no entraría</strong> al Duomo salvo que te apetezca mucho: la idea es conocer Milán, no encerrarte en un museo.</p>
+          <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=Piazza+del+Duomo+Milano" target="_blank" rel="noopener">📍 Duomo</a>
+        </div>
+        <div class="info-block">
+          <h4>👟 Misión Axel Arigato</h4>
+          <ul>
+            <li><strong>1.ª</strong> END Milano · Via dei Mercanti, pegado al Duomo <a class="maps-btn-sm" href="https://www.google.com/maps/search/?api=1&query=END+Milano+Via+dei+Mercanti" target="_blank" rel="noopener">📍</a></li>
+            <li><strong>2.ª</strong> Rinascente · Piazza Duomo <a class="maps-btn-sm" href="https://www.google.com/maps/search/?api=1&query=Rinascente+Milano+Piazza+Duomo" target="_blank" rel="noopener">📍</a></li>
+            <li>Prueba tallas → 🎯 compra hecha</li>
+            <li>Si no hay suerte, hay otra ocasión el martes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="food-card">
+        <div class="food-head"><span class="fi">✏️</span><div><div class="food-name">Pettinaroli · prioridad n.º 1 <a class="maps-btn-sm" href="https://www.google.com/maps/search/?api=1&query=Pettinaroli+Via+Brera+4+Milano" target="_blank" rel="noopener">📍 Maps</a></div><div class="food-meta">Via Brera 4 · tienda histórica</div></div></div>
+        <p>Mucho más especial que una papelería normal: cuadernos, grabados, mapas antiguos y papel de verdad.</p>
+      </div>
+      <div class="food-card">
+        <div class="food-head"><span class="fi">📓</span><div><div class="food-name">Fabriano Boutique <a class="maps-btn-sm" href="https://www.google.com/maps/search/?api=1&query=Fabriano+Boutique+Via+Ponte+Vetero+17+Milano" target="_blank" rel="noopener">📍 Maps</a></div><div class="food-meta">Via Ponte Vetero 17 · Brera</div></div></div>
+        <p>Papel de Fabriano, que lleva fabricándose desde el siglo XIII. Para cerrar la ruta de papelerías.</p>
+      </div>
+      <div class="pill-row"><span class="pill">🍕 Pizza AM</span><span class="pill">🏛️ Duomo por fuera</span><span class="pill">👟 Axel Arigato</span><span class="pill">✏️ Pettinaroli</span><span class="pill">🌙 Duomo iluminado</span></div>
+      <div class="flaco-quote"><svg><use href="#flaco"/></svg>"Probablemente sea el momento en que más disfrutes Milán sin tener que seguir a nadie. Je-je-je."</div>
+    </div></div>
+  </div>
+
+  <!-- SÁBADO 3 MAÑANA (MAYKER) -->
+  <div class="day-accordion solo" id="day3m" data-date="2026-10-03">
+    <button class="day-trigger" onclick="toggleDay('day3m')" aria-expanded="false">
+      <div class="day-trigger-inner">
+        <div class="day-badge bg-3">🧳</div>
+        <div class="day-meta">
+          <div class="day-date">Sábado 03 Octubre · Mañana</div>
+          <div class="day-title">Check-out y mudanza a Nina's House</div>
+          <div class="day-subtitle">Desayuno → maletas → check-out Lux Hotel → reunión con el grupo</div>
+          <span class="day-tag t-solo">🟡 Solo Mayker</span>
+        </div>
+        <div class="day-chevron">▼</div>
+      </div>
+    </button>
+    <div class="day-body"><div class="day-body-inner">
+      <div class="timing-block">
+        <div class="tb-title">⏰ Horarios de la mañana</div>
+        <div class="timing-row"><span class="tr-time">08:30–09:00</span><div class="tr-label">☕ Desayuno</div></div>
+        <div class="timing-row"><span class="tr-time">09:00–10:00</span><div class="tr-label">Recoger tus cosas</div></div>
+        <div class="timing-row"><span class="tr-time">10:00–11:00</span><div class="tr-label"><strong>Check-out</strong> Lux Hotel Durante (como tarde a las 11:00)</div></div>
+        <div class="timing-row"><span class="tr-time">~11:30</span><div class="tr-label">Ir a Nina's House (Via Pellegrino Rossi 28) a dejar tu maleta, si te lo permiten</div></div>
+        <div class="timing-row"><span class="tr-time">12:30–13:00</span><div class="tr-label">🤝 <strong>Te juntas con los chicos</strong> → sigue en "La despedida"</div></div>
+      </div>
+      <div class="alert-box red">⚠️ <strong>Lo único que hay que dejar resuelto antes:</strong> pregunta HOY a Nina's House si se puede dejar equipaje antes del check-in de las 15:00. Si no, hace falta un plan B de consigna (Radical Storage o Bounce cerca de Centrale).</div>
+      <div class="flaco-quote"><svg><use href="#flaco"/></svg>"Se acabó la paz. ¡Que llega la manada! 🐾🐾🐾🐾🐾"</div>
+    </div></div>
+  </div>
+
+</div>
+</section>
+
+<!-- ===================== LA DESPEDIDA (GRUPO) ===================== -->
+<section id="despedida">
+<div class="section-title">
+  <span class="eyebrow eyebrow-g">Itinerario del grupo · despedida</span>
+  <h2>La despedida de Sergio · Sáb 03 → Mar 06</h2>
+  <p>Toca cada día para desplegar el plan completo</p>
+</div>
+
+<div class="days-wrapper">
+
+  <!-- SÁBADO 3 GRUPO -->
+  <div class="day-accordion" id="day3" data-date="2026-10-03">
+    <button class="day-trigger" onclick="toggleDay('day3')" aria-expanded="false">
+      <div class="day-trigger-inner">
+        <div class="day-badge bg-3">🔊</div>
+        <div class="day-meta">
+          <div class="day-date">Sábado 03 Octubre · Llegan los chicos</div>
+          <div class="day-title">Luini, Duomo, aperitivo y GATE</div>
+          <div class="day-subtitle">MXP 10:45 → equipaje → panzerotti → Brera → hard techno</div>
+          <span class="day-tag t-group">🔴 Grupo</span><span class="day-tag t-night">🔊 Schranz 23:00</span>
+        </div>
+        <div class="day-chevron">▼</div>
+      </div>
+    </button>
+    <div class="day-body"><div class="day-body-inner">
+      <div class="bride-banner"><span class="bi">🤵</span><div><strong>¡Empieza oficialmente la despedida de Sergio!</strong><span>Hoy hay que ser inteligentes: por la noche hay techno.</span></div></div>
+      <div class="weather-bar">
+        <div class="wb-icon">🌤️</div>
+        <div><div class="wb-day">Principios de octubre · Milán</div><div class="wb-temp">~20°C / 12°C</div><div class="wb-cond">Media habitual</div></div>
+        <div class="wb-tip">🔋 Powerbank cargado y chaqueta ligera para la salida de GATE a las tantas.</div>
+      </div>
+      <div class="timing-block">
+        <div class="tb-title">⏰ Horarios del día</div>
+        <div class="timing-row"><span class="tr-time">10:45</span><div class="tr-label">✈️ <strong>El grupo aterriza en MXP</strong></div></div>
+        <div class="timing-row"><span class="tr-time">11:15–11:30</span><div class="tr-label">Salida de Malpensa (5 personas + equipaje)</div></div>
+        <div class="timing-row"><span class="tr-time">~12:30–12:45</span><div class="tr-label">Llegada al centro de Milán</div></div>
+        <div class="timing-row"><span class="tr-time">12:30–13:00</span><div class="tr-label">🧳 Dejar mochilas en Nina's House (o en consigna)</div></div>
+        <div class="timing-row"><span class="tr-time">13:15</span><div class="tr-label">🥟 <strong>Panzerotti Luini</strong>: panzerotto, bebida y a la calle</div></div>
+        <div class="timing-row"><span class="tr-time">14:00</span><div class="tr-label">🏛️ Duomo</div></div>
+        <div class="timing-row"><span class="tr-time">14:30</span><div class="tr-label">Galleria Vittorio Emanuele II</div></div>
+        <div class="timing-row"><span class="tr-time">15:00</span><div class="tr-label">Piazza della Scala</div></div>
+        <div class="timing-row"><span class="tr-time">15:30</span><div class="tr-label">Paseo hacia Brera</div></div>
+        <div class="timing-row"><span class="tr-time">16:00–17:30</span><div class="tr-label">☕ Brera: pasear, fotos, café, tiendas. Nada de museos.</div></div>
+        <div class="timing-row"><span class="tr-time">17:30–19:00</span><div class="tr-label">🍹 <strong>Aperitivo</strong>: un par de rondas tranquilas</div></div>
+        <div class="timing-row"><span class="tr-time">19:30–21:00</span><div class="tr-label">🍝 Cena, sin alargarla</div></div>
+        <div class="timing-row"><span class="tr-time">21:00–22:30</span><div class="tr-label">🏨 Volver a casa: ducha, cambiarse, cargar móviles y powerbank</div></div>
+        <div class="timing-row"><span class="tr-time">23:00</span><div class="tr-label">🔊 <strong>GATE · Schranz Movement — O.B.I.</strong> (entrar entre 23:30 y 00:00)</div></div>
+      </div>
+      <div class="transport-block">
+        <div class="t-icon">🚆</div>
+        <div class="t-text"><strong>Malpensa → Milán</strong>Malpensa Express a Centrale o Cadorna, unos 50 min, con trenes cada 30 min. Siendo 5 con equipaje, calculad estar en el centro hacia las 12:30–12:45.
+          <div class="transport-prices">
+            <div class="tp-item"><div class="tp-label">🚆 Malpensa Express</div><div class="tp-val">~13 € p.p.</div><div class="tp-sub">~50 min · cada 30 min</div></div>
+            <div class="tp-item"><div class="tp-label">🚕 Taxi MXP (tarifa fija)</div><div class="tp-val">~110 € total</div><div class="tp-sub">si cabéis 5 con maletas</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="food-card">
+        <div class="food-head"><span class="fi">🥟</span><div><div class="food-name">Panzerotti Luini <a class="maps-btn-sm" href="https://www.google.com/maps/search/?api=1&query=Panzerotti+Luini+Milano" target="_blank" rel="noopener">📍 Maps</a></div><div class="food-meta">Via Santa Radegonda 16 · junto al Duomo · ⭐ 4,1 · 02 8646 1917</div></div></div>
+        <p>Aquí no hay discusión: llegan con hambre → Luini. Panzerotto de mozzarella y tomate, bebida y a caminar. Suele haber cola, pero avanza rápido.</p>
+      </div>
+      <div class="gate-box">
+        <h4>🔊 Sábado noche · confirmado</h4>
+        <div class="gn">SCHRANZ MOVEMENT — O.B.I.</div>
+        <p>📍 Gate Milano · Via Valtellina 21 · 🕚 23:00–05:00<br>Hard techno / schranz: encaja mucho mejor que una discoteca comercial. Entrar sobre 23:30–00:00 → O.B.I. / DSTM → fiesta → salir cuando el grupo diga basta. No hace falta aguantar hasta las 05:00.</p>
+        <a class="maps-btn-dark" href="https://www.google.com/maps/search/?api=1&query=Gate+Milano+Via+Valtellina+21" target="_blank" rel="noopener">📍 Gate Milano</a>
+      </div>
+      <div class="alert-box">🎒 <strong>Nada de mochila grande en GATE.</strong> Lo justo: móvil, documento, tarjeta y powerbank. Mañana hay Ferrari a las 09:00.</div>
+      <div class="pill-row"><span class="pill">🥟 Luini</span><span class="pill">🏛️ Duomo</span><span class="pill">☕ Brera</span><span class="pill">🍹 Aperitivo</span><span class="pill">🔊 Schranz</span></div>
+      <div class="flaco-quote"><svg><use href="#flaco"/></svg>"¿El novio quiere ir a casa a la 1? Je-je-je… ¡ni lo sueñes!"</div>
+    </div></div>
+  </div>
+
+  <!-- DOMINGO 4 -->
+  <div class="day-accordion" id="day4" data-date="2026-10-04">
+    <button class="day-trigger" onclick="toggleDay('day4')" aria-expanded="false">
+      <div class="day-trigger-inner">
+        <div class="day-badge bg-4">🏎️</div>
+        <div class="day-meta">
+          <div class="day-date">Domingo 04 Octubre · Motor Valley</div>
+          <div class="day-title">Maranello + Módena · los dos museos</div>
+          <div class="day-subtitle">Museo Ferrari → comida modenesa → centro → Museo Enzo Ferrari</div>
+          <span class="day-tag t-group">🔴 Grupo</span><span class="day-tag t-solo">🍝 Día de comer bien</span>
+        </div>
+        <div class="day-chevron">▼</div>
+      </div>
+    </button>
+    <div class="day-body"><div class="day-body-inner">
+      <div class="weather-bar">
+        <div class="wb-icon">⛅</div>
+        <div><div class="wb-day">Principios de octubre · Emilia-Romaña</div><div class="wb-temp">~21°C / 11°C</div><div class="wb-cond">Media habitual</div></div>
+        <div class="wb-tip">🕶️ Gafas de sol después de GATE: muy necesarias.</div>
+      </div>
+      <div class="timing-block">
+        <div class="tb-title">⏰ Horarios del día</div>
+        <div class="timing-row"><span class="tr-time">08:00</span><div class="tr-label">Despertar (sí, después de GATE 😅)</div></div>
+        <div class="timing-row"><span class="tr-time">08:30</span><div class="tr-label">☕ Desayuno</div></div>
+        <div class="timing-row"><span class="tr-time">09:00</span><div class="tr-label">🚗 <strong>Salida de Milán</strong></div></div>
+        <div class="timing-row"><span class="tr-time">10:30–12:00</span><div class="tr-label">🏎️ <strong>Museo Ferrari Maranello</strong> · reserva 1h15–1h30</div></div>
+        <div class="timing-row"><span class="tr-time">12:30–14:00</span><div class="tr-label">🍝 <strong>Comida en Módena</strong> (ver opciones abajo)</div></div>
+        <div class="timing-row"><span class="tr-time">14:00–15:30</span><div class="tr-label">Piazza Grande → Duomo → Ghirlandina → Via Emilia → Osteria Francescana (por fuera)</div></div>
+        <div class="timing-row"><span class="tr-time">16:00–17:15</span><div class="tr-label">🏎️ <strong>Museo Enzo Ferrari</strong> · Via Paolo Ferrari 85</div></div>
+        <div class="timing-row"><span class="tr-time">17:30–19:30</span><div class="tr-label">🚗 Regreso a Milán, sin prisas</div></div>
+        <div class="timing-row"><span class="tr-time">20:00</span><div class="tr-label">Cena ligera o una copa. Hoy <strong>no hay fiesta</strong>: mañana toca Bernina.</div></div>
+      </div>
+      <div class="transport-block">
+        <div class="t-icon">🚗</div>
+        <div class="t-text"><strong>Milán → Maranello → Módena → Milán</strong>Siendo 5, lo más cómodo es coche de alquiler grande o traslado privado: Milán–Maranello son ~190 km (~2 h) y Maranello–Módena ~20 min. Alternativa: Frecciarossa Milano → Modena (~1 h) + lanzadera de los museos Ferrari hasta Maranello.
+          <div class="transport-prices">
+            <div class="tp-item"><div class="tp-label">🚗 Coche de alquiler 7 plazas</div><div class="tp-val">a presupuestar</div><div class="tp-sub">+ autopista y gasolina</div></div>
+            <div class="tp-item"><div class="tp-label">🚄 Tren + shuttle</div><div class="tp-val">~25–40 € p.p. ida</div><div class="tp-sub">según tarifa Trenitalia/Italo</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="info-block">
+          <h4>🏎️ Museo Ferrari Maranello</h4>
+          <p>Fórmula 1, coches de calle y la historia de la Scuderia, a pocos metros de la fábrica. La entrada habla de ~1 h, pero mejor 1h15–1h30.</p>
+          <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=Museo+Ferrari+Maranello" target="_blank" rel="noopener">📍 Museo Ferrari</a>
+        </div>
+        <div class="info-block">
+          <h4>🏎️ Museo Enzo Ferrari Módena</h4>
+          <p>La casa natal de Enzo junto a la galería moderna con techo amarillo en forma de capó. Último acceso 18:15.</p>
+          <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=Museo+Enzo+Ferrari+Via+Paolo+Ferrari+85+Modena" target="_blank" rel="noopener">📍 Museo Enzo Ferrari</a>
+        </div>
+      </div>
+
+      <div class="dinner-primary">
+        <h4>🍝 Comida en Módena · opción del plan</h4>
+        <div class="dinner-name">Taverna dei Servi</div>
+        <div class="dinner-detail">Cocina modenesa tradicional en pleno centro. Ideal para comer bien y salir caminando hacia Piazza Grande. ⭐ 4,1 · 059 217134</div>
+        <div class="dinner-tags"><span class="dinner-tag">🥟 Tortellini</span><span class="dinner-tag">🫓 Tigelle</span><span class="dinner-tag">🥐 Gnocco fritto</span><span class="dinner-tag">🥓 Embutidos</span><span class="dinner-tag">🍝 Pasta fresca</span><span class="dinner-tag">🍷 Lambrusco</span></div>
+        <a class="maps-btn-dark" href="https://www.google.com/maps/search/?api=1&query=Taverna+dei+Servi+Modena" target="_blank" rel="noopener">📍 Taverna dei Servi</a>
+        <div class="dinner-warning">⚠️ Domingo a mediodía y sois 5: reservad mesa por teléfono.</div>
+      </div>
+
+      <div class="dinner-primary" style="background:linear-gradient(135deg,#1a1408,#4a3a10);border-color:#D9A400;">
+        <span class="new-badge">🐾 El añadido de Flaco</span>
+        <h4>🏎️ Alternativa con sabor a Cavallino · en Maranello</h4>
+        <div class="dinner-name">Ristorante Cavallino · de Massimo Bottura</div>
+        <div class="dinner-detail">El restaurante histórico de Ferrari, justo enfrente de la entrada de la fábrica, donde comían Enzo y los pilotos. Hoy lo lleva <strong>Massimo Bottura</strong>, el chef de la Osteria Francescana (3 estrellas Michelin). Cocina emiliana tradicional reinterpretada. Es la forma más asequible de comer "Bottura" en el viaje, y está a dos pasos del Museo Ferrari: salís del museo y entráis a comer.</div>
+        <div class="dinner-tags"><span class="dinner-tag">🐎 Historia Ferrari</span><span class="dinner-tag">👨‍🍳 Massimo Bottura</span><span class="dinner-tag">📍 Via Abetone Inferiore 1, Maranello</span><span class="dinner-tag">🥟 Tortellini en brodo</span></div>
+        <a class="maps-btn-dark" href="https://www.google.com/maps/search/?api=1&query=Ristorante+Cavallino+Via+Abetone+Inferiore+1+Maranello" target="_blank" rel="noopener">📍 Ristorante Cavallino</a>
+        <div class="dinner-warning">⚠️ Revisad que abre el domingo a mediodía y reservad: es pequeño y muy buscado. Si coméis aquí, el plan queda: Museo Ferrari 10:30 → Cavallino 12:15 → Módena centro 14:15 → Enzo Ferrari 16:00.</div>
+      </div>
+
+      <button class="more-options-toggle" onclick="toggleMore('more-modena', this)">🍽️ Ver más opciones para comer en Módena ▼</button>
+      <div class="more-options-body" id="more-modena">
+        <div class="alt-dinner">
+          <h5>Franceschetta58</h5>
+          <div class="alt-sub">📍 Via Vignolese 58 · Módena · el bistró de Bottura</div>
+          <p>Versión informal y divertida de la cocina de Bottura, más barata que la Francescana. Está algo fuera del casco antiguo, a unos 15 min a pie de Piazza Grande. Confirmad el horario del domingo.</p>
+        </div>
+        <div class="alt-dinner">
+          <h5>Gnocco fritto y tigelle para picar</h5>
+          <div class="alt-sub">📍 Centro histórico · entre Piazza Grande y Via Emilia</div>
+          <p>Si se alarga el museo y vais justos, cualquier "gnoccheria" del centro resuelve: gnocco fritto con prosciutto y mortadela, tigelle con lardo y una copa de Lambrusco. Rápido y muy modenés.</p>
+        </div>
+        <div class="alt-dinner">
+          <h5>Aceto Balsamico · para llevar a casa</h5>
+          <div class="alt-sub">🎁 Souvenir obligatorio</div>
+          <p>Buscad el sello <strong>"Aceto Balsamico Tradizionale di Modena DOP"</strong> (botellita de 100 ml, 12 o 25 años). Lo de "IGP" es el del súper.</p>
+        </div>
+      </div>
+
+      <div class="two-col" style="margin-top:12px;">
+        <div class="info-block">
+          <h4>🏛️ Centro de Módena · 14:00–15:30</h4>
+          <ul><li>Piazza Grande (UNESCO)</li><li>Duomo románico</li><li>Torre Ghirlandina</li><li>Via Emilia</li><li>Osteria Francescana, solo por fuera (Via Stella 22)</li></ul>
+          <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=Piazza+Grande+Modena" target="_blank" rel="noopener">📍 Piazza Grande</a>
+        </div>
+        <div class="info-block">
+          <h4>🐾 Flaco dice</h4>
+          <p>Hoy se come de verdad. En Módena se va a comer, no a probar: tortellini, gnocco, lambrusco y unas gotas de balsámico. Y esta noche, a dormir.</p>
+        </div>
+      </div>
+      <div class="flaco-quote"><svg><use href="#flaco"/></svg>"¡Vroooom! Gafas puestas, bufanda roja… este es MI día. Je-je-je."</div>
+    </div></div>
+  </div>
+
+  <!-- LUNES 5 -->
+  <div class="day-accordion" id="day5" data-date="2026-10-05">
+    <button class="day-trigger" onclick="toggleDay('day5')" aria-expanded="false">
+      <div class="day-trigger-inner">
+        <div class="day-badge bg-5">🚂</div>
+        <div class="day-meta">
+          <div class="day-date">Lunes 05 Octubre · Los Alpes</div>
+          <div class="day-title">Bernina Express</div>
+          <div class="day-subtitle">Milán → Tirano → Alp Grüm → St. Moritz → regreso a Milán</div>
+          <span class="day-tag t-group">🔴 Grupo</span><span class="day-tag t-fly">🇨🇭 Pasaporte/DNI</span>
+        </div>
+        <div class="day-chevron">▼</div>
+      </div>
+    </button>
+    <div class="day-body"><div class="day-body-inner">
+      <div class="weather-bar">
+        <div class="wb-icon">🏔️</div>
+        <div><div class="wb-day">Octubre · paso de Bernina (2.253 m)</div><div class="wb-temp">~0–10°C</div><div class="wb-cond">En St. Moritz y en el paso hace frío de verdad</div></div>
+        <div class="wb-tip">🧣 Ropa de abrigo, por capas. Puede haber nieve arriba. Mirad la previsión el domingo por la noche.</div>
+      </div>
+      <div class="alert-box">🕐 <strong>Horario exacto pendiente.</strong> Los billetes están en un ZIP. En cuanto tengamos la hora del tren, este día se convierte en un plan minuto a minuto. El horario de verano del Bernina Express 2026 llega hasta el 25 de octubre, así que el 5 de octubre aún es temporada de verano.</div>
+      <div class="timing-block">
+        <div class="tb-title">⏰ Esquema del día</div>
+        <div class="timing-row"><span class="tr-time">Muy temprano</span><div class="tr-label">🚆 Milano Centrale → Tirano (regional Trenord, ~2h30)</div></div>
+        <div class="timing-row"><span class="tr-time">Hora billete</span><div class="tr-label">🚂 <strong>Bernina Express</strong> Tirano → Alp Grüm → St. Moritz (~2h15)</div></div>
+        <div class="timing-row"><span class="tr-time">Tarde</span><div class="tr-label">🏔️ St. Moritz: paseo por el lago y el pueblo</div></div>
+        <div class="timing-row"><span class="tr-time">Regreso</span><div class="tr-label">🚆 Vuelta a Milán (según billete)</div></div>
+        <div class="timing-row"><span class="tr-time">Noche</span><div class="tr-label">🛏️ Descanso</div></div>
+      </div>
+      <div class="two-col">
+        <div class="info-block">
+          <h4>🚂 Qué mirar desde el tren</h4>
+          <ul><li>Viaducto helicoidal de Brusio</li><li>Lago Bianco y Ospizio Bernina</li><li>Alp Grüm y el glaciar Palü</li><li>Valle de Poschiavo</li></ul>
+        </div>
+        <div class="info-block">
+          <h4>🇨🇭 Suiza · recordatorios</h4>
+          <ul><li>DNI o pasaporte encima</li><li>Moneda: franco suizo, aunque la tarjeta va bien</li><li>Datos móviles: Suiza no está en el roaming UE</li><li>Café en St. Moritz: prepárate para pagar</li></ul>
+        </div>
+      </div>
+      <div class="pill-row"><span class="pill">🚂 UNESCO</span><span class="pill">🏔️ 2.253 m</span><span class="pill">🌉 196 puentes</span><span class="pill">🇮🇹 → 🇨🇭</span></div>
+      <div class="flaco-quote"><svg><use href="#flaco"/></svg>"Las gafas de aviador sirven también para el tren panorámico. Sniff… ¡huele a nieve!"</div>
+    </div></div>
+  </div>
+
+  <!-- MARTES 6 -->
+  <div class="day-accordion" id="day6" data-date="2026-10-06">
+    <button class="day-trigger" onclick="toggleDay('day6')" aria-expanded="false">
+      <div class="day-trigger-inner">
+        <div class="day-badge bg-6">🌊</div>
+        <div class="day-meta">
+          <div class="day-date">Martes 06 Octubre · Último día</div>
+          <div class="day-title">Castello, Sempione y Navigli</div>
+          <div class="day-subtitle">Check-out → castillo → parque → canales → compras → BGY</div>
+          <span class="day-tag t-group">🔴 Grupo</span><span class="day-tag t-fly">✈️ Mayker · BGY 21:15</span>
+        </div>
+        <div class="day-chevron">▼</div>
+      </div>
+    </button>
+    <div class="day-body"><div class="day-body-inner">
+      <div class="weather-bar">
+        <div class="wb-icon">🌤️</div>
+        <div><div class="wb-day">Principios de octubre · Milán</div><div class="wb-temp">~20°C / 12°C</div><div class="wb-cond">Media habitual</div></div>
+        <div class="wb-tip">🧳 Día con maletas en consigna: mochila pequeña y a caminar.</div>
+      </div>
+      <div class="timing-block">
+        <div class="tb-title">⏰ Horarios del día</div>
+        <div class="timing-row"><span class="tr-time">08:00–10:00</span><div class="tr-label"><strong>Check-out Nina's House</strong> · maletas a consigna</div></div>
+        <div class="timing-row"><span class="tr-time">10:00</span><div class="tr-label">🏰 Castello Sforzesco</div></div>
+        <div class="timing-row"><span class="tr-time">11:00</span><div class="tr-label">🌳 Parco Sempione</div></div>
+        <div class="timing-row"><span class="tr-time">11:30</span><div class="tr-label">Arco della Pace</div></div>
+        <div class="timing-row"><span class="tr-time">12:30–14:00</span><div class="tr-label">🍝 Comida tranquila</div></div>
+        <div class="timing-row"><span class="tr-time">14:00–16:00</span><div class="tr-label">🌊 <strong>Navigli</strong>: Darsena → Naviglio Grande · café o cerveza</div></div>
+        <div class="timing-row"><span class="tr-time">16:00–17:00</span><div class="tr-label">🛍️ Últimas compras (Axel Arigato o papelería, si quedó pendiente)</div></div>
+        <div class="timing-row"><span class="tr-time">17:00</span><div class="tr-label">🧳 Recoger equipaje</div></div>
+      </div>
+
+      <div class="mayker-only">
+        <div class="mo-title">🟡 Solo Mayker · vuelta a casa</div>
+        <div class="timing-row"><span class="tr-time">17:30–18:00</span><div class="tr-label">🚌 Orio Shuttle Milano Centrale → BGY</div></div>
+        <div class="timing-row"><span class="tr-time">18:45–19:00</span><div class="tr-label">Llegada a BGY, con más de 2 h de margen</div></div>
+        <div class="timing-row"><span class="tr-time">21:15</span><div class="tr-label">✈️ <strong>BGY → BCN</strong> · llegada 22:55</div></div>
+        <p style="margin-top:6px;">Es Bérgamo, no Malpensa. Mejor no apurar: el tráfico de salida de Milán un martes por la tarde puede dar sustos.</p>
+      </div>
+      <div class="alert-box">✈️ <strong>Resto del grupo:</strong> añadid aquí vuestro vuelo de vuelta cuando lo tengáis a mano.</div>
+
+      <div class="two-col">
+        <div class="info-block">
+          <h4>🏰 Castello + Sempione</h4>
+          <p>Fortaleza de los Sforza (s. XV) con patios de entrada libre. Detrás, el parque más grande del centro hasta el Arco della Pace.</p>
+          <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=Castello+Sforzesco+Milano" target="_blank" rel="noopener">📍 Castello Sforzesco</a>
+        </div>
+        <div class="info-block">
+          <h4>🌊 Navigli</h4>
+          <p>Los canales diseñados en parte con ideas de Leonardo. Darsena y Naviglio Grande: terrazas, tiendas pequeñas y el mejor sitio para la última cerveza juntos.</p>
+          <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=Naviglio+Grande+Milano" target="_blank" rel="noopener">📍 Naviglio Grande</a>
+        </div>
+      </div>
+      <div class="pill-row"><span class="pill">🏰 Castello</span><span class="pill">🌳 Sempione</span><span class="pill">🌊 Navigli</span><span class="pill">🛍️ Últimas compras</span><span class="pill">✈️ BGY</span></div>
+      <div class="flaco-quote"><svg><use href="#flaco"/></svg>"Misión cumplida: el novio vuelve entero… más o menos. Je-je-je-je."</div>
+    </div></div>
+  </div>
+
+</div>
+</section>
+
+<!-- PENDIENTES -->
+<section class="todo-section" id="pendientes">
+  <div class="todo-inner">
+    <h2>🐾 Pendientes antes de que llegue la manada</h2>
+    <p class="sub">Toca para marcar · se guarda en este móvil</p>
+    <div class="todo-progress"><div id="todoBar"></div></div>
+    <div id="todoList">
+      <label class="todo-item"><input type="checkbox" data-id="maletas"><div><div class="tt">Confirmar con Nina's House si se pueden dejar maletas antes de las 15:00</div><div class="td">Sábado 03 · si no, buscar consigna (plan B)</div></div></label>
+      <label class="todo-item"><input type="checkbox" data-id="bernina"><div><div class="tt">Sacar la hora exacta del Bernina Express del ZIP</div><div class="td">Lunes 05 · también el tren Milán → Tirano y la vuelta</div></div></label>
+      <label class="todo-item"><input type="checkbox" data-id="coche"><div><div class="tt">Decidir transporte del domingo: coche para 5, traslado o tren + shuttle</div><div class="td">Domingo 04 · salida 09:00</div></div></label>
+      <label class="todo-item"><input type="checkbox" data-id="comida"><div><div class="tt">Reservar comida del domingo: Taverna dei Servi o Cavallino</div><div class="td">Confirmar que abren el domingo a mediodía · 5 personas</div></div></label>
+      <label class="todo-item"><input type="checkbox" data-id="gate"><div><div class="tt">Entradas GATE · Schranz Movement compradas para los 5</div><div class="td">Sábado 03 · 23:00</div></div></label>
+      <label class="todo-item"><input type="checkbox" data-id="vuelta"><div><div class="tt">Apuntar el vuelo de vuelta del resto del grupo</div><div class="td">Martes 06</div></div></label>
+      <label class="todo-item"><input type="checkbox" data-id="roaming"><div><div class="tt">Revisar roaming en Suiza</div><div class="td">Lunes 05 · Suiza no está incluida en el roaming UE</div></div></label>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <svg role="img" aria-label="Flaco"><use href="#flaco"/></svg>
+  <h3>Je-je-je… ¡Viva el novio!</h3>
+  <p>Seis días, dos museos Ferrari, un tren por los Alpes y una noche de schranz. Sergio, Flaco te vigila. 🐾🏎️🚂</p>
+  <div class="signature">LA RUTA DE FLACO · MILÁN 2026 · MAYKER</div>
+</footer>
+
+<script>
+  function toggleDay(id){
+    const el=document.getElementById(id);
+    const open=!el.classList.contains('open');
+    el.classList.toggle('open',open);
+    el.querySelector('.day-trigger').setAttribute('aria-expanded',open);
+  }
+  function toggleMore(id,btn){
+    const el=document.getElementById(id);
+    const open=el.classList.toggle('open');
+    if(btn) btn.innerHTML=btn.innerHTML.replace(open?'▼':'▲',open?'▲':'▼');
+  }
+
+  // Abre el día de hoy (o el primero si el viaje aún no ha empezado)
+  (function(){
+    const d=new Date();
+    const today=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    const days=[...document.querySelectorAll('.day-accordion[data-date]')];
+    const matches=days.filter(x=>x.dataset.date===today);
+    const pill=document.getElementById('todayPill');
+    if(matches.length){
+      matches.forEach(m=>{
+        m.classList.add('open','is-today');
+        m.querySelector('.day-trigger').setAttribute('aria-expanded','true');
+        const tags=m.querySelector('.day-meta');
+        tags.insertAdjacentHTML('beforeend','<span class="day-tag t-today">📍 HOY</span>');
+      });
+      pill.textContent='📍 Hoy toca: '+matches.map(m=>m.querySelector('.day-title').textContent).join(' · ');
+      pill.hidden=false;
+    } else if(today<'2026-10-01'){
+      const diff=Math.ceil((new Date('2026-10-01T18:15:00')-d)/86400000);
+      pill.textContent='⏳ Faltan '+diff+' días para despegar';
+      pill.hidden=false;
+      days[0].classList.add('open');
+    } else {
+      days[0].classList.add('open');
+    }
+  })();
+
+  // Pendientes (guardado local)
+  (function(){
+    const KEY='milan2026-todo';
+    let state={};
+    try{state=JSON.parse(localStorage.getItem(KEY))||{};}catch(e){}
+    const boxes=document.querySelectorAll('#todoList input');
+    const bar=document.getElementById('todoBar');
+    function render(){
+      let done=0;
+      boxes.forEach(b=>{b.checked=!!state[b.dataset.id];b.closest('.todo-item').classList.toggle('done',b.checked);if(b.checked)done++;});
+      bar.style.width=(done/boxes.length*100)+'%';
+    }
+    boxes.forEach(b=>b.addEventListener('change',()=>{
+      state[b.dataset.id]=b.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}
+      render();
+    }));
+    render();
+  })();
+
+  // Nav activo al hacer scroll
+  const navLinks=document.querySelectorAll('.sticky-nav a');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        navLinks.forEach(a=>a.classList.remove('active'));
+        const l=document.querySelector('.sticky-nav a[href="#'+e.target.id+'"]');
+        if(l) l.classList.add('active');
+      }
+    });
+  },{rootMargin:'-30% 0px -60% 0px'});
+  document.querySelectorAll('section[id]').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
